@@ -1,4 +1,7 @@
 export default {
+  router: {
+    base: '/absolute-school-nuxt/'
+  },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'absolute-nuxt',

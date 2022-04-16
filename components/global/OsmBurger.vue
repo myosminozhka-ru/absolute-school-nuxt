@@ -88,7 +88,7 @@
       <div class="menu_burger--items">
         <div class="menu_burger--menu">
           
-          <osm-button class-name="button--order" link="/order">
+          <osm-button class-name="button--order" link="#">
             <svg width="78" height="68" viewBox="0 0 78 68" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M72.4103 6.58791C74.6152 3.98928 72.7682 0 69.3602 0H9.39225C7.31296 0 5.58041 1.59306 5.40629 3.66505L0.424809 62.9448C0.208215 65.5222 2.45797 67.6245 5.01486 67.2338L67.8704 57.6309C70.1215 57.287 71.6318 55.1357 71.1904 52.9016L64.3738 18.3923C64.1376 17.1966 64.4594 15.9585 65.2479 15.0292L72.4103 6.58791Z"
@@ -110,7 +110,7 @@
             </svg>
             <span>Мои заказы</span>
           </osm-button>
-          <osm-button class-name="button--cart_min" link="/cart">
+          <osm-button class-name="button--cart_min" link="#">
             <div class="icon">
               <svg width="72" height="70" viewBox="0 0 72 70" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path

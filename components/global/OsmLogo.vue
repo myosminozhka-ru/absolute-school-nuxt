@@ -1,7 +1,7 @@
 <template>
-    <a href="/absolute-school/dist/" class="header__logo">
+    <nuxt-link :to="{ name: 'index' }" class="header__logo">
         <img src="~/assets/img/logo.png" alt="Логотип">
-    </a>
+    </nuxt-link>
 </template>
 
 <script>
