@@ -7,11 +7,13 @@
       <form action="">
         <div class="cards__item--color-item">
           <div class="cards__item--colors">
-            <osm-checkbox class-name="check_standart" text="#000" style="
+            <div v-for="offer in offers" :key="offer.id" @click="setOffer(offer.id)">
+                <osm-checkbox  class-name="check_standart" text="#000" :style="`
 
-                --background: #000
+                    --background: ${offer.colors[0].color.code}
 
-            " />
+                `" />
+            </div>
           </div>
         </div>
         <div class="cards__item--size-item">
@@ -39,7 +41,7 @@
         </div>
       </form>
     </div>
-    <!-- {{ product.images.length }} -->
+    
     <div class="cards__item--r-side" v-if="product.images.length">
       <div class="glide cards__slider--js" ref="cards__slider">
         <div class="glide__track" data-glide-el="track">
@@ -82,7 +84,8 @@
 
 
 <script>
-import Glide from '@glidejs/glide'
+import Glide from '@glidejs/glide';
+import { mapGetters } from 'vuex';
 export default {
     name: 'OsmProduct',
     props: {
@@ -97,23 +100,42 @@ export default {
         OsmPrice: () => import('~/components/typografy/OsmPrice.vue'),
         OsmButton: () => import('~/components/global/OsmButton.vue'),
     },
+    computed: {
+        ...mapGetters({
+            products: 'products/getProducts'
+        }),
+        offers() {
+            return this.products.offers.filter(offer => offer.product === this.product.id).map(offer => ({
+                ...offer,
+                colors: this.products.colors.filter(color => color.id === offer.color).map(color => ({
+                    color: {...color},
+                    sizes: this.products.sizes.filter(size => size.id === offer.id)
+                }))
+            }));
+        }
+    },
     data: () => ({
-        slider: null
+        slider: null,
+        selectedOffer: 0
     }),
     mounted() {
         if (this.$refs.cards__slider) {
             this.slider = new Glide(this.$refs.cards__slider, {
                 gap: 0
             }).mount();
-            console.log('slider inited', this.slider);
         }
+        this.selectedOffer = this.offers[0].id;
     },
     beforeDestroy() {
         if (this.slider) {
             this.slider.destroy();
             this.slider = null;
         }
-        console.log('slider destroyed', this.slider);
+    },
+    methods: {
+        setOffer(id) {
+            this.selectedOffer = id;
+        }
     }
 }
 </script>
