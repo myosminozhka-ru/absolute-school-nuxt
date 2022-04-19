@@ -53,7 +53,7 @@
             <span>Корзина</span>
         </osm-button>
         <osm-header-info />
-        <osm-button>
+        <osm-button link="auth">
             <span>Выход</span>
         </osm-button>
         <osm-burger :is-burger-opened.sync="isBurgerOpened" />
