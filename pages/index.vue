@@ -9,7 +9,7 @@
 export default {
   name: 'IndexPage',
   components: {
-    OsmProducts: () => import('~/components/products/OsmProducts.vue')
+    OsmProducts: () => import('~/components/products/OsmProducts.vue'),
   },
   layout: 'default',
 }

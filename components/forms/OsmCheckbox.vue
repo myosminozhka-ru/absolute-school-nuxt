@@ -1,144 +1,163 @@
 <template>
-    <label class="checkbox" :class="className">
-        <input class="custom-checkbox" type="radio" :name="name" :value="text" @input="onInput">
-        <div>{{ text }}</div>
-    </label>
+  <label class="checkbox" :class="className">
+    <input
+      class="custom-checkbox"
+      type="radio"
+      :name="name"
+      :value="text"
+      @input="onInput"
+    />
+    <div>{{ text }}</div>
+  </label>
 </template>
 
 <script>
 export default {
-    name: "OsmButton",
-    props: {
-        text: {
-            type: String,
-            default: ''
-        },
-        className: {
-            type: String,
-            default: 'input--orange'
-        },
-        name: {
-            type: String,
-            default: ''
-        }
+  name: 'OsmButton',
+  props: {
+    text: {
+      type: String,
+      default: '',
     },
-    methods: {
-        onInput() {
-            this.$emit('input')
-        }
+    className: {
+      type: String,
+      default: 'input--orange',
     },
+    name: {
+      type: String,
+      default: '',
+    },
+  },
+  methods: {
+    onInput() {
+      this.$emit('input')
+    },
+  },
 }
 </script>
 
 <style lang="scss" scoped>
 .checkbox {
-    .custom-checkbox {
-        position: absolute;
-        z-index: -1;
-        opacity: 0;
-        + div {
-            display: inline-flex;
-            align-items: center;
-            user-select: none;
-            cursor: pointer;
-            position: relative;
-            &:before {
-                content: '';
-                display: inline-block;
-                transition: all .3s ease-out;
-            }
-        }
+  .custom-checkbox {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    + div {
+      display: inline-flex;
+      align-items: center;
+      user-select: none;
+      cursor: pointer;
+      position: relative;
+      &:before {
+        content: '';
+        display: inline-block;
+        transition: all 0.3s ease-out;
+      }
     }
+  }
 }
 .check_standart {
-    font-size: 0;
-    .custom-checkbox {
-        + div {
-            &:before {
-                width: vw(50);
-                height: vw(50);
-                background: var(--background);
-                border-radius: 10px;
-                position: relative;
-                z-index: 2;
-                margin: 3px;
-            }
-            &:after {
-                content: "";
-                position: absolute;
-                top: 0px;
-                bottom: 0px;
-                left: 0px;
-                right: 0px;
-                background: radial-gradient(75.55% 97% at 86% 12%, rgba(255, 255, 255, 0.4) 0%, rgba(87, 87, 87, 0.088) 44.8%, rgba(66, 66, 66, 0.4) 84.38%) var(--background);
-                border-radius: 10px;
-                z-index: 0;
-            }
-        }
-        &:checked {
-            + div {
-                &:before {
-                    border: 0;
-                    box-shadow: 0px 5px 20px rgba(21, 69, 102, 0.6);
-                }
-                &:after {
-                    top: -2px;
-                    bottom: -2px;
-                    left: -2px;
-                    right: -2px;
-                    background: radial-gradient(86.46% 111% at 86% 12%, rgba(255, 105, 95, 0) 0%, rgba(124, 121, 121, 0) 54.94%, rgba(66, 66, 66, 0) 78.15%), var(--background);
-                }
-            }
-        }
+  font-size: 0;
+  .custom-checkbox {
+    + div {
+      &:before {
+        width: vw(50);
+        height: vw(50);
+        background: var(--background);
+        border-radius: 10px;
+        position: relative;
+        z-index: 2;
+        margin: 3px;
+      }
+      &:after {
+        content: '';
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        background: radial-gradient(
+            75.55% 97% at 86% 12%,
+            rgba(255, 255, 255, 0.4) 0%,
+            rgba(87, 87, 87, 0.088) 44.8%,
+            rgba(66, 66, 66, 0.4) 84.38%
+          )
+          var(--background);
+        border-radius: 10px;
+        z-index: 0;
+      }
     }
+    &:checked {
+      + div {
+        &:before {
+          border: 0;
+          box-shadow: 0px 5px 20px rgba(21, 69, 102, 0.6);
+        }
+        &:after {
+          top: -2px;
+          bottom: -2px;
+          left: -2px;
+          right: -2px;
+          background: radial-gradient(
+              86.46% 111% at 86% 12%,
+              rgba(255, 105, 95, 0) 0%,
+              rgba(124, 121, 121, 0) 54.94%,
+              rgba(66, 66, 66, 0) 78.15%
+            ),
+            var(--background);
+        }
+      }
+    }
+  }
 }
 .check_size {
-    font-family: 'Jingleberry', serif;
-    font-style: normal;
-    font-weight: 900;
-    font-size: 25px;
-    line-height: 110%;
-    transition: all .3s ease-out;
-    text-transform: uppercase;
-    color: #424242;
-    min-height: 31px;
-    display: block;
-    .custom-checkbox {
-        + div {
-            &:before {
-                height: 15px;
-                width: 50px;
-                left: 50%;
-                margin-left: -25px;
-                position: absolute;
-                right: 0;
-                bottom: -18px;
-                background: url("data:image/svg+xml,%3Csvg width='54' height='13' viewBox='0 0 54 13' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M22.131 1.5L0.000247955 0V4.34586L16.8195 5.99971L20.4466 10.1371L39.836 6.49971L54 12.5V8L50.459 7L40.7213 2.5L24.7868 5.49971L22.131 1.5Z' fill='%23E49535'/%3E%3C/svg%3E%0A") 50% / 100% no-repeat;
-                opacity: 0;
-            }
-        }
-        &:checked {
-            + div {
-                font-size: 35px;
-                &:before {
-                    opacity: 1;
-                }
-            }
-        }
+  font-family: 'Jingleberry', serif;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 25px;
+  line-height: 110%;
+  transition: all 0.3s ease-out;
+  text-transform: uppercase;
+  color: #424242;
+  min-height: 31px;
+  display: block;
+  .custom-checkbox {
+    + div {
+      &:before {
+        height: 15px;
+        width: 50px;
+        left: 50%;
+        margin-left: -25px;
+        position: absolute;
+        right: 0;
+        bottom: -18px;
+        background: url("data:image/svg+xml,%3Csvg width='54' height='13' viewBox='0 0 54 13' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M22.131 1.5L0.000247955 0V4.34586L16.8195 5.99971L20.4466 10.1371L39.836 6.49971L54 12.5V8L50.459 7L40.7213 2.5L24.7868 5.49971L22.131 1.5Z' fill='%23E49535'/%3E%3C/svg%3E%0A")
+          50% / 100% no-repeat;
+        opacity: 0;
+      }
     }
+    &:checked {
+      + div {
+        font-size: 35px;
+        &:before {
+          opacity: 1;
+        }
+      }
+    }
+  }
 }
 @media all and (max-width: 1023px) {
-    .check_standart {
-        .custom-checkbox+div:before {
-            width: 40px;
-            height: 40px;
-        }
+  .check_standart {
+    .custom-checkbox + div:before {
+      width: 40px;
+      height: 40px;
     }
-    .check_size {
-        font-size: 20px;
-        .custom-checkbox:checked+div {
-            font-size: 30px;
-        }
+  }
+  .check_size {
+    font-size: 20px;
+    .custom-checkbox:checked + div {
+      font-size: 30px;
     }
+  }
 }
 </style>
