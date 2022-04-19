@@ -1,6 +1,6 @@
 <template>
     <label class="checkbox" :class="className">
-        <input class="custom-checkbox" type="radio" :value="text">
+        <input class="custom-checkbox" type="radio" :name="name" :value="text" @input="onInput">
         <div>{{ text }}</div>
     </label>
 </template>
@@ -17,7 +17,16 @@ export default {
             type: String,
             default: 'input--orange'
         },
-    }
+        name: {
+            type: String,
+            default: ''
+        }
+    },
+    methods: {
+        onInput() {
+            this.$emit('input')
+        }
+    },
 }
 </script>
 
