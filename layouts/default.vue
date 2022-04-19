@@ -1,5 +1,6 @@
 <template>
     <div class="wrapper">
+        <osm-tour />    
         <div class="wrapper__in" :class="{'isMobile': $device.isMobile, 'isTablet': $device.isTablet}">
             <osm-header />
             <main class="content">
