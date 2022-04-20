@@ -1,6 +1,6 @@
 <template>
   <div class="input" :class="className">
-    <input type="text" :placeholder="text" />
+    <input :type="type" :placeholder="text" :value="value" @input="$emit('update:value', $event.target.value)" />
   </div>
 </template>
 
@@ -8,6 +8,14 @@
 export default {
   name: 'OsmButton',
   props: {
+    type: {
+      type: String,
+      default: 'text'
+    },
+    value: {
+      type: String,
+      required: true
+    },
     text: {
       type: String,
       default: '',

@@ -8,8 +8,8 @@
     <div class="auth-block__in">
       <div class="auth-block__r-side--title">Авторизация</div>
       <form action="" class="auth-block__form">
-        <osm-input text="Введите логин"></osm-input>
-        <osm-input text="Введите пароль"></osm-input>
+        <osm-input :value="login" text="Введите логин" @update:value="login = $event"></osm-input>
+        <osm-input :value="password" type="password" text="Введите пароль" @update:value="password = $event"></osm-input>
         <osm-button class-name="button--back">
           <svg
             width="311"
@@ -39,5 +39,9 @@ export default {
     OsmButton: () => import('~/components/global/OsmButton.vue'),
     OsmInput: () => import('~/components/forms/OsmInput.vue'),
   },
+  data: () => ({
+      login: '',
+      password: ''
+  })
 }
 </script>
