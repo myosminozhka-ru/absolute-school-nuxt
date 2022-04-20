@@ -1,6 +1,6 @@
 <template>
   <div>
-    <osm-tabs-blocks :title="true"/>
+    <osm-tabs-blocks :title="true" />
     <osm-orders />
   </div>
 </template>
@@ -8,7 +8,7 @@
 export default {
   name: 'OrdersPage',
   components: {
-    OsmOrders: () => import('~/components/orders/OsmOrders.vue')
+    OsmOrders: () => import('~/components/orders/OsmOrders.vue'),
   },
 }
 </script>
