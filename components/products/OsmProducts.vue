@@ -1,6 +1,7 @@
 <template>
     <div class="cards">
-        <template v-if="products">
+        <!-- {{products.products}} -->
+        <template v-if="products.products.length">
             <osm-product v-for="product in products.products" :key="product.id" :product="product" />
             <div class="cards__more">
                 <osm-button class-name="button--more">
@@ -25,28 +26,31 @@
             </div>
         </template>
         <template v-else>
-            ТОваров нет
+            <div class="products__not-found">
+                Таких товаров нет
+            </div>
         </template>
     </div>
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
     name: 'OsmProducts',
     components: {
-        OsmProduct: () => import('~/components/products/OsmProduct.vue')
-    },
-    created() {
-        this.addProducts();
+        OsmProduct: () => import('~/components/products/OsmProduct.vue'),
+        // OsmLoader: () => import('~/components/global/OsmLoader.vue'),
     },
     computed: {
         ...mapGetters({
-            products: 'products/getProducts'
-        })
+            products: 'products/getFilteredProducts'
+        }),
     },
-    methods: {
-        ...mapActions('products', ['addProducts'])
-    }
+    // created() {
+    //     this.addProducts();
+    // },
+    // methods: {
+    //     ...mapActions('products', ['addProducts'])
+    // }
 }
 </script>

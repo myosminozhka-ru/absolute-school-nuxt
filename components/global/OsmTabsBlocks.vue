@@ -4,10 +4,17 @@
             <div class="tabs_blocks__buttons">
                 <div class="tabs_blocks__item">
                     <div class="tabs_blocks__buttons--owf">
-                        <osm-button v-for="button in buttons.list" :key="button.index" class-name="button--white" :class="{'isActive' : buttons.selected === button}">{{ button }}</osm-button>
+                        <div @click="addSection({id: 12312313123123123, name: 'нет товаров'})">
+                            <osm-button class-name="button--white" :class="{'isActive' : selected.id == 12312313123123123}">Нет товаров (для тестов)</osm-button>
+                        </div>
+                        <div v-for="button in sectionList" :key="button.id" @click="addSection(button)">
+                            <osm-button class-name="button--white" :class="{'isActive' : selected == button}">{{ button.name }}</osm-button>
+                        </div>
                     </div>
                 </div>
-                <osm-button class-name="button--green"><span>Все</span></osm-button>
+                <div @click="addSection({id: null, name: 'all'})">
+                    <osm-button class-name="button--green"><span>Все</span></osm-button>
+                </div>
             </div>
         </div>
         <div class="tabs_blocks__r-side">
@@ -21,21 +28,13 @@
                     </svg>
                     <span>Поиск</span>
                 </osm-button>
-                 <!-- @@include('../../components/forms/inputs/index.html', {
-                    "type" : "orange",
-                    "text" : "Введите что нужно найти",
-                    "error" : false
-                }) -->
-                <!--@@include('../../components/buttons/buttons.html', {
-                    "type" : "search",
-                    "text" : "Поиск"
-                }) -->
             </form>
         </div>
     </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 export default {
     name: "OsmTabsBlocks",
     components: {
@@ -47,19 +46,19 @@ export default {
         title: {
             type: String,
             default: '',
+        },
+        sectionList: {
+            type: Array,
+            default: null
+        },
+        selected: {
+            type: Object,
+            default: null
         }
     },
-    data: () => ({
-        buttons: {
-            selected: 'Все',
-            list: [
-                'Развивающие игрушки',
-                'Книги',
-                'Одежда',
-                'Наушники'
-            ]
-        }
-    })
+    methods: {
+    ...mapActions('products', ['addSection'])
+    }
 }
 </script>
 
