@@ -20,7 +20,7 @@
       </svg>
       <span>Помощь</span>
     </osm-button>
-    <osm-button class-name="button--order" link="#">
+    <osm-button class-name="button--order" link="orders">
       <svg
         width="78"
         height="68"

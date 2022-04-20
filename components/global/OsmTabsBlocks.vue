@@ -19,7 +19,7 @@
     <div class="tabs_blocks__r-side">
       <osm-hn v-if="title">Мои заказы:</osm-hn>
       <form v-else action="">
-        <osm-input text="Введите что нужно найти" />
+        <osm-input value="" text="Введите что нужно найти" />
         <osm-button class-name="button--search">
           <svg
             width="100"
@@ -65,8 +65,8 @@ export default {
   },
   props: {
     title: {
-      type: String,
-      default: '',
+      type: Boolean,
+      default: false,
     },
   },
   data: () => ({
