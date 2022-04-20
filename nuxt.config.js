@@ -1,6 +1,6 @@
 export default {
   router: {
-    base: '/absolute-school-nuxt/'
+    base: '/absolute-school-nuxt/',
   },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -15,9 +15,7 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-    '~/assets/scss/style.scss'
-  ],
+  css: ['~/assets/scss/style.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
@@ -31,7 +29,7 @@ export default {
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/stylelint
     '@nuxtjs/stylelint-module',
-    '@nuxtjs/device'
+    '@nuxtjs/device',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -40,10 +38,10 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
-    '@nuxtjs/style-resources'
+    '@nuxtjs/style-resources',
   ],
   styleResources: {
-    scss: ['./assets/scss/helpers/*.scss']
+    scss: ['./assets/scss/helpers/*.scss'],
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

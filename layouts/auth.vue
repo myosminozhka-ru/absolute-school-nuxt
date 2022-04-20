@@ -1,14 +1,12 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper auth">
     <div
       class="wrapper__in"
       :class="{ isMobile: $device.isMobile, isTablet: $device.isTablet }"
     >
-      <osm-header />
       <main class="content">
         <nuxt />
       </main>
-      <osm-footer />
     </div>
   </div>
 </template>
