@@ -33,7 +33,7 @@
         </div>
       </div>
       <div class="orders__block--repeat-mob">
-        <osm-button>
+        <osm-button @click="onRepeatOrder">
           <span>Повторить</span>
         </osm-button>
       </div>
@@ -42,7 +42,7 @@
       <div class="orders__block--price">
         <span>Итого:</span>
         <osm-price type="price">{{ resultPrice }}</osm-price>
-        <osm-button>
+        <osm-button @click="onRepeatOrder">
           <span>Повторить</span>
         </osm-button>
         <div
@@ -111,6 +111,9 @@ export default {
   methods: {
     onToggleIsMobileShowMore() {
       this.isMobileShowMore = !this.isMobileShowMore
+    },
+    onRepeatOrder() {
+      // TODO: Тут действия при нажатии на кнопку повторить заказ
     },
   },
 }
