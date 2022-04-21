@@ -39,7 +39,20 @@ export default {
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     '@nuxtjs/style-resources',
+    '@nuxtjs/toast',
   ],
+  toast: {
+    position: 'right-bottom',
+    register: [
+      {
+        name: 'toast-hi',
+        message: 'Привет, я оповещение',
+        options: {
+          type: 'success'
+        }
+      }
+    ]
+  },
   styleResources: {
     scss: ['./assets/scss/helpers/*.scss'],
   },

@@ -20,7 +20,7 @@
         <div class="tabs_blocks__r-side">
             <osm-hn v-if="title">Мои заказы:</osm-hn>
             <form v-else action="">
-                <osm-input text="Введите что нужно найти" />
+                <osm-input :value="searchText" text="Введите что нужно найти" @update:value="searchText = $event" />
                 <osm-button class-name="button--search">
                     <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M0 16.0311C0 14.0138 1.50215 12.3122 3.50386 12.062L95.5039 0.562017C97.8913 0.26359 100 2.12514 100 4.53113V95.5018C100 97.8962 97.9106 99.7542 95.5326 99.4744L3.53264 88.6509C1.51818 88.4139 0 86.7066 0 84.6783V16.0311Z" fill="#85A832"/>
@@ -43,23 +43,26 @@ export default {
     OsmInput: () => import('~/components/forms/OsmInput.vue'),
     OsmButton: () => import('~/components/global/OsmButton.vue'),
   },
-    props: {
-        title: {
-            type: String,
-            default: '',
-        },
-        sectionList: {
-            type: Array,
-            default: null
-        },
-        selected: {
-            type: Object,
-            default: null
-        }
+  props: {
+    title: {
+      type: String,
+      default: '',
     },
-    methods: {
-        ...mapActions('products', ['addSection'])
+    sectionList: {
+      type: Array,
+      default: null
+    },
+    selected: {
+      type: Object,
+      default: null
     }
+  },
+  data: () => ({
+    searchText: ''
+  }),
+  methods: {
+      ...mapActions('products', ['addSection'])
+  }
 }
 </script>
 

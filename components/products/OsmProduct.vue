@@ -11,21 +11,19 @@
       <form action="">
         <div class="cards__item--color-item">
           <div class="cards__item--colors">
-            <div
+            <osm-checkbox
               v-for="offer in offers"
               :key="offer.id"
-              @click="setOffer(offer.id)"
-            >
-              <osm-checkbox
-                class-name="check_standart"
-                text="#000"
-                :style="`
+              class-name="check_standart"
+              text="#000"
+              name="tratata"
+              @input="setOffer(offer.id)"
+              :style="`
 
-                    --background: ${offer.colors[0].color.code}
+                  --background: ${offer.colors[0].color.code}
 
-                `"
-              />
-            </div>
+              `"
+            />
           </div>
         </div>
         <div class="cards__item--size-item">
@@ -188,7 +186,8 @@ export default {
   },
   methods: {
     setOffer(id) {
-      this.selectedOffer = id
+      this.selectedOffer = id;
+      console.log(this.offers.filter(offer => offer.id === this.selectedOffer));
     },
   },
 }

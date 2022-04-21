@@ -31,6 +31,9 @@ export default {
   created() {
     this.addProducts();
   },
+  mounted() {
+    this.$toast.success('Привет');
+  },
   methods: {
     ...mapActions('products', ['addProducts'])
   }
