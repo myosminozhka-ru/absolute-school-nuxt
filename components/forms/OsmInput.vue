@@ -1,6 +1,11 @@
 <template>
   <div class="input" :class="className">
-    <input :type="type" :placeholder="text" :value="value" @input="$emit('update:value', $event.target.value)" />
+    <input
+      :type="type"
+      :placeholder="text"
+      :value="value"
+      @input="$emit('update:value', $event.target.value)"
+    />
   </div>
 </template>
 
@@ -10,11 +15,11 @@ export default {
   props: {
     type: {
       type: String,
-      default: 'text'
+      default: 'text',
     },
     value: {
       type: String,
-      required: true
+      required: true,
     },
     text: {
       type: String,
