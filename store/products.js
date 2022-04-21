@@ -6,7 +6,7 @@ export const state = () => ({
 
 export const actions = {
     async addProducts(context) {
-        const data = await this.$axios.$get('http://absolute-school-birix.01sh.ru/local/api/site/catalog.php?action=list');
+        const data = await this.$axios.$get('https://viessmann-otoplenie.ru/local/api/site/catalog.php?action=list');
         // this.addFilteredProducts(data);
         context.commit('addSection', {id: null, name: 'all'});
         context.commit('addProducts', data);

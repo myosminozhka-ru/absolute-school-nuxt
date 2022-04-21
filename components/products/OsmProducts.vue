@@ -1,6 +1,5 @@
 <template>
     <div class="cards">
-        <!-- {{products.products}} -->
         <template v-if="products.products.length">
             <osm-product v-for="product in products.products" :key="product.id" :product="product" />
             <div class="cards__more">
@@ -26,9 +25,9 @@
             </div>
         </template>
         <template v-else>
-            <div class="products__not-found">
+            <osm-hn>
                 Таких товаров нет
-            </div>
+            </osm-hn>
         </template>
     </div>
 </template>
@@ -39,7 +38,7 @@ export default {
     name: 'OsmProducts',
     components: {
         OsmProduct: () => import('~/components/products/OsmProduct.vue'),
-        // OsmLoader: () => import('~/components/global/OsmLoader.vue'),
+        OsmHn: () => import('~/components/typografy/OsmHn.vue'),
     },
     computed: {
         ...mapGetters({

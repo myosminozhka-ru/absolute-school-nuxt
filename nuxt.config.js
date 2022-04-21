@@ -42,16 +42,15 @@ export default {
     '@nuxtjs/toast',
   ],
   toast: {
-    position: 'right-bottom',
-    register: [
-      {
-        name: 'toast-hi',
-        message: 'Привет, я оповещение',
-        options: {
-          type: 'success'
-        }
+    position: 'bottom-right',
+    duration: 3000,
+    keepOnHover: true,
+    action : {
+      text : 'Закрыть',
+      onClick : (e, toastObject) => {
+          toastObject.goAway(0);
       }
-    ]
+    },
   },
   styleResources: {
     scss: ['./assets/scss/helpers/*.scss'],

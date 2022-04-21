@@ -6,7 +6,7 @@
     >
       <osm-hn class="cards__item--title">{{ product.name }}</osm-hn>
       <div class="cards__item--text">
-        Описание, которого нет в объекте товара
+        {{ product.description }}
       </div>
       <form action="">
         <div class="cards__item--color-item">
@@ -20,19 +20,19 @@
               @input="setOffer(offer.id)"
               :style="`
 
-                  --background: ${offer.colors[0].color.code}
+                  --background: ${offer.colors[0].code}
 
               `"
             />
           </div>
         </div>
         <div class="cards__item--size-item">
-          <div class="cards__item--size">
-            <osm-checkbox class-name="check_size" text="xl" />
+          <div class="cards__item--size" v-for="selectedOffer in selectedOffers" :key="selectedOffer.id">
+            <osm-checkbox v-for="size in selectedOffer.sizes" :key="size.id" class-name="check_size" :text="size.name" :value="size.id" name="size" />
           </div>
         </div>
-        <div class="cards__item--buttons">
-          <osm-price>14 500</osm-price>
+        <div class="cards__item--buttons" v-for="selectedOffer in selectedOffers" :key="selectedOffer.id">
+          <osm-price>{{ selectedOffer.price }}</osm-price>
           <osm-button class-name="button--cart">
             <svg
               class="desc_icon"
@@ -157,18 +157,18 @@ export default {
         .filter((offer) => offer.product === this.product.id)
         .map((offer) => ({
           ...offer,
-          colors: this.products.colors
-            .filter((color) => color.id === offer.color)
-            .map((color) => ({
-              color: { ...color },
-              sizes: this.products.sizes.filter((size) => size.id === offer.id),
-            })),
+          colors: this.products.colors.filter((color) => color.id === offer.color),
+          sizes: this.products.sizes.filter((size) => size.id === offer.size),
         }))
     },
+    selectedOffers() {
+      const selected = this.offers.filter(offer => offer.id === this.selectedOfferId)
+      return selected;
+    }
   },
   data: () => ({
     slider: null,
-    selectedOffer: 0,
+    selectedOfferId: 0,
   }),
   mounted() {
     if (this.$refs.cards__slider) {
@@ -176,7 +176,7 @@ export default {
         gap: 0,
       }).mount()
     }
-    this.selectedOffer = this.offers[0].id
+    this.selectedOfferId = this.offers[0].id
   },
   beforeDestroy() {
     if (this.slider) {
@@ -186,8 +186,7 @@ export default {
   },
   methods: {
     setOffer(id) {
-      this.selectedOffer = id;
-      console.log(this.offers.filter(offer => offer.id === this.selectedOffer));
+      this.selectedOfferId = id;
     },
   },
 }

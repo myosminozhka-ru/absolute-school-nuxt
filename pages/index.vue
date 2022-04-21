@@ -32,7 +32,12 @@ export default {
     this.addProducts();
   },
   mounted() {
-    this.$toast.success('Привет');
+    setTimeout(() => {
+      this.$toast.success('Привет, это оповещение об успехе');
+    }, 1000)
+    setTimeout(() => {
+      this.$toast.error('Привет, это оповещение о ошибке');
+    }, 2000)
   },
   methods: {
     ...mapActions('products', ['addProducts'])
