@@ -43,11 +43,6 @@ export default {
     OsmInput: () => import('~/components/forms/OsmInput.vue'),
     OsmButton: () => import('~/components/global/OsmButton.vue'),
   },
-  props: {
-    title: {
-      type: String,
-      default: '',
-    },
     props: {
         title: {
             type: String,
@@ -63,7 +58,7 @@ export default {
         }
     },
     methods: {
-    ...mapActions('products', ['addSection'])
+        ...mapActions('products', ['addSection'])
     }
 }
 </script>
