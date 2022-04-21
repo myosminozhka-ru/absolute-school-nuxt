@@ -1,5 +1,5 @@
 <template>
-  <a href="/absolute-school/dist/" class="auth-block__l-side">
+  <a href="#" class="auth-block__l-side">
     <svg
       width="461"
       height="425"
