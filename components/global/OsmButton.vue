@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!link" class="button" :class="className">
+  <div v-if="!link" class="button" :class="className" @click="$emit('click')">
     <slot>
       {{ text }}
     </slot>
