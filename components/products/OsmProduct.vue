@@ -27,11 +27,26 @@
           </div>
         </div>
         <div class="cards__item--size-item">
-          <div class="cards__item--size" v-for="selectedOffer in selectedOffers" :key="selectedOffer.id">
-            <osm-checkbox v-for="size in selectedOffer.sizes" :key="size.id" class-name="check_size" :text="size.name" :value="size.id" name="size" />
+          <div
+            class="cards__item--size"
+            v-for="selectedOffer in selectedOffers"
+            :key="selectedOffer.id"
+          >
+            <osm-checkbox
+              v-for="size in selectedOffer.sizes"
+              :key="size.id"
+              class-name="check_size"
+              :text="size.name"
+              :value="size.id"
+              name="size"
+            />
           </div>
         </div>
-        <div class="cards__item--buttons" v-for="selectedOffer in selectedOffers" :key="selectedOffer.id">
+        <div
+          class="cards__item--buttons"
+          v-for="selectedOffer in selectedOffers"
+          :key="selectedOffer.id"
+        >
           <osm-price>{{ selectedOffer.price }}</osm-price>
           <div @click="addToCart(product.name)">
             <osm-button class-name="button--cart">
@@ -159,14 +174,18 @@ export default {
         .filter((offer) => offer.product === this.product.id)
         .map((offer) => ({
           ...offer,
-          colors: this.products.colors.filter((color) => color.id === offer.color),
+          colors: this.products.colors.filter(
+            (color) => color.id === offer.color
+          ),
           sizes: this.products.sizes.filter((size) => size.id === offer.size),
         }))
     },
     selectedOffers() {
-      const selected = this.offers.filter(offer => offer.id === this.selectedOfferId)
-      return selected;
-    }
+      const selected = this.offers.filter(
+        (offer) => offer.id === this.selectedOfferId
+      )
+      return selected
+    },
   },
   data: () => ({
     slider: null,
@@ -190,11 +209,11 @@ export default {
   },
   methods: {
     setOffer(id) {
-      this.selectedOfferId = id;
+      this.selectedOfferId = id
     },
     addToCart(name) {
-      this.$toast.success(`Товар "${name}" добавлен в корзину`);
-    }
+      this.$toast.success(`Товар "${name}" добавлен в корзину`)
+    },
   },
 }
 </script>

@@ -13,6 +13,18 @@
                     <osm-button class-name="button--green"><span>Все</span></osm-button>
                 </div>
             </div>
+            <div
+              v-for="button in sectionList"
+              :key="button.id"
+              @click="addSection(button)"
+            >
+              <osm-button
+                class-name="button--white"
+                :class="{ isActive: selected == button }"
+                >{{ button.name }}</osm-button
+              >
+            </div>
+          </div>
         </div>
         <div class="tabs_blocks__r-side">
             <osm-hn v-if="title">Мои заказы:</osm-hn>
@@ -27,12 +39,44 @@
                 </osm-button>
             </form>
         </div>
+      </div>
+    </div>
+    <div class="tabs_blocks__r-side">
+      <osm-hn v-if="title">Мои заказы:</osm-hn>
+      <form v-else action="">
+        <osm-input
+          :value="searchText"
+          text="Введите что нужно найти"
+          @update:value="searchText = $event"
+        />
+        <osm-button class-name="button--search">
+          <svg
+            width="100"
+            height="100"
+            viewBox="0 0 100 100"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0 16.0311C0 14.0138 1.50215 12.3122 3.50386 12.062L95.5039 0.562017C97.8913 0.26359 100 2.12514 100 4.53113V95.5018C100 97.8962 97.9106 99.7542 95.5326 99.4744L3.53264 88.6509C1.51818 88.4139 0 86.7066 0 84.6783V16.0311Z"
+              fill="#85A832"
+            />
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M57.6247 55.9745L58.7665 57.1178H60.0891L72 69.0302V73H68.0344L56.1234 61.0877V59.7721L54.9745 58.6247C52.0259 60.994 48.28 62.4115 44.2031 62.4109C34.7017 62.4096 27 54.7069 27 45.2055C27 40.6411 28.8137 36.2637 32.0419 33.0369C35.27 29.81 39.6481 27.9981 44.2125 28C53.7139 28.0039 61.4135 35.7088 61.4109 45.2102C61.4098 49.2845 59.9926 53.0278 57.6247 55.9745ZM44.2125 33.2945C50.7889 33.3023 56.1145 38.6384 56.1094 45.2148C56.1042 51.7912 50.7702 57.119 44.1938 57.1164C37.6174 57.1138 32.2875 51.7819 32.2875 45.2055C32.2894 42.0446 33.5468 39.014 35.7832 36.7803C38.0195 34.5465 41.0517 33.2927 44.2125 33.2945Z"
+              fill="#FFFBFB"
+            />
+          </svg>
+          <span>Поиск</span>
+        </osm-button>
+      </form>
     </div>
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions } from 'vuex'
 export default {
   name: 'OsmTabsBlocks',
   components: {
@@ -47,15 +91,15 @@ export default {
     },
     sectionList: {
       type: Array,
-      default: null
+      default: null,
     },
     selected: {
       type: Object,
-      default: null
-    }
+      default: null,
+    },
   },
   data: () => ({
-    searchText: ''
+    searchText: '',
   }),
   methods: {
       ...mapActions('products', ['addSection', 'addSearchText'])

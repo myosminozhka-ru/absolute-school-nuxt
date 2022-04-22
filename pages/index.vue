@@ -13,23 +13,23 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex';
+import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'IndexPage',
   components: {
     OsmProducts: () => import('~/components/products/OsmProducts.vue'),
-    OsmLoader: () => import('~/components/global/OsmLoader.vue')
+    OsmLoader: () => import('~/components/global/OsmLoader.vue'),
   },
   layout: 'default',
   computed: {
     ...mapGetters({
-        filteredProducts: 'products/getFilteredProducts',
-        products: 'products/getProducts',
-        section: 'products/getSection'
+      filteredProducts: 'products/getFilteredProducts',
+      products: 'products/getProducts',
+      section: 'products/getSection',
     }),
   },
   created() {
-    this.addProducts();
+    this.addProducts()
   },
   mounted() {
     setTimeout(() => {
@@ -37,17 +37,17 @@ export default {
     }, 1000)
   },
   methods: {
-    ...mapActions('products', ['addProducts'])
-  }
+    ...mapActions('products', ['addProducts']),
+  },
 }
 </script>
 
 <style lang="scss" scoped>
 .products {
-    &__loader {
-        width: vw(200);
-        margin: 0 auto;
-        font-size: 0;
-    }
+  &__loader {
+    width: vw(200);
+    margin: 0 auto;
+    font-size: 0;
+  }
 }
 </style>

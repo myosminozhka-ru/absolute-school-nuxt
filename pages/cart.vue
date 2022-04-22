@@ -1,7 +1,12 @@
 <template>
   <div>
     <osm-hn type="h1">Корзина:</osm-hn>
-    <osm-cart />
+    <osm-cart @onArrange="isArrangeModalShow = true" />
+    <osm-modal
+      type-modal="arrange"
+      :is-show="isArrangeModalShow"
+      @onClose="isArrangeModalShow = false"
+    />
   </div>
 </template>
 <script>
@@ -12,9 +17,13 @@ export default {
   components: {
     OsmHn: () => import('~/components/typografy/OsmHn.vue'),
     OsmCart: () => import('~/components/cart/OsmCart.vue'),
+    OsmModal: () => import('~/components/modal/OsmModal.vue'),
   },
-  mounted() {
-    this.loadProducts()
+  data: () => ({
+    isArrangeModalShow: false,
+  }),
+  async fetch() {
+    await this.loadProducts()
   },
   methods: {
     ...mapActions('cart', {

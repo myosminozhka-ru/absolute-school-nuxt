@@ -1,7 +1,7 @@
 export const state = () => ({
-    products: [],
-    section: {},
-    searchText: '',
+  products: [],
+  section: {},
+  searchText: '',
 })
 
 export const actions = {

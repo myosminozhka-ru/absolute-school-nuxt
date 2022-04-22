@@ -3,21 +3,21 @@
     <div class="cart__total">
       <div class="cart__total--block">
         <div class="cart__total--title">Количество</div>
-        <div class="cart__total--text">1 шт.</div>
+        <div class="cart__total--text">{{ $store.state.cart.total }} шт.</div>
       </div>
       <div class="cart__total--block">
         <div class="cart__total--title">Товары</div>
         <div class="cart__total--text">
-          <osm-price>14 500</osm-price>
+          <osm-price>{{ $store.state.cart.price }}</osm-price>
         </div>
       </div>
       <div class="cart__total--totals">
         <div class="cart__total--t-title">Итого</div>
         <div class="cart__total--t-text">
-          <osm-price>14 500</osm-price>
+          <osm-price>{{ $store.state.cart.price }}</osm-price>
         </div>
       </div>
-      <osm-button class-name="button--checkout">
+      <osm-button class-name="button--checkout" @click="$emit('onArrange')">
         <svg
           class="desc_icon"
           width="235"
