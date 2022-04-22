@@ -93,19 +93,19 @@
               :key="key"
             >
               <img
-                :src="`http://absolute-school-birix.01sh.ru${image}`"
+                :src="`https://viessmann-otoplenie.ru/${image}`"
                 alt=""
               />
             </li>
           </ul>
         </div>
-        <div class="glide__bullets" data-glide-el="controls[nav]">
+        <div class="glide__bullets" data-glide-el="controls[nav]" v-if="product.images.length > 1">
           <div
             v-for="(image, key) in product.images"
             :key="key"
             :data-glide-dir="`=${key}`"
           >
-            <img :src="`http://absolute-school-birix.01sh.ru${image}`" alt="" />
+            <img :src="`https://viessmann-otoplenie.ru/${image}`" alt="" />
           </div>
         </div>
         <div class="glide__controls" data-glide-el="controls">
