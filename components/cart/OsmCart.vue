@@ -1,7 +1,7 @@
 <template>
   <div class="cart">
     <osm-cart-l-side />
-    <osm-cart-r-side @onArrange="$emit('onArrange')"/>
+    <osm-cart-r-side @onArrange="$emit('onArrange')" />
   </div>
 </template>
 <script>

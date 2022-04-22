@@ -1,12 +1,16 @@
 <template>
   <div>
     <osm-hn type="h1">Корзина:</osm-hn>
-    <osm-cart @onArrange="isArrangeModalShow = true"/>
-    <osm-modal type-modal="arrange" :is-show="isArrangeModalShow" @onClose="isArrangeModalShow = false"/>
+    <osm-cart @onArrange="isArrangeModalShow = true" />
+    <osm-modal
+      type-modal="arrange"
+      :is-show="isArrangeModalShow"
+      @onClose="isArrangeModalShow = false"
+    />
   </div>
 </template>
 <script>
-import { mapActions } from 'vuex';
+import { mapActions } from 'vuex'
 
 export default {
   name: 'CartPage',
@@ -24,7 +28,7 @@ export default {
   methods: {
     ...mapActions('cart', {
       loadProducts: 'loadProducts',
-    })
+    }),
   },
 }
 </script>

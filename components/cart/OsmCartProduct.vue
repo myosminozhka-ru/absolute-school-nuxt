@@ -99,10 +99,12 @@
                                 `"
               :text="color.name"
               name="colors"
-              @input="editColorProduct({
-                productId: product.basketId,
-                colorId: color.id
-              })"
+              @input="
+                editColorProduct({
+                  productId: product.basketId,
+                  colorId: color.id,
+                })
+              "
             />
           </div>
         </div>
@@ -121,10 +123,12 @@
               class-name="check_size"
               :text="size.name"
               name="sizes"
-              @input="editSizeProduct({
-                productId: product.basketId,
-                sizeId: size.id
-              })"
+              @input="
+                editSizeProduct({
+                  productId: product.basketId,
+                  sizeId: size.id,
+                })
+              "
             />
           </div>
         </div>
@@ -177,18 +181,14 @@ export default {
     ...mapActions('cart', {
       removeProductById: 'removeProductById',
       editColorProduct: 'editColorProduct',
-      editSizeProduct: 'editSizeProduct'
+      editSizeProduct: 'editSizeProduct',
     }),
 
     addProduct() {
       this.isPlusWarn = true
     },
-    onSelectColors(id) {
-      
-    },
-    onSelectSizes(id) {
-      
-    },
+    onSelectColors(id) {},
+    onSelectSizes(id) {},
     // Удаление продукта
     onRemoveProduct() {},
   },

@@ -45,11 +45,11 @@ export default {
     position: 'bottom-right',
     duration: 3000,
     keepOnHover: true,
-    action : {
-      text : 'Закрыть',
-      onClick : (e, toastObject) => {
-          toastObject.goAway(0);
-      }
+    action: {
+      text: 'Закрыть',
+      onClick: (e, toastObject) => {
+        toastObject.goAway(0)
+      },
     },
   },
   styleResources: {

@@ -119,9 +119,9 @@ export default {
     },
   },
   methods: {
-      onClose() {
-          this.$emit('onClose')
-      }
+    onClose() {
+      this.$emit('onClose')
+    },
   },
 }
 </script>
