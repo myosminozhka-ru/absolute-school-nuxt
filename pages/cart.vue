@@ -1,6 +1,7 @@
 <template>
   <div>
     <osm-hn type="h1">Корзина:</osm-hn>
+    <h2 @click="addProducts">Click</h2>
     <osm-cart @onArrange="isArrangeModalShow = true" />
     <osm-modal
       type-modal="arrange"
@@ -28,6 +29,7 @@ export default {
   methods: {
     ...mapActions('cart', {
       loadProducts: 'loadProducts',
+      addProducts: 'addProducts'
     }),
   },
 }

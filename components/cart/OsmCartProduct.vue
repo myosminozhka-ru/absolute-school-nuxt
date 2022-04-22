@@ -136,7 +136,7 @@
       <div class="cart__product--amount">
         <button class="cart__product--minus">-</button>
         <osm-price type="prod_amount">{{ product.quantity }}шт</osm-price>
-        <button class="cart__product--plus" @click="addProduct">
+        <button class="cart__product--plus" @click="editCount">
           <span>+</span>
           <div v-if="isPlusWarn" class="cart__product--plus-warn">
             На вашем балансе недостаточно средств
@@ -182,13 +182,18 @@ export default {
       removeProductById: 'removeProductById',
       editColorProduct: 'editColorProduct',
       editSizeProduct: 'editSizeProduct',
+      editCountProduct: 'editCountProduct',
     }),
-
-    addProduct() {
-      this.isPlusWarn = true
+    editCount() {
+      this.editCountProduct({
+        id: this.product.id,
+        quantity: this.product.quantity,
+      }).then(result => {
+        if (!result.data.status) {
+          this.isPlusWarn = true;
+        }
+      })
     },
-    onSelectColors(id) {},
-    onSelectSizes(id) {},
     // Удаление продукта
     onRemoveProduct() {},
   },
