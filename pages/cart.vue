@@ -13,8 +13,8 @@ export default {
     OsmHn: () => import('~/components/typografy/OsmHn.vue'),
     OsmCart: () => import('~/components/cart/OsmCart.vue'),
   },
-  async fetch() {
-    await this.loadProducts()
+  mounted() {
+    this.loadProducts()
   },
   methods: {
     ...mapActions('cart', {

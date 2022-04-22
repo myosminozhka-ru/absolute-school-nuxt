@@ -178,7 +178,9 @@ export default {
         gap: 0,
       }).mount()
     }
-    this.selectedOfferId = this.offers[0].id
+    if (this.offers[0]) {
+      this.selectedOfferId = this.offers[0].id
+    }
   },
   beforeDestroy() {
     if (this.slider) {
@@ -200,11 +202,16 @@ export default {
 <style lang="scss">
 .cards {
   &__more {
+    display: flex;
+    justify-content: center;
     > div {
       margin-left: auto;
       margin-right: auto;
       margin-bottom: vw(150);
     }
+  }
+  &__more-in {
+    display: inline-block;
   }
 }
 </style>

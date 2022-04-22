@@ -43,8 +43,10 @@ export default {
   ],
   toast: {
     position: 'bottom-right',
-    duration: 3000,
+    duration: 6000,
     keepOnHover: true,
+    theme: 'outlined',
+    className: 'osm-toast',
     action : {
       text : 'Закрыть',
       onClick : (e, toastObject) => {

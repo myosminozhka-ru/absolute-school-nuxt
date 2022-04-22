@@ -8,6 +8,7 @@ export const actions = {
     async addProducts(context) {
         const data = await this.$axios.$get('https://viessmann-otoplenie.ru/local/api/site/catalog.php?action=list');
         // this.addFilteredProducts(data);
+        console.log(data);
         context.commit('addSection', {id: null, name: 'all'});
         context.commit('addProducts', data);
     },
@@ -15,7 +16,7 @@ export const actions = {
         context.commit('addSection', section);
     },
     addSearchText(context, searchText) {
-        context.commit('searchText', searchText);
+        context.commit('addSearchText', searchText);
     },
 };
 
@@ -26,7 +27,7 @@ export const mutations = {
     addSection(state, section) {
         state.section = section;
     },
-    addsearchText(state, searchText) {
+    addSearchText(state, searchText) {
         state.searchText = searchText;
     },
 }
@@ -36,12 +37,24 @@ export const getters = {
         return state.products
     },
     getFilteredProducts: (state) => {
-        if (!state.section || !state.section.id) return state.products;
-        const filteredProducts = state.products.products.filter(product => product.section === state.section.id);
+        let filteredProducts;
+        if (!state.section || !state.section.id) {
+            filteredProducts = state.products.products.filter(product => `${product.name}${product.description}`.toLocaleLowerCase().includes(state.searchText))
+        } else {
+            filteredProducts = state.products.products.filter(product => {
+                console.log(`${product.name}${product.description}`.toLocaleLowerCase().includes(state.searchText));
+                if (product.section === state.section.id && `${product.name}${product.description}`.toLocaleLowerCase().includes(state.searchText)) {
+                    return product;
+                } else {
+                    return false;
+                }
+            });
+        }
         const data = {
             ...state.products,
             products: filteredProducts
         }
+        console.log(data)
         return data;
     },
     getSection: (state) => {

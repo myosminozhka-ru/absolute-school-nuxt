@@ -33,15 +33,20 @@ export const actions = {
   // Подгрузка товара
   async loadProducts(context) {
     for (let i = 17; i < 19; i++) {
-      await this.$axios.$get(
-        `http://absolute-school-birix.01sh.ru/local/api/site/basket.php?action=add&id=${i}&quantity=1`
+      await this.$axios.$post(
+        `https://viessmann-otoplenie.ru/local/api/site/basket.php`,
+        {
+          action: 'add',
+          id: i,
+          quantity: 1
+        }
       )
     }
     const data = await this.$axios.$get(
-      'http://absolute-school-birix.01sh.ru/local/api/site/basket.php?action=basket'
+      'https://viessmann-otoplenie.ru/local/api/site/basket.php?action=basket'
     )
 
-    console.log(data)
+    console.log('cart/loadProducts', data)
 
     context.commit('loadProducts', data)
   },

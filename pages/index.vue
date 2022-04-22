@@ -33,11 +33,8 @@ export default {
   },
   mounted() {
     setTimeout(() => {
-      this.$toast.success('Привет, это оповещение об успехе');
+      this.$toast.info('Привет, это информационное оповещение, оно не имеет смысла, мы просто тестируем');
     }, 1000)
-    setTimeout(() => {
-      this.$toast.error('Привет, это оповещение о ошибке');
-    }, 2000)
   },
   methods: {
     ...mapActions('products', ['addProducts'])
