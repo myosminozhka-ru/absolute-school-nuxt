@@ -120,7 +120,7 @@ export const actions = {
   addProducts(context) {
     // for (let i = 17; i < 19; i++) {
     //   await this.$axios.$post(
-    //     'https://viessmann-otoplenie.ru/local/api/site/basket.php',
+    //     'basket.php',
     //     {
     //       action: 'add',
     //       id: i,
@@ -134,7 +134,7 @@ export const actions = {
   // Подгрузка товара
   loadProducts(context) {
     // const data = await this.$axios.$post(
-    //   'https://viessmann-otoplenie.ru/local/api/site/basket.php',
+    //   'basket.php',
     //   {
     //     action: 'basket',
     //   }
@@ -282,7 +282,7 @@ export const actions = {
   // Изменение количества штук товара
   async editCountProduct(context, data) {
     await this.$axios.$post(
-      'https://viessmann-otoplenie.ru/local/api/site/basket.php',
+      'basket.php',
       {
         action: 'update',
         id: data.id,
@@ -292,12 +292,10 @@ export const actions = {
   },
   // Удаление товара
   async removeProductById(context, id) {
-    await await this.$axios.$post(
-      'https://viessmann-otoplenie.ru/local/api/site/basket.php?action=delete',
-      {
-        id,
-      }
-    )
+    await await this.$axios.$post( 'basket.php', {
+      action: 'delete',
+      id,
+    });
   },
 }
 
