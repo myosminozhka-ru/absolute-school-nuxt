@@ -4,7 +4,7 @@ export default {
   },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'absolute-nuxt',
+    title: 'absolute-school',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -26,9 +26,13 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/eslint
-    '@nuxtjs/eslint-module',
+    ['@nuxtjs/eslint-module', {
+      fix: true
+    }],
     // https://go.nuxtjs.dev/stylelint
-    '@nuxtjs/stylelint-module',
+    ['@nuxtjs/stylelint-module', {
+      fix: true
+    }],
     '@nuxtjs/device',
   ],
 
@@ -65,7 +69,9 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
-      lang: 'en',
+      lang: 'ru',
+      name: 'Школа АБСОЛЮТ',
+      background_color: '#fff4ce'
     },
   },
 

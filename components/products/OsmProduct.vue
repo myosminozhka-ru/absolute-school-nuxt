@@ -1,5 +1,5 @@
 <template>
-  <div class="cards__item" v-if="product">
+  <div v-if="product" class="cards__item">
     <div
       class="cards__item--l-side"
       :class="{ 'cards__item--l-side--full': !product.images.length }"
@@ -16,21 +16,22 @@
               :key="offer.id"
               class-name="check_standart"
               text="#000"
-              name="tratata"
-              @input="setOffer(offer.id)"
+              name="color"
               :style="`
 
                   --background: ${offer.colors[0].code}
 
               `"
+              @input="setOffer(offer.id)"
             />
           </div>
         </div>
-        <div class="cards__item--size-item">
+        <div
+          class="cards__item--size-item">
           <div
-            class="cards__item--size"
             v-for="selectedOffer in selectedOffers"
             :key="selectedOffer.id"
+            class="cards__item--size"
           >
             <osm-checkbox
               v-for="size in selectedOffer.sizes"
@@ -43,9 +44,9 @@
           </div>
         </div>
         <div
-          class="cards__item--buttons"
           v-for="selectedOffer in selectedOffers"
           :key="selectedOffer.id"
+          class="cards__item--buttons"
         >
           <osm-price>{{ selectedOffer.price }}</osm-price>
           <div @click="addToCart(product.name)">
@@ -83,14 +84,14 @@
       </form>
     </div>
 
-    <div class="cards__item--r-side" v-if="product.images.length">
-      <div class="glide cards__slider--js" ref="cards__slider">
+    <div v-if="product.images.length" class="cards__item--r-side">
+      <div ref="cards__slider" class="glide cards__slider--js">
         <div class="glide__track" data-glide-el="track">
           <ul class="glide__slides">
             <li
-              class="glide__slide"
               v-for="(image, key) in product.images"
               :key="key"
+              class="glide__slide"
             >
               <img
                 :src="`https://viessmann-otoplenie.ru/${image}`"
@@ -99,7 +100,7 @@
             </li>
           </ul>
         </div>
-        <div class="glide__bullets" data-glide-el="controls[nav]" v-if="product.images.length > 1">
+        <div v-if="product.images.length > 1" class="glide__bullets" data-glide-el="controls[nav]">
           <div
             v-for="(image, key) in product.images"
             :key="key"
@@ -153,18 +154,22 @@ import Glide from '@glidejs/glide'
 import { mapGetters } from 'vuex'
 export default {
   name: 'OsmProduct',
-  props: {
-    product: {
-      type: Object,
-      default: null,
-    },
-  },
   components: {
     OsmHn: () => import('~/components/typografy/OsmHn.vue'),
     OsmCheckbox: () => import('~/components/forms/OsmCheckbox.vue'),
     OsmPrice: () => import('~/components/typografy/OsmPrice.vue'),
     OsmButton: () => import('~/components/global/OsmButton.vue'),
   },
+  props: {
+    product: {
+      type: Object,
+      default: null,
+    },
+  },
+  data: () => ({
+    slider: null,
+    selectedOfferId: 0,
+  }),
   computed: {
     ...mapGetters({
       products: 'products/getProducts',
@@ -187,10 +192,6 @@ export default {
       return selected
     },
   },
-  data: () => ({
-    slider: null,
-    selectedOfferId: 0,
-  }),
   mounted() {
     if (this.$refs.cards__slider) {
       this.slider = new Glide(this.$refs.cards__slider, {
