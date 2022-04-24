@@ -6,6 +6,7 @@
     >
       <osm-header />
       <main class="content">
+        {{ $device }}
         <nuxt />
       </main>
       <osm-footer />
