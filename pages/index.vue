@@ -21,6 +21,9 @@ export default {
     OsmLoader: () => import('~/components/global/OsmLoader.vue'),
   },
   layout: 'default',
+  async fetch() {
+    await this.addProducts();
+  },
   computed: {
     ...mapGetters({
       filteredProducts: 'products/getFilteredProducts',
@@ -28,10 +31,8 @@ export default {
       section: 'products/getSection',
     }),
   },
-  created() {
-    this.addProducts()
-  },
   mounted() {
+    
     setTimeout(() => {
       this.$toast.info('Привет, это информационное оповещение, оно не имеет смысла, мы просто тестируем');
     }, 1000)

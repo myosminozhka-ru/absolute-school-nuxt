@@ -40,7 +40,6 @@ export const getters = {
             filteredProducts = state.products.products.filter(product => `${product.name}${product.description}`.toLocaleLowerCase().includes(state.searchText))
         } else {
             filteredProducts = state.products.products.filter(product => {
-                console.log(`${product.name}${product.description}`.toLocaleLowerCase().includes(state.searchText));
                 if (product.section === state.section.id && `${product.name}${product.description}`.toLocaleLowerCase().includes(state.searchText)) {
                     return product;
                 } else {
@@ -52,7 +51,6 @@ export const getters = {
             ...state.products,
             products: filteredProducts
         }
-        console.log(data)
         return data;
     },
     getSection: (state) => {

@@ -18,7 +18,9 @@ export default {
   css: ['~/assets/scss/style.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [
+    { src: '~/plugins/forward-set-cookie.js', mode: 'server' },
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -47,6 +49,7 @@ export default {
     '@nuxtjs/pwa',
     '@nuxtjs/style-resources',
     '@nuxtjs/toast',
+    'cookie-universal-nuxt',
   ],
   toast: {
     position: 'bottom-right',
@@ -67,6 +70,7 @@ export default {
 
   axios: {
     baseURL: 'https://viessmann-otoplenie.ru/local/api/site/',
+    withCredentials: true
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa

@@ -5,9 +5,6 @@
     >
       <osm-header />
       <main class="content">
-        {{ `isMobile: ${isMobile}` }}
-        {{ `isTablet: ${isTablet}` }}
-        {{ `isDesktop: ${isDesktop}` }}
         <nuxt />
       </main>
       <osm-footer />
