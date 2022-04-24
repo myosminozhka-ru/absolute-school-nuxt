@@ -2,11 +2,13 @@
   <div class="wrapper">
     <div
       class="wrapper__in"
-      :class="{ isMobile: $device.isMobile, isTablet: $device.isTablet }"
+      :class="{isMobile, isTablet }"
     >
       <osm-header />
       <main class="content">
-        {{ layout }}
+        {{ `isMobile: ${isMobile}` }}
+        {{ `isTablet: ${isTablet}` }}
+        {{ `isDesktop: ${isDesktop}` }}
         <nuxt />
       </main>
       <osm-footer />
@@ -18,8 +20,14 @@
 export default {
   name: 'DefaultLayout',
   computed: {
-    layout() {
+    isMobile() {
       return this.$device.isMobile;
+    },
+    isTablet() {
+      return this.$device.isTablet;
+    },
+    isDesktop() {
+      return this.$device.isDesktop;
     }
   }
 }
