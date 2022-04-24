@@ -6,7 +6,7 @@
     >
       <osm-header />
       <main class="content">
-        {{ $device }}
+        {{ layout }}
         <nuxt />
       </main>
       <osm-footer />
@@ -17,6 +17,11 @@
 <script>
 export default {
   name: 'DefaultLayout',
+  computed: {
+    layout() {
+      return this.$device.isMobile;
+    }
+  }
 }
 </script>
 
