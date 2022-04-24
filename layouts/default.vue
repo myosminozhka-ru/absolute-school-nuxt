@@ -1,8 +1,7 @@
 <template>
   <div class="wrapper">
     <div
-      class="wrapper__in"
-      :class="{isMobile, isTablet }"
+      :class="`wrapper__in${isMobile ? ' isMobile' : ''}${isTablet ? ' isTablet' : ''}`"
     >
       <osm-header />
       <main class="content">
