@@ -212,7 +212,7 @@
       </div>
       <div class="menu_burger--items">
         <div class="menu_burger--menu">
-          <osm-button class-name="button--order" link="#">
+          <osm-button class-name="button--order" :link="{name: 'index'}">
             <svg
               width="78"
               height="68"
@@ -252,7 +252,7 @@
             </svg>
             <span>Мои заказы</span>
           </osm-button>
-          <osm-button class-name="button--cart_min" link="#">
+          <osm-button class-name="button--cart_min" :link="{name: 'index'}">
             <div class="icon">
               <svg
                 width="72"
@@ -360,10 +360,10 @@
 <script>
 import OsmButton from './OsmButton.vue'
 export default {
+  name: 'OsmBurger',
   components: {
     OsmButton,
   },
-  name: 'OsmBurger',
   data: () => ({
     cart: {
       amount: 10,

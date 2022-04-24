@@ -3,18 +3,18 @@
     <div class="cart__total">
       <div class="cart__total--block">
         <div class="cart__total--title">Количество</div>
-        <div class="cart__total--text">{{ $store.state.cart.total }} шт.</div>
+        <div class="cart__total--text">{{ cart.total }} шт.</div>
       </div>
       <div class="cart__total--block">
         <div class="cart__total--title">Товары</div>
         <div class="cart__total--text">
-          <osm-price>{{ $store.state.cart.price }}</osm-price>
+          <osm-price>{{ cart.price }}</osm-price>
         </div>
       </div>
       <div class="cart__total--totals">
         <div class="cart__total--t-title">Итого</div>
         <div class="cart__total--t-text">
-          <osm-price>{{ $store.state.cart.price }}</osm-price>
+          <osm-price>{{ cart.price  }}</osm-price>
         </div>
       </div>
       <osm-button class-name="button--checkout" @click="$emit('onArrange')">
@@ -50,11 +50,17 @@
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'OsmCartRSide',
   components: {
     OsmPrice: () => import('~/components/typografy/OsmPrice.vue'),
     OsmButton: () => import('~/components/global/OsmButton.vue'),
+  },
+  computed: {
+    ...mapGetters('cart', {
+      cart: 'getCartItems',
+    }),
   },
 }
 </script>

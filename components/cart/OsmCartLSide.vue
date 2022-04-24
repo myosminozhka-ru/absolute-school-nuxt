@@ -1,9 +1,9 @@
 <template>
   <div class="cart__l-side">
     <osm-cart-product
-      v-for="product in $store.state.cart.products"
-      :key="product.basketId"
-      :product="product"
+      v-for="item in cart.items"
+      :key="item.basketId"
+      :item="item"
     />
   </div>
 </template>
@@ -17,9 +17,12 @@ export default {
   },
   computed: {
     ...mapGetters('cart', {
+      cart: 'getCartItems',
+    }),
+    ...mapGetters('products', {
       products: 'getProducts',
     }),
-  },
+  }
 }
 </script>
 <style lang="scss" scoped></style>

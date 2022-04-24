@@ -91,3 +91,33 @@ img {
     inset 0px 10px 20px rgba(255, 255, 255, 0.15);
   border-radius: vw(30);
 }
+
+.toasted-container {
+  align-items: flex-end;
+}
+
+.osm-toast {
+  padding: vw(10);
+  font-family: 'Gilroy';
+  font-style: normal;
+  font-weight: 400;
+  font-size: vw(20);
+  line-height: 160%;
+  text-transform: lowercase;
+  border-radius: vw(10);
+  a {
+    font-weight: 700;
+  }
+  &.info {
+    color: #686868;
+    background: #fff4ce;
+  }
+  &.success {
+    background: #85a832;
+    color: #fff;
+  }
+  &.error {
+    background: #af4000;
+    color: #fff;
+  }
+}

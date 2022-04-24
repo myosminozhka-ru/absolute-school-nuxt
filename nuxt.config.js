@@ -18,9 +18,9 @@ export default {
   css: ['~/assets/scss/style.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-    { src: '~/plugins/forward-set-cookie.js', mode: 'server' },
-  ],
+  // plugins: [
+  //   { src: '~/plugins/forward-set-cookie.js', mode: 'server' },
+  // ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,

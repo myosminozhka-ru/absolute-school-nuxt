@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
   name: 'DefaultLayout',
   computed: {
@@ -25,7 +26,24 @@ export default {
     isDesktop() {
       return this.$device.isDesktop;
     }
-  }
+  },
+  mounted() {
+    this.loadProducts();
+    this.loadCart();
+    setTimeout(() => {
+      this.$toast.info('Привет, это информационное оповещение, оно не имеет смысла, мы просто тестируем');
+    }, 1000);
+    setTimeout(() => {
+      this.$toast.success('А это сообщение об успехе');
+    }, 1500);
+    setTimeout(() => {
+      this.$toast.error('А такое будете получать когда возникнет ошибка');
+    }, 2000);
+  },
+  methods: {
+    ...mapActions('products', ['loadProducts']),
+    ...mapActions('cart',  ['loadCart']),
+  },
 }
 </script>
 

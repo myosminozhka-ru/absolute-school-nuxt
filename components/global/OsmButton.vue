@@ -1,14 +1,14 @@
 <template>
-  <div v-if="!link" class="button" :class="className" @click="$emit('click')">
+  <div v-if="!link" :class="`button ${className}${isLoading ? ' isLoading': ''}`" @click="$emit('click')">
     <slot>
       {{ text }}
     </slot>
   </div>
-  <a v-else :href="link" class="button" :class="className">
+  <nuxt-link v-else :to="link" :class="`button ${className}${isLoading ? ' isLoading': ''}`" exact>
     <slot>
       {{ text }}
     </slot>
-  </a>
+  </nuxt-link>
 </template>
 
 <script>
@@ -24,17 +24,25 @@ export default {
       default: 'button--orange',
     },
     link: {
-      type: String,
+      type: Object,
       default: null,
     },
+    isLoading: {
+      type: Boolean,
+      default: false,
+    }
   },
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .button {
   z-index: 1;
   display: block;
+  &.isLoading {
+    pointer-events: none;
+    opacity: 0.5;
+  }
   svg {
     pointer-events: none;
   }

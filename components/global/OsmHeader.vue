@@ -20,7 +20,7 @@
       </svg>
       <span>Помощь</span>
     </osm-button>
-    <osm-button class-name="button--order" link="orders">
+    <osm-button class-name="button--order" :link="{name: 'orders'}">
       <svg
         width="78"
         height="68"
@@ -60,7 +60,7 @@
       </svg>
       <span>Мои заказы</span>
     </osm-button>
-    <osm-button class-name="button--cart_min" link="cart">
+    <osm-button class-name="button--cart_min" :link="{name: 'cart'}">
       <div class="icon">
         <svg
           width="72"
@@ -99,7 +99,7 @@
             fill-opacity="0.3"
           />
         </svg>
-        <div v-if="cart.amount" class="cart_amount">
+        <div v-if="cart.items" class="cart_amount">
           <svg
             width="31"
             height="38"
@@ -150,14 +150,14 @@
               </filter>
             </defs>
           </svg>
-          <div class="amt">{{ cart.amount }}</div>
+          <div v-if="cart.items" class="amt">{{ cart.items.length }}</div>
         </div>
       </div>
 
       <span>Корзина</span>
     </osm-button>
     <osm-header-info />
-    <osm-button link="auth">
+    <osm-button :link="{name: 'auth'}">
       <span>Выход</span>
     </osm-button>
     <osm-burger :is-burger-opened.sync="isBurgerOpened" />
@@ -165,14 +165,17 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
   name: 'OsmHeader',
   data: () => ({
-    cart: {
-      amount: 10,
-    },
     isBurgerOpened: false,
   }),
+  computed: {
+    ...mapGetters('cart', {
+      cart: 'getCartItems',
+    }),
+  },
   mounted() {
     document.addEventListener('click', () => {
       this.isBurgerOpened = false

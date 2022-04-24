@@ -10,7 +10,7 @@ export default {
   components: {
     OsmCartLSide: () => import('./OsmCartLSide'),
     OsmCartRSide: () => import('./OsmCartRSide'),
-  },
+  }
 }
 </script>
 <style lang="scss">

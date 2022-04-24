@@ -1,8 +1,10 @@
 <template>
   <div>
-    <osm-hn type="h1">Корзина:</osm-hn>
-    <osm-cart @onArrange="isArrangeModalShow = true" />
+    <osm-hn v-if="!cart.items" type="h1">Корзина Пуста</osm-hn>
+    <osm-hn v-if="cart.items" type="h1">Корзина:</osm-hn>
+    <osm-cart v-if="cart.items" @onArrange="isArrangeModalShow = true" />
     <osm-modal
+      v-if="cart.items"
       type-modal="arrange"
       :is-show="isArrangeModalShow"
       @onClose="isArrangeModalShow = false"
@@ -10,8 +12,7 @@
   </div>
 </template>
 <script>
-import { mapActions } from 'vuex'
-
+import { mapGetters } from 'vuex'
 export default {
   name: 'CartPage',
   components: {
@@ -22,14 +23,18 @@ export default {
   data: () => ({
     isArrangeModalShow: false,
   }),
-  async fetch() {
-    await this.loadProducts()
-  },
-  methods: {
-    ...mapActions('cart', {
-      loadProducts: 'loadProducts',
+  computed: {
+    ...mapGetters('cart', {
+      cart: 'getCartItems',
     }),
   },
+  beforeMount() {
+    console.log('beforeMount', this.cart.items);
+    if (!this.cart.items) {
+      this.$router.push({name: 'index'});
+      this.$toast.info('Корзина пуста, но вы можете что-то туда добавить');
+    } 
+  }
 }
 </script>
 <style lang="scss" scoped></style>

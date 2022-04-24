@@ -49,8 +49,8 @@
           class="cards__item--buttons"
         >
           <osm-price>{{ selectedOffer.price }}</osm-price>
-          <div @click="addToCart(product.name)">
-            <osm-button class-name="button--cart">
+          <div @click="addToCart(selectedOffer.id)">
+            <osm-button class-name="button--cart" :is-loading="isLoading">
               <svg
                 class="desc_icon"
                 width="280"
@@ -151,7 +151,7 @@
 
 <script>
 import Glide from '@glidejs/glide'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'OsmProduct',
   components: {
@@ -169,6 +169,7 @@ export default {
   data: () => ({
     slider: null,
     selectedOfferId: 0,
+    isLoading: false,
   }),
   computed: {
     ...mapGetters({
@@ -209,11 +210,19 @@ export default {
     }
   },
   methods: {
+    ...mapActions('cart', ['addProductToCart']),
     setOffer(id) {
       this.selectedOfferId = id
     },
-    addToCart(name) {
-      this.$toast.success(`Товар "${name}" добавлен в корзину`)
+    addToCart(offerId) {
+      this.isLoading = true;
+      this.addProductToCart(offerId).then(response => {
+        this.isLoading = false;
+        this.$toast.success(`Товар "${offerId}" добавлен в корзину`)
+      }).catch(error => {
+        this.isLoading = false;
+        console.log(error);
+      });
     },
   },
 }

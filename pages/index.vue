@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
   name: 'IndexPage',
   components: {
@@ -21,25 +21,13 @@ export default {
     OsmLoader: () => import('~/components/global/OsmLoader.vue'),
   },
   layout: 'default',
-  async fetch() {
-    await this.addProducts();
-  },
   computed: {
     ...mapGetters({
       filteredProducts: 'products/getFilteredProducts',
       products: 'products/getProducts',
       section: 'products/getSection',
     }),
-  },
-  mounted() {
-    
-    setTimeout(() => {
-      this.$toast.info('Привет, это информационное оповещение, оно не имеет смысла, мы просто тестируем');
-    }, 1000)
-  },
-  methods: {
-    ...mapActions('products', ['addProducts']),
-  },
+  }
 }
 </script>
 

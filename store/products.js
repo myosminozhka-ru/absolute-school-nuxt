@@ -5,21 +5,22 @@ export const state = () => ({
 })
 
 export const actions = {
-    async addProducts(context) {
-        const data = await this.$axios.$get('catalog.php?action=list');
-        context.commit('addSection', {id: null, name: 'all'});
-        context.commit('addProducts', data);
+    loadProducts(context) {
+        this.$axios.$get('catalog.php?action=list').then(response => {
+            context.commit('addSection', {id: null, name: 'all'});
+            context.commit('loadProducts', response);
+        });
     },
     addSection(context, section) {
         context.commit('addSection', section);
     },
     addSearchText(context, searchText) {
         context.commit('addSearchText', searchText);
-    },
+    }
 };
 
 export const mutations = {
-    addProducts(state, products) {
+    loadProducts(state, products) {
         state.products = products;
     },
     addSection(state, section) {
@@ -51,6 +52,7 @@ export const getters = {
             ...state.products,
             products: filteredProducts
         }
+        console.log('getFilteredProducts', data);
         return data;
     },
     getSection: (state) => {
