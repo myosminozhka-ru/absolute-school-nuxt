@@ -10,5 +10,6 @@ export default {
     OsmAuthBlock: () => import('~/components/authBlock/OsmAuthBlock.vue'),
   },
   layout: 'auth',
+  middleware: ['auth'],
 }
 </script>

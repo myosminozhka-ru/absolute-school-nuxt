@@ -42,6 +42,7 @@
   </div>
 </template>
 <script>
+import { mapActions } from 'vuex';
 export default {
   name: 'OsmAuthBlockRSide',
   components: {
@@ -51,9 +52,29 @@ export default {
   data: () => ({
     login: '',
     password: '',
+    isLoading: false
   }),
   methods: {
-    onLogin() {},
+    ...mapActions('user', ['signIn', 'setAuthorization']),
+    onLogin() {
+      this.isLoading = true;
+      this.signIn({
+        login: this.login,
+        password: this.password
+      }).then(response => {
+        this.isLoading = false;
+        if (response.status === 'error') {
+          this.$toast.error(response.message);
+        } else {
+          this.setAuthorization(true);
+          this.$router.push({name: 'index'});
+          this.$toast.success('Добро пожаловать');
+        }
+      }).catch(error => {
+        this.isLoading = false;
+        this.$toast.error(error);
+      });
+    },
   },
 }
 </script>
