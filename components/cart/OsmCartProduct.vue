@@ -169,7 +169,8 @@ export default {
       products: 'getProducts',
     }),
     activeOffer() {
-      const activeOffer = this.cart.offers.filter(offer => offer.selected);
+      const activeOffer = this.cart.offers.filter(offer => +offer.id === +this.item.product_id);
+      console.log('activeOffer', this.cart.offers);
       return activeOffer[0];
     },
     activeColor() {
@@ -208,20 +209,24 @@ export default {
       });
     },
     updateQuantity({id, quantity}) {
-      if (quantity > 0) {
-        this.isLoading = true;
-        this.updateOfferQuantity({
-          id,
-          quantity
-        }).then(response => {
-          this.isLoading = false;
-        }).catch(error => {
-          this.isLoading = false;
-          this.$toast.error(error);
-        });
-      } else {
-        this.$toast.info('Куда еще меньше то ?');
+      if (quantity > this.activeOffer.max_quantity) {
+        this.$toast.info('Столько товаров у нас нет');
+        return false;
       }
+      if (quantity < 1) {
+        this.$toast.info('Меньше не получится');
+        return false;
+      }
+      this.isLoading = true;
+      this.updateOfferQuantity({
+        id,
+        quantity
+      }).then(response => {
+        this.isLoading = false;
+      }).catch(error => {
+        this.isLoading = false;
+        this.$toast.error(error);
+      });
     },
     updateOffer({id, quantity, newOfferId}) {
       console.log('asdasdasdasd', id, quantity, newOfferId)

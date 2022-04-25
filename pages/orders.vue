@@ -10,6 +10,5 @@ export default {
   components: {
     // OsmOrders: () => import('~/components/orders/OsmOrders.vue'),
   },
-  middleware: ['auth'],
 }
 </script>

@@ -1,6 +1,7 @@
 export default {
   router: {
-    base: '/absolute-school-nuxt/'
+    base: '/absolute-school-nuxt/',
+    middleware: ['auth'],
   },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -71,7 +72,10 @@ export default {
 
   axios: {
     baseURL: 'https://viessmann-otoplenie.ru/local/api/site/',
-    withCredentials: true
+    withCredentials: true,
+    headers: {
+      'X-Requested-With': 'XMLHttpRequest',
+    },
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
