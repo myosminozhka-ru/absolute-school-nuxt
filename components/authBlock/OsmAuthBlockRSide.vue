@@ -55,7 +55,7 @@ export default {
     isLoading: false
   }),
   methods: {
-    ...mapActions('user', ['signIn', 'setAuthorization']),
+    ...mapActions('localStorage', ['signIn', 'setAuthorization', 'updateAuthData']),
     onLogin() {
       this.isLoading = true;
       this.signIn({
@@ -67,6 +67,10 @@ export default {
           this.$toast.error(response.message);
         } else {
           this.setAuthorization(true);
+          this.updateAuthData({
+            login: this.login,
+            password: this.password
+          })
           this.$router.push({name: 'index'});
           this.$toast.success('Добро пожаловать');
         }
