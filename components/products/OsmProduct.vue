@@ -22,8 +22,8 @@
           </div>
         </div>
         <div class="cards__item--buttons">
-          <osm-price data-intro="<div class='tour__number'>07</div><div class='tour__title'>Цена</div><div class='tour__text'>Тут вы можете увидеть цену на интересующий вас товар</div>">14 500</osm-price>
-          <osm-button class-name="button--cart" data-intro="<div class='tour__number'>08</div><div class='tour__title'>Добавление товара корзину</div><div class='tour__text'>Для завершения покупки, необходимо добавить товар в корзину</div>">
+          <osm-price data-intro="<div class='tour girl'><div class='tour__l'></div><div class='tour__r'><div class='tour__number'>07</div><div class='tour__title'>Цена</div><div class='tour__text'>Тут вы можете увидеть цену на интересующий вас товар</div></div></div>">14 500</osm-price>
+          <osm-button class-name="button--cart" data-intro="<div class='tour girl'><div class='tour__l'></div><div class='tour__r'><div class='tour__number'>08</div><div class='tour__title'>Добавление товара корзину</div><div class='tour__text'>Для завершения покупки, необходимо добавить товар в корзину</div></div></div>">
             <svg class="desc_icon" width="280" height="108" viewBox="0 0 280 108" fill="none"
               xmlns="http://www.w3.org/2000/svg">
               <path

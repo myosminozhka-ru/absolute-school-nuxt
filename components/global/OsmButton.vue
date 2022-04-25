@@ -192,6 +192,7 @@ export default {
         }
     }
     &--order {
+        padding: vw(23) 0;
         display: inline-flex;
         align-items: center;
         font-family: 'Gilroy', serif;
@@ -244,6 +245,7 @@ export default {
         }
     }
     &--cart_min {
+        padding: vw(23) 0;
         display: inline-flex;
         align-items: center;
         font-family: 'Gilroy', serif;
@@ -260,7 +262,7 @@ export default {
         .cart_amount {
             z-index: 2;
             position: absolute;
-            top: vw(-45);
+            top: vw(-20);
             right: vw(-14);
             min-width: vw(37);
             min-height: vw(37);

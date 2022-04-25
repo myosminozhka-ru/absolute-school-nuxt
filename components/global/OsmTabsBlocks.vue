@@ -4,8 +4,7 @@
             <div class="tabs_blocks__buttons">
                 <div class="tabs_blocks__item">
                     <div class="tabs_blocks__buttons--owf">
-                        <osm-button v-for="button in buttons.list" :key="button.index" class-name="button--white" :class="{'isActive' : buttons.selected === button}" data-intro="<div class='tour__number'>05</div><div class='tour__title'>Фильтрация по направлениям</div><div class='tour__text'>Вы можете выбрёать что вас интересует по направлению 
-и типу товаров.</div>">{{ button }}</osm-button>
+                        <osm-button v-for="button in buttons.list" :key="button.index" class-name="button--white" :class="{'isActive' : buttons.selected === button}" data-intro="<div class='tour girl'><div class='tour__l'></div><div class='tour__r'><div class='tour__number'>05</div><div class='tour__title'>Фильтрация по направлениям</div><div class='tour__text'>Вы можете выбрёать что вас интересует по направлению и типу товаров.</div></div></div>">{{ button }}</osm-button>
                     </div>
                 </div>
                 <osm-button class-name="button--green"><span>Все</span></osm-button>
@@ -13,7 +12,7 @@
         </div>
         <div class="tabs_blocks__r-side">
             <osm-hn v-if="title">Мои заказы:</osm-hn>
-            <form v-else action="" data-intro="<div class='tour__number'>06</div><div class='tour__title'>Поиск</div><div class='tour__text'>Вы можете ввести ваш запрос вручную и найти что вас интересует</div>">
+            <form v-else action="" data-intro="<div class='tour girl'><div class='tour__l'></div><div class='tour__r'><div class='tour__number'>06</div><div class='tour__title'>Поиск</div><div class='tour__text'>Вы можете ввести ваш запрос вручную и найти что вас интересует</div></div></div>">
                 <osm-input text="Введите что нужно найти" />
                 <osm-button class-name="button--search">
                     <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
