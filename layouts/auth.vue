@@ -37,7 +37,7 @@ export default {
     display: flex;
     flex-direction: column;
     height: 100%;
-    padding: vw(40) vw(150) vw(100) vw(150);
+    padding: 0;
     position: relative;
     &.isTablet {
       padding: 22px 15px 50px 15px;

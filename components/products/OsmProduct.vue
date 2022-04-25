@@ -5,6 +5,7 @@
       :class="{ 'cards__item--l-side--full': !product.images.length }"
     >
       <osm-hn class="cards__item--title">{{ product.name }}</osm-hn>
+      
       <div class="cards__item--text">
         {{ product.description }}
       </div>

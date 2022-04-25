@@ -71,7 +71,7 @@ export default {
   },
 
   axios: {
-    baseURL: 'https://viessmann-otoplenie.ru/local/api/site/',
+    baseURL: 'https://one.kutuzovv.ru/local/api/site/',
     withCredentials: true,
     headers: {
       'X-Requested-With': 'XMLHttpRequest',
