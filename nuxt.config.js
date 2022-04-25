@@ -52,6 +52,7 @@ export default {
     '@nuxtjs/style-resources',
     '@nuxtjs/toast',
     'cookie-universal-nuxt',
+    '@nuxtjs/proxy'
   ],
   toast: {
     position: 'bottom-right',
@@ -74,7 +75,7 @@ export default {
     baseURL: 'https://one.kutuzovv.ru/local/api/site/',
     withCredentials: true,
     headers: {
-      'X-Requested-With': 'XMLHttpRequest',
+      'Content-Type':  'application/json'
     },
   },
 
