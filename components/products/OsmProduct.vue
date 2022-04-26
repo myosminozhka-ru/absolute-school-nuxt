@@ -168,6 +168,9 @@ export default {
         &:nth-child(even) {
             flex-direction: row-reverse;
         }
+        &--buttons {
+            display: inline-block;
+        }
         &--l-side {
             max-width: vw(596);
             width: 100%;
