@@ -73,10 +73,7 @@ export default {
 
   axios: {
     baseURL: 'https://one.kutuzovv.ru/local/api/site/',
-    withCredentials: true,
-    headers: {
-      'Content-Type':  'application/json'
-    },
+    withCredentials: true
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
