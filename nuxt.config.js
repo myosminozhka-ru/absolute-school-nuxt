@@ -20,7 +20,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   // plugins: [
-  //   { src: '~/plugins/forward-set-cookie.js', mode: 'server' },
+  //   { src: '~/plugins/axios.js', mode: 'server' },
   // ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -54,8 +54,7 @@ export default {
     '@nuxtjs/pwa',
     '@nuxtjs/style-resources',
     '@nuxtjs/toast',
-    'cookie-universal-nuxt',
-    '@nuxtjs/proxy'
+    // 'cookie-universal-nuxt',
   ],
   toast: {
     position: 'bottom-right',
@@ -75,7 +74,8 @@ export default {
   },
 
   axios: {
-    baseURL: 'https://one.kutuzovv.ru/local/api/site/'
+    baseURL: 'https://one.kutuzovv.ru/local/api/site/',
+    withCredentials: true
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa

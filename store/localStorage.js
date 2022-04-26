@@ -27,7 +27,7 @@ export const actions = {
                 action: "login",
                 login,
                 password
-            }).then(data => {
+            }, { withCredentials: true }).then(data => {
                 resolve(data);
             }).catch(error => {
                 reject(error);

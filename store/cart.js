@@ -17,7 +17,7 @@ export const actions = {
           action: 'add',
           id: `${offerId}`,
           quantity: '1',
-        })
+        }, { withCredentials: true })
         .then((data) => {
           context.commit('updateCart', data)
           resolve(data)
@@ -28,7 +28,7 @@ export const actions = {
     })
   },
   loadCart(context) {
-    this.$axios.$get('basket.php?action=basket').then((data) => {
+    this.$axios.$get('basket.php?action=basket', { withCredentials: true }).then((data) => {
       context.commit('updateCart', data)
     })
   },
@@ -38,7 +38,7 @@ export const actions = {
         .$post('basket.php', {
           action: 'delete',
           id: basketId,
-        })
+        }, { withCredentials: true })
         .then((data) => {
           context.commit('updateCart', data)
           resolve(data)
@@ -55,7 +55,7 @@ export const actions = {
           action: 'update',
           id,
           quantity,
-        })
+        }, { withCredentials: true })
         .then((data) => {
           context.commit('updateCart', data)
           resolve(data)
@@ -74,7 +74,7 @@ export const actions = {
           new_offer_id: newOfferId,
           id,
           quantity,
-        })
+        }, { withCredentials: true })
         .then((data) => {
           context.commit('updateCart', data)
           resolve(data)
