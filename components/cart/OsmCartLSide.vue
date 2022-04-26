@@ -22,7 +22,7 @@ export default {
     ...mapGetters('products', {
       products: 'getProducts',
     }),
-  }
+  },
 }
 </script>
 <style lang="scss" scoped></style>

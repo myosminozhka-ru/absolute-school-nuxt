@@ -1,8 +1,7 @@
 <template>
-  <div class="cart__product" :class="{isLoading}">
+  <div class="cart__product" :class="{ isLoading }">
     <div class="cart__product--img">
-      <osm-button
-        class-name="button--close">
+      <osm-button class-name="button--close">
         <div @click="removeProduct(item.basket_id)">
           <svg
             width="60"
@@ -99,11 +98,17 @@
               `"
               :text="offer.colors[0].code"
               name="colors"
-              @input="updateOffer({id: item.basket_id, quantity: activeOffer.quantity, newOfferId: offer.id})"
+              @input="
+                updateOffer({
+                  id: item.basket_id,
+                  quantity: activeOffer.quantity,
+                  newOfferId: offer.id,
+                })
+              "
             />
           </div>
         </div>
-        
+
         <div v-if="activeSize" class="cart__product--size-item">
           <span class="item">
             <osm-checkbox
@@ -119,15 +124,39 @@
               class-name="check_size"
               :text="offer.sizes[0].name"
               name="sizes"
-              @input="updateOffer({id: item.basket_id, quantity: activeOffer.quantity, newOfferId: offer.id})"
+              @input="
+                updateOffer({
+                  id: item.basket_id,
+                  quantity: activeOffer.quantity,
+                  newOfferId: offer.id,
+                })
+              "
             />
           </div>
         </div>
       </div>
       <div class="cart__product--amount">
-        <button class="cart__product--minus" @click="updateQuantity({id: item.basket_id, quantity: activeOffer.quantity - 1})">-</button>
+        <button
+          class="cart__product--minus"
+          @click="
+            updateQuantity({
+              id: item.basket_id,
+              quantity: activeOffer.quantity - 1,
+            })
+          "
+        >
+          -
+        </button>
         <osm-price type="prod_amount">{{ activeOffer.quantity }}шт</osm-price>
-        <button class="cart__product--plus" @click="updateQuantity({id: item.basket_id, quantity: activeOffer.quantity + 1})">
+        <button
+          class="cart__product--plus"
+          @click="
+            updateQuantity({
+              id: item.basket_id,
+              quantity: activeOffer.quantity + 1,
+            })
+          "
+        >
           <span>+</span>
           <div v-if="isPlusWarn" class="cart__product--plus-warn">
             На вашем балансе недостаточно средств
@@ -142,7 +171,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'OsmCartProduct',
   components: {
@@ -159,7 +188,7 @@ export default {
   },
   data: () => ({
     isPlusWarn: false,
-    isLoading: false
+    isLoading: false,
   }),
   computed: {
     ...mapGetters('cart', {
@@ -169,20 +198,26 @@ export default {
       products: 'getProducts',
     }),
     activeOffer() {
-      const activeOffer = this.cart.offers.filter(offer => offer.selected);
-      return activeOffer[0];
+      const activeOffer = this.cart.offers.filter((offer) => offer.selected)
+      return activeOffer[0]
     },
     activeColor() {
-      const activeColor = this.cart.colors.filter(color => color.id === this.activeOffer.color);
-      return activeColor[0];
+      const activeColor = this.cart.colors.filter(
+        (color) => color.id === this.activeOffer.color
+      )
+      return activeColor[0]
     },
     activeSize() {
-      const activeSize = this.products.sizes.filter(size => size.id === this.activeOffer.size);
-      return activeSize[0];
+      const activeSize = this.products.sizes.filter(
+        (size) => size.id === this.activeOffer.size
+      )
+      return activeSize[0]
     },
     product() {
-      const product = this.products.products.filter(product => product.id === this.activeOffer.product);
-      return product[0];
+      const product = this.products.products.filter(
+        (product) => product.id === this.activeOffer.product
+      )
+      return product[0]
     },
     offers() {
       return this.products.offers
@@ -197,46 +232,56 @@ export default {
     },
   },
   methods: {
-    ...mapActions('cart', ['removeProductFromCart', 'updateOfferQuantity', 'updateActiveOffer']),
+    ...mapActions('cart', [
+      'removeProductFromCart',
+      'updateOfferQuantity',
+      'updateActiveOffer',
+    ]),
     removeProduct(basketId) {
-      this.isLoading = true;
-      this.removeProductFromCart(basketId).then(response => {
-        this.isLoading = false;
-      }).catch(error => {
-        this.isLoading = false;
-        this.$toast.error(error);
-      });
+      this.isLoading = true
+      this.removeProductFromCart(basketId)
+        .then((response) => {
+          this.isLoading = false
+        })
+        .catch((error) => {
+          this.isLoading = false
+          this.$toast.error(error)
+        })
     },
-    updateQuantity({id, quantity}) {
+    updateQuantity({ id, quantity }) {
       if (quantity > 0) {
-        this.isLoading = true;
+        this.isLoading = true
         this.updateOfferQuantity({
           id,
-          quantity
-        }).then(response => {
-          this.isLoading = false;
-        }).catch(error => {
-          this.isLoading = false;
-          this.$toast.error(error);
-        });
+          quantity,
+        })
+          .then((response) => {
+            this.isLoading = false
+          })
+          .catch((error) => {
+            this.isLoading = false
+            this.$toast.error(error)
+          })
       } else {
-        this.$toast.info('Куда еще меньше то ?');
+        this.$toast.info('Куда еще меньше то ?')
       }
     },
-    updateOffer({id, quantity, newOfferId}) {
+    updateOffer({ id, quantity, newOfferId }) {
       console.log('asdasdasdasd', id, quantity, newOfferId)
-      this.isLoading = true;
+      this.isLoading = true
       this.updateActiveOffer({
         id,
         quantity,
-        newOfferId
-      }).then(response => {
-        this.isLoading = false;
-      }).catch(error => {
-        this.isLoading = false;
-        this.$toast.error(error);
-      });
-    }
+        newOfferId,
+      })
+        .then((response) => {
+          this.isLoading = false
+        })
+        .catch((error) => {
+          this.isLoading = false
+          this.$toast.error(error)
+        })
+    },
   },
 }
 </script>

@@ -1,88 +1,82 @@
 <template>
-  <div v-if="product" class="cards__item">
+  <div class="cards__item">
     <div
       class="cards__item--l-side"
       :class="{ 'cards__item--l-side--full': !product.images.length }"
     >
       <osm-hn class="cards__item--title">{{ product.name }}</osm-hn>
-      <div class="cards__item--text">
-        {{ product.description }}
+
+      <p class="cards__item--text">{{ product.description }}</p>
+
+      <div class="cards__item--color-item">
+        <div class="cards__item--colors">
+          <osm-checkbox
+            v-for="color in colors"
+            :key="color.id"
+            class-name="check_standart"
+            text="#000"
+            :class="{ 'is-checked': +color.id === +selectedColorId }"
+            name="color"
+            :style="`--background: ${color.code}`"
+            @input="onSelectColor(color.id)"
+          />
+        </div>
       </div>
-      <form action="">
-        <div class="cards__item--color-item">
-          <div class="cards__item--colors">
-            <osm-checkbox
-              v-for="offer in offers"
-              :key="offer.id"
-              class-name="check_standart"
-              text="#000"
-              name="color"
-              :style="`
 
-                  --background: ${offer.colors[0].code}
+      <div class="cards__item--size-item">
+        <div class="cards__item--size">
+          <osm-checkbox
+            v-for="size in sizes"
+            :key="size.id"
+            class-name="check_size"
+            :checked="+size.id === +selectedSizeId"
+            :text="size.name"
+            :value="size.id"
+            name="size"
+            @input="onSelectSize(size.id)"
+          />
+        </div>
+      </div>
 
-              `"
-              @input="setOffer(offer.id)"
-            />
-          </div>
-        </div>
-        <div class="cards__item--size-item">
-          <div
-            v-for="selectedOffer in selectedOffers"
-            :key="selectedOffer.id"
-            class="cards__item--size"
-          >
-            <osm-checkbox
-              v-for="size in selectedOffer.sizes"
-              :key="size.id"
-              class-name="check_size"
-              :text="size.name"
-              :value="size.id"
-              name="size"
-            />
-          </div>
-        </div>
-        <div
-          v-for="selectedOffer in selectedOffers"
-          :key="selectedOffer.id"
-          class="cards__item--buttons"
+      <div class="cards__item--buttons">
+        <osm-price>{{ price }}</osm-price>
+
+        <osm-button
+          class-name="button--cart"
+          :is-loading="isLoading"
+          @click="addToCart(selectedOfferId)"
         >
-          <osm-price>{{ selectedOffer.price }}</osm-price>
-          <div @click="addToCart(selectedOffer.id)">
-            <osm-button class-name="button--cart" :is-loading="isLoading">
-              <svg
-                class="desc_icon"
-                width="280"
-                height="108"
-                viewBox="0 0 280 108"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M0.966884 17.072C-0.412274 14.4818 1.37429 11.3376 4.30532 11.1966L235.063 0.093208C236.286 0.0343461 237.469 0.539143 238.273 1.46312L278.171 47.3232C279.5 48.8506 279.478 51.13 278.12 52.6316L229.835 106.024C228.994 106.954 227.766 107.435 226.518 107.326L4.11367 87.7728C1.23471 87.5197 -0.433913 84.3907 0.959939 81.859L17.4554 51.8974C18.1071 50.7136 18.1171 49.2809 17.482 48.0882L0.966884 17.072Z"
-                  fill="#E49535"
-                />
-              </svg>
-              <svg
-                class="mob_icon"
-                width="84"
-                height="71"
-                viewBox="0 0 84 71"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M0.884028 12.7352C-0.498843 10.2707 1.04056 7.18822 3.84153 6.81317L52.6552 0.277008C53.9515 0.10344 55.2507 0.574507 56.1345 1.5385L82.4733 30.2673C83.8955 31.8185 83.8724 34.2065 82.4205 35.7299L50.4379 69.2897C49.4325 70.3447 47.9327 70.7694 46.5233 70.3982L3.07416 58.9525C0.520648 58.2799 -0.69191 55.3612 0.633238 53.0772L11.1226 34.9975C11.8325 33.7739 11.8433 32.2664 11.1511 31.0328L0.884028 12.7352Z"
-                  fill="#E49535"
-                />
-              </svg>
-              <span>Добавить</span>
-            </osm-button>
-          </div>
-        </div>
-      </form>
+          <svg
+            class="desc_icon"
+            width="280"
+            height="108"
+            viewBox="0 0 280 108"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0.966884 17.072C-0.412274 14.4818 1.37429 11.3376 4.30532 11.1966L235.063 0.093208C236.286 0.0343461 237.469 0.539143 238.273 1.46312L278.171 47.3232C279.5 48.8506 279.478 51.13 278.12 52.6316L229.835 106.024C228.994 106.954 227.766 107.435 226.518 107.326L4.11367 87.7728C1.23471 87.5197 -0.433913 84.3907 0.959939 81.859L17.4554 51.8974C18.1071 50.7136 18.1171 49.2809 17.482 48.0882L0.966884 17.072Z"
+              fill="#E49535"
+            />
+          </svg>
+          <svg
+            class="mob_icon"
+            width="84"
+            height="71"
+            viewBox="0 0 84 71"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0.884028 12.7352C-0.498843 10.2707 1.04056 7.18822 3.84153 6.81317L52.6552 0.277008C53.9515 0.10344 55.2507 0.574507 56.1345 1.5385L82.4733 30.2673C83.8955 31.8185 83.8724 34.2065 82.4205 35.7299L50.4379 69.2897C49.4325 70.3447 47.9327 70.7694 46.5233 70.3982L3.07416 58.9525C0.520648 58.2799 -0.69191 55.3612 0.633238 53.0772L11.1226 34.9975C11.8325 33.7739 11.8433 32.2664 11.1511 31.0328L0.884028 12.7352Z"
+              fill="#E49535"
+            />
+          </svg>
+          <span>Добавить</span>
+        </osm-button>
+      </div>
     </div>
-
+    <!-- /.cards__item--l-side -->
     <div v-if="product.images.length" class="cards__item--r-side">
       <div ref="cards__slider" class="glide cards__slider--js">
         <div class="glide__track" data-glide-el="track">
@@ -109,7 +103,11 @@
             <img :src="`https://viessmann-otoplenie.ru/${image}`" alt="" />
           </div>
         </div>
-        <div class="glide__controls" data-glide-el="controls">
+        <div
+          v-if="product.images.length > 1"
+          class="glide__controls"
+          data-glide-el="controls"
+        >
           <div data-glide-dir="<">
             <osm-button class-name="button--slider_next">
               <svg
@@ -145,15 +143,15 @@
         </div>
       </div>
     </div>
+    <!-- /.cards__item--r-side -->
   </div>
-  <div v-else>С этим товаром что то не так</div>
 </template>
 
 <script>
 import Glide from '@glidejs/glide'
 import { mapGetters, mapActions } from 'vuex'
 export default {
-  name: 'OsmProduct',
+  name: 'OsmProductV2',
   components: {
     OsmHn: () => import('~/components/typografy/OsmHn.vue'),
     OsmCheckbox: () => import('~/components/forms/OsmCheckbox.vue'),
@@ -167,40 +165,72 @@ export default {
     },
   },
   data: () => ({
+    productId: null,
+    colors: [],
+    sizes: [],
+    selectedColorId: null,
+    selectedSizeId: null,
+    selectedOfferId: null,
+    price: null,
     slider: null,
-    selectedOfferId: 0,
     isLoading: false,
   }),
   computed: {
-    ...mapGetters({
-      products: 'products/getProducts',
+    ...mapGetters('products', {
+      getColors: 'getProductColors',
+      getSizes: 'getProductSizes',
+      getOffer: 'getProductOffer',
     }),
-    offers() {
-      return this.products.offers
-        .filter((offer) => offer.product === this.product.id)
-        .map((offer) => ({
-          ...offer,
-          colors: this.products.colors.filter(
-            (color) => color.id === offer.color
-          ),
-          sizes: this.products.sizes.filter((size) => size.id === offer.size),
-        }))
+    colorsAndSize() {
+      const { selectedColorId, selectedSizeId } = this
+      return {
+        selectedColorId,
+        selectedSizeId,
+      }
     },
-    selectedOffers() {
-      const selected = this.offers.filter(
-        (offer) => offer.id === this.selectedOfferId
-      )
-      return selected
+  },
+  watch: {
+    selectedColorId: {
+      handler(newval, oldval) {
+        this.sizes = [...this.getSizes(this.product.id, newval)]
+        this.selectedSizeId = this.sizes[0] ? this.sizes[0].id : null
+      },
     },
+    colorsAndSize: {
+      handler(newval, oldval) {
+        const offer = this.getOffer(
+          this.product.id,
+          this.selectedColorId,
+          this.selectedSizeId
+        )
+
+        this.price = offer.price
+        this.selectedOfferId = offer.id
+      },
+    },
+  },
+  beforeMount() {
+    this.colors = [...this.getColors(this.product.id)]
+    this.selectedColorId = this.colors[0] ? this.colors[0].id : null
+
+    this.sizes = [...this.getSizes(this.product.id, this.selectedColorId)]
+    this.selectedSizeId = this.sizes[0] ? this.sizes[0].id : null
+
+    const offer = this.getOffer(
+      this.product.id,
+      this.selectedColorId,
+      this.selectedSizeId
+    )
+
+    this.price = offer.price
+
+    this.selectedOfferId = offer.id
   },
   mounted() {
     if (this.$refs.cards__slider) {
       this.slider = new Glide(this.$refs.cards__slider, {
         gap: 0,
       }).mount()
-    }
-    if (this.offers[0]) {
-      this.selectedOfferId = this.offers[0].id
     }
   },
   beforeDestroy() {
@@ -211,8 +241,11 @@ export default {
   },
   methods: {
     ...mapActions('cart', ['addProductToCart']),
-    setOffer(id) {
-      this.selectedOfferId = id
+    onSelectColor(colorId) {
+      this.selectedColorId = +colorId
+    },
+    onSelectSize(sizeId) {
+      this.selectedSizeId = +sizeId
     },
     addToCart(offerId) {
       this.isLoading = true

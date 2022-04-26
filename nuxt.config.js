@@ -1,6 +1,6 @@
 export default {
   router: {
-    base: '/absolute-school-nuxt/'
+    base: '/absolute-school-nuxt/',
   },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -28,17 +28,27 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/eslint
-    ['@nuxtjs/eslint-module', {
-      fix: true
-    }],
+    [
+      '@nuxtjs/eslint-module',
+      {
+        fix: true,
+      },
+    ],
     // https://go.nuxtjs.dev/stylelint
-    ['@nuxtjs/stylelint-module', {
-      fix: true
-    }],
-    ['@nuxtjs/device', {
-      defaultUserAgent: 'Mozilla/5.0 (Linux; Android 5.1.1; Nexus 6 Build/LYZ28E) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.39 Mobile Safari/537.36',
-      refreshOnResize: true
-    }]
+    [
+      '@nuxtjs/stylelint-module',
+      {
+        fix: true,
+      },
+    ],
+    [
+      '@nuxtjs/device',
+      {
+        defaultUserAgent:
+          'Mozilla/5.0 (Linux; Android 5.1.1; Nexus 6 Build/LYZ28E) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.39 Mobile Safari/537.36',
+        refreshOnResize: true,
+      },
+    ],
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -57,11 +67,11 @@ export default {
     keepOnHover: true,
     theme: 'outlined',
     className: 'osm-toast',
-    action : {
-      text : 'Закрыть',
-      onClick : (e, toastObject) => {
-          toastObject.goAway(0);
-      }
+    action: {
+      text: 'Закрыть',
+      onClick: (e, toastObject) => {
+        toastObject.goAway(0)
+      },
     },
   },
   styleResources: {
@@ -70,7 +80,7 @@ export default {
 
   axios: {
     baseURL: 'https://viessmann-otoplenie.ru/local/api/site/',
-    withCredentials: true
+    withCredentials: true,
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
@@ -78,7 +88,7 @@ export default {
     manifest: {
       lang: 'ru',
       name: 'Школа АБСОЛЮТ',
-      background_color: '#fff4ce'
+      background_color: '#fff4ce',
     },
   },
 

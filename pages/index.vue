@@ -27,7 +27,7 @@ export default {
       products: 'products/getProducts',
       section: 'products/getSection',
     }),
-  }
+  },
 }
 </script>
 

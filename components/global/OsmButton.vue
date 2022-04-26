@@ -1,10 +1,19 @@
 <template>
-  <div v-if="!link" :class="`button ${className}${isLoading ? ' isLoading': ''}`" @click="$emit('click')">
+  <div
+    v-if="!link"
+    :class="`button ${className}${isLoading ? ' isLoading' : ''}`"
+    @click="$emit('click')"
+  >
     <slot>
       {{ text }}
     </slot>
   </div>
-  <nuxt-link v-else :to="link" :class="`button ${className}${isLoading ? ' isLoading': ''}`" exact>
+  <nuxt-link
+    v-else
+    :to="link"
+    :class="`button ${className}${isLoading ? ' isLoading' : ''}`"
+    exact
+  >
     <slot>
       {{ text }}
     </slot>
@@ -30,7 +39,7 @@ export default {
     isLoading: {
       type: Boolean,
       default: false,
-    }
+    },
   },
 }
 </script>
