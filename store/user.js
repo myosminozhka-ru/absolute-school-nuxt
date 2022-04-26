@@ -5,7 +5,6 @@ export const state = () => ({
 export const mutations = {
   setAuthorization(state, authorized) {
     state.isAuthorized = authorized
-    console.log('state.isAuthorized', state.isAuthorized)
   },
 }
 

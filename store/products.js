@@ -7,7 +7,7 @@ export const state = () => ({
 export const actions = {
   loadProducts(context) {
     this.$axios.$get('catalog.php?action=list').then((response) => {
-      console.log(response);
+      console.log('Данные из catalog.php?action=list', response);
       context.commit('addSection', { id: null, name: 'all' })
       context.commit('loadProducts', response)
     })
@@ -62,7 +62,6 @@ export const getters = {
       ...state.products,
       products: filteredProducts,
     }
-    console.log('getFilteredProducts', data)
     return data
   },
 

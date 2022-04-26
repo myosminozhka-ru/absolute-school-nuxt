@@ -65,7 +65,6 @@ export const actions = {
     })
   },
   updateActiveOffer(context, { id, quantity, newOfferId }) {
-    console.log(id, quantity, newOfferId)
     return new Promise((resolve, reject) => {
       this.$axios
         .$post('basket.php', {
