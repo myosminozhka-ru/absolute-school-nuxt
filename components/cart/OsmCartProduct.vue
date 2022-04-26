@@ -198,8 +198,10 @@ export default {
       products: 'getProducts',
     }),
     activeOffer() {
-      const activeOffer = this.cart.offers.filter(offer => +offer.id === +this.item.product_id);
-      return activeOffer[0];
+      const activeOffer = this.cart.offers.filter(
+        (offer) => +offer.id === +this.item.product_id
+      )
+      return activeOffer[0]
     },
     activeColor() {
       const activeColor = this.cart.colors.filter(
@@ -248,25 +250,27 @@ export default {
           this.$toast.error(error)
         })
     },
-    updateQuantity({id, quantity}) {
+    updateQuantity({ id, quantity }) {
       if (quantity > this.activeOffer.max_quantity) {
-        this.$toast.info('Столько товаров у нас нет');
-        return false;
+        this.$toast.info('Столько товаров у нас нет')
+        return false
       }
       if (quantity < 1) {
-        this.$toast.info('Меньше не получится');
-        return false;
+        this.$toast.info('Меньше не получится')
+        return false
       }
-      this.isLoading = true;
+      this.isLoading = true
       this.updateOfferQuantity({
         id,
-        quantity
-      }).then(response => {
-        this.isLoading = false;
-      }).catch(error => {
-        this.isLoading = false;
-        this.$toast.error(error);
-      });
+        quantity,
+      })
+        .then((response) => {
+          this.isLoading = false
+        })
+        .catch((error) => {
+          this.isLoading = false
+          this.$toast.error(error)
+        })
     },
     updateOffer({ id, quantity, newOfferId }) {
       this.isLoading = true

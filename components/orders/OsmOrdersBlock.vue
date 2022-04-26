@@ -4,17 +4,17 @@
       <div class="orders__block--order-number">
         <span>№ заказа:</span> {{ order.id }}
       </div>
-      <div class="orders__block--date">От: {{ order.data }}</div>
+      <div class="orders__block--date">От: {{ order.date }}</div>
       <div class="orders__block--status">{{ order.status }}</div>
     </div>
     <div class="orders__block--info" :class="{ isActive: isMobileShowMore }">
       <div
-        v-for="product in products"
+        v-for="product in productsList"
         :key="product.id"
         class="orders__block--card"
       >
         <div class="orders__block--img">
-          <img :src="product.image" alt="" />
+          <img :src="product.img" alt="" />
         </div>
         <div class="orders__block--item">
           <div class="orders__block--text">
@@ -33,7 +33,7 @@
         </div>
       </div>
       <div class="orders__block--repeat-mob">
-        <osm-button @click="onRepeatOrder">
+        <osm-button @click="onRepeatOrder(order.id)">
           <span>Повторить</span>
         </osm-button>
       </div>
@@ -57,6 +57,8 @@
   </div>
 </template>
 <script>
+import { mapGetters, mapActions } from 'vuex'
+
 export default {
   name: 'OsmOrdersBlock',
   components: {
@@ -72,47 +74,34 @@ export default {
   },
   data: () => ({
     isMobileShowMore: false,
+    productsList: [],
   }),
   computed: {
-    // Лепка массива продуктов из заказа
-    products() {
-      const arrProductsBasket = this.order.basket
-      const resultProducts = []
-
-      arrProductsBasket.forEach((product) => {
-        const findObjProduct = this.$store.state.orders.products.find(
-          (item) => item.id === product.id
-        )
-        if (findObjProduct) {
-          findObjProduct.quantity = product ? product.quantity : 0
-          resultProducts.push(findObjProduct)
-        }
-      })
-
-      return resultProducts
-    },
-
+    ...mapGetters('orders', {
+      getProducts: 'getProducts',
+    }),
     // Получение итоговой суммы заказа
     resultPrice() {
-      const arrProductsBasket = this.order.basket
       let resultPrice = 0
-      arrProductsBasket.forEach((product) => {
-        const findProduct = this.$store.state.orders.products.find(
-          (item) => item.id === product.id
-        )
-        if (findProduct) {
-          resultPrice += findProduct.price
-        }
+      this.productsList.forEach((product) => {
+        resultPrice += +product.price
       })
 
       return resultPrice
     },
   },
+  beforeMount() {
+    this.productsList = this.getProducts(this.order.basket)
+  },
   methods: {
+    ...mapActions('orders', {
+      repeatOrder: 'repeatOrder',
+    }),
     onToggleIsMobileShowMore() {
       this.isMobileShowMore = !this.isMobileShowMore
     },
-    onRepeatOrder() {
+    onRepeatOrder(orderId) {
+      this.repeatOrder(orderId)
       // TODO: Тут действия при нажатии на кнопку повторить заказ
     },
   },

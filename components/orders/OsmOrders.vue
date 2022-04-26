@@ -1,7 +1,7 @@
 <template>
   <div class="orders center-block">
     <osm-orders-block
-      v-for="order in $store.state.orders.orders"
+      v-for="order in getOrders"
       :key="order.id"
       :order="order"
     />
@@ -63,11 +63,18 @@
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'OsmOrders',
   components: {
     OsmOrdersBlock: () => import('./OsmOrdersBlock.vue'),
     OsmButton: () => import('~/components/global/OsmButton.vue'),
+  },
+  computed: {
+    ...mapGetters('orders', {
+      getOrders: 'getOrders',
+    }),
   },
   methods: {
     onLoadMore() {
