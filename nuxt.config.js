@@ -1,7 +1,7 @@
 export default {
   router: {
     base: '/absolute-school-nuxt/',
-    middleware: ['auth', 'forward-set-cookie'],
+    middleware: ['auth'],
   },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -75,8 +75,7 @@ export default {
   },
 
   axios: {
-    baseURL: 'https://one.kutuzovv.ru/local/api/site/',
-    withCredentials: true
+    baseURL: 'https://one.kutuzovv.ru/local/api/site/'
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa

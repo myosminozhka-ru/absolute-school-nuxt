@@ -4,6 +4,7 @@ export const state = () => ({
 
 export const mutations = {
   updateCart(state, items) {
+    console.log('Корзина обновлена')
     state.cart = items
   },
 }
@@ -65,6 +66,7 @@ export const actions = {
     })
   },
   updateActiveOffer(context, { id, quantity, newOfferId }) {
+    console.log(id, quantity, newOfferId)
     return new Promise((resolve, reject) => {
       this.$axios
         .$post('basket.php', {
