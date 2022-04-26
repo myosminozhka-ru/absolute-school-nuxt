@@ -29,9 +29,12 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/eslint
-    ['@nuxtjs/eslint-module', {
-      fix: true
-    }],
+    [
+      '@nuxtjs/eslint-module',
+      {
+        fix: true,
+      },
+    ],
     // https://go.nuxtjs.dev/stylelint
     ['@nuxtjs/stylelint-module', {
       fix: true
@@ -60,11 +63,11 @@ export default {
     keepOnHover: true,
     theme: 'outlined',
     className: 'osm-toast',
-    action : {
-      text : 'Закрыть',
-      onClick : (e, toastObject) => {
-          toastObject.goAway(0);
-      }
+    action: {
+      text: 'Закрыть',
+      onClick: (e, toastObject) => {
+        toastObject.goAway(0)
+      },
     },
   },
   styleResources: {
@@ -81,7 +84,7 @@ export default {
     manifest: {
       lang: 'ru',
       name: 'Школа АБСОЛЮТ',
-      background_color: '#fff4ce'
+      background_color: '#fff4ce',
     },
   },
 

@@ -42,7 +42,7 @@
   </div>
 </template>
 <script>
-import { mapActions } from 'vuex';
+import { mapActions } from 'vuex'
 export default {
   name: 'OsmAuthBlockRSide',
   components: {
@@ -52,12 +52,12 @@ export default {
   data: () => ({
     login: '',
     password: '',
-    isLoading: false
+    isLoading: false,
   }),
   methods: {
     ...mapActions('localStorage', ['signIn', 'setAuthorization', 'updateAuthData']),
     onLogin() {
-      this.isLoading = true;
+      this.isLoading = true
       this.signIn({
         login: this.login,
         password: this.password

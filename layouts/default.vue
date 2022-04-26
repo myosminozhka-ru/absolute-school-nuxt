@@ -1,7 +1,9 @@
 <template>
   <div class="wrapper">
     <div
-      :class="`wrapper__in${isMobile ? ' isMobile' : ''}${isTablet ? ' isTablet' : ''}`"
+      :class="`wrapper__in${isMobile ? ' isMobile' : ''}${
+        isTablet ? ' isTablet' : ''
+      }`"
     >
       <osm-header />
       <main class="content">
@@ -18,31 +20,33 @@ export default {
   name: 'DefaultLayout',
   computed: {
     isMobile() {
-      return this.$device.isMobile;
+      return this.$device.isMobile
     },
     isTablet() {
-      return this.$device.isTablet;
+      return this.$device.isTablet
     },
     isDesktop() {
-      return this.$device.isDesktop;
-    }
+      return this.$device.isDesktop
+    },
   },
   mounted() {
-    this.loadProducts();
-    this.loadCart();
+    this.loadProducts()
+    this.loadCart()
     setTimeout(() => {
-      this.$toast.info('Привет, это информационное оповещение, оно не имеет смысла, мы просто тестируем');
-    }, 1000);
+      this.$toast.info(
+        'Привет, это информационное оповещение, оно не имеет смысла, мы просто тестируем'
+      )
+    }, 1000)
     setTimeout(() => {
-      this.$toast.success('А это сообщение об успехе');
-    }, 1500);
+      this.$toast.success('А это сообщение об успехе')
+    }, 1500)
     setTimeout(() => {
-      this.$toast.error('А такое будете получать когда возникнет ошибка');
-    }, 2000);
+      this.$toast.error('А такое будете получать когда возникнет ошибка')
+    }, 2000)
   },
   methods: {
     ...mapActions('products', ['loadProducts']),
-    ...mapActions('cart',  ['loadCart']),
+    ...mapActions('cart', ['loadCart']),
   },
 }
 </script>

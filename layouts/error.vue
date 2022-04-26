@@ -153,7 +153,7 @@
               Извините такой страницы не существует. Нажмите на кнопку, чтобы
               прейти в каталог товаров.
             </div>
-            <osm-button class-name="button--back" :link="{name: 'index'}">
+            <osm-button class-name="button--back" :link="{ name: 'index' }">
               <svg
                 width="311"
                 height="100"

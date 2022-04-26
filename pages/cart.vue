@@ -29,12 +29,12 @@ export default {
     }),
   },
   beforeMount() {
-    console.log('beforeMount', this.cart.items);
+    console.log('beforeMount', this.cart.items)
     if (!this.cart.items) {
-      this.$router.push({name: 'index'});
-      this.$toast.info('Корзина пуста, но вы можете что-то туда добавить');
-    } 
-  }
+      this.$router.push({ name: 'index' })
+      this.$toast.info('Корзина пуста, но вы можете что-то туда добавить')
+    }
+  },
 }
 </script>
 <style lang="scss" scoped></style>

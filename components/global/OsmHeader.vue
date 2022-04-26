@@ -20,7 +20,7 @@
       </svg>
       <span>Помощь</span>
     </osm-button>
-    <osm-button class-name="button--order" :link="{name: 'orders'}">
+    <osm-button class-name="button--order" :link="{ name: 'orders' }">
       <svg
         width="78"
         height="68"
@@ -60,7 +60,7 @@
       </svg>
       <span>Мои заказы</span>
     </osm-button>
-    <osm-button class-name="button--cart_min" :link="{name: 'cart'}">
+    <osm-button class-name="button--cart_min" :link="{ name: 'cart' }">
       <div class="icon">
         <svg
           width="72"
@@ -157,7 +157,7 @@
       <span>Корзина</span>
     </osm-button>
     <osm-header-info />
-    <osm-button :link="{name: 'auth'}">
+    <osm-button :link="{ name: 'auth' }">
       <span>Выход</span>
     </osm-button>
     <osm-burger :is-burger-opened.sync="isBurgerOpened" />
@@ -165,7 +165,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters } from 'vuex'
 export default {
   name: 'OsmHeader',
   data: () => ({

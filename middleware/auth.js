@@ -8,4 +8,7 @@ export default function ({ store, redirect, route }) {
     } else {
         return false;
     }
+  } else {
+    return false
+  }
 }

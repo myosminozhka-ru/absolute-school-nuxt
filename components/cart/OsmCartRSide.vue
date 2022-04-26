@@ -14,7 +14,7 @@
       <div class="cart__total--totals">
         <div class="cart__total--t-title">Итого</div>
         <div class="cart__total--t-text">
-          <osm-price>{{ cart.price  }}</osm-price>
+          <osm-price>{{ cart.price }}</osm-price>
         </div>
       </div>
       <osm-button class-name="button--checkout" @click="$emit('onArrange')">

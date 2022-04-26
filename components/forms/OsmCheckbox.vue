@@ -3,6 +3,7 @@
     <input
       class="custom-checkbox"
       type="radio"
+      :checked="checked"
       :name="name"
       :value="text"
       @input="onInput"
@@ -26,6 +27,10 @@ export default {
     name: {
       type: String,
       default: '',
+    },
+    checked: {
+      type: Boolean,
+      default: false,
     },
   },
   methods: {
@@ -58,6 +63,30 @@ export default {
 }
 .check_standart {
   font-size: 0;
+
+  &.is-checked {
+    .custom-checkbox {
+      + div {
+        &:before {
+          border: 0;
+          box-shadow: 0px 5px 20px rgba(21, 69, 102, 0.6);
+        }
+        &:after {
+          top: -2px;
+          bottom: -2px;
+          left: -2px;
+          right: -2px;
+          background: radial-gradient(
+              86.46% 111% at 86% 12%,
+              rgba(255, 105, 95, 0) 0%,
+              rgba(124, 121, 121, 0) 54.94%,
+              rgba(66, 66, 66, 0) 78.15%
+            ),
+            var(--background);
+        }
+      }
+    }
+  }
   .custom-checkbox {
     + div {
       &:before {

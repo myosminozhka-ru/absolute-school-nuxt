@@ -4,74 +4,86 @@ export const state = () => ({
 
 export const mutations = {
   updateCart(state, items) {
-    console.log('Корзина обновлена');
-    state.cart = items;
+    console.log('Корзина обновлена')
+    state.cart = items
   },
 }
 
 export const actions = {
   addProductToCart(context, offerId) {
     return new Promise((resolve, reject) => {
-      this.$axios.$post('basket.php', {
-        action: "add",
-        id: `${offerId}`,
-        quantity: '1'
-      }).then(data => {
-        context.commit('updateCart', data);
-        resolve(data);
-      }).catch(error => {
-        reject(error);
-      })
+      this.$axios
+        .$post('basket.php', {
+          action: 'add',
+          id: `${offerId}`,
+          quantity: '1',
+        })
+        .then((data) => {
+          context.commit('updateCart', data)
+          resolve(data)
+        })
+        .catch((error) => {
+          reject(error)
+        })
     })
   },
   loadCart(context) {
-    this.$axios.$get('basket.php?action=basket').then(data => {
-      context.commit('updateCart', data);
-    });
+    this.$axios.$get('basket.php?action=basket').then((data) => {
+      context.commit('updateCart', data)
+    })
   },
   removeProductFromCart(context, basketId) {
     return new Promise((resolve, reject) => {
-      this.$axios.$post('basket.php', {
-        action: "delete",
-        id: basketId
-      }).then(data => {
-        context.commit('updateCart', data);
-        resolve(data);
-      }).catch(error => {
-        reject(error);
-      })
+      this.$axios
+        .$post('basket.php', {
+          action: 'delete',
+          id: basketId,
+        })
+        .then((data) => {
+          context.commit('updateCart', data)
+          resolve(data)
+        })
+        .catch((error) => {
+          reject(error)
+        })
     })
   },
-  updateOfferQuantity(context, {id, quantity}) {
+  updateOfferQuantity(context, { id, quantity }) {
     return new Promise((resolve, reject) => {
-      this.$axios.$post('basket.php', {
-        action: "update",
-        id,
-        quantity
-      }).then(data => {
-        context.commit('updateCart', data);
-        resolve(data);
-      }).catch(error => {
-        reject(error);
-      })
+      this.$axios
+        .$post('basket.php', {
+          action: 'update',
+          id,
+          quantity,
+        })
+        .then((data) => {
+          context.commit('updateCart', data)
+          resolve(data)
+        })
+        .catch((error) => {
+          reject(error)
+        })
     })
   },
-  updateActiveOffer(context, {id, quantity, newOfferId}) {
-    console.log(id, quantity, newOfferId);
+  updateActiveOffer(context, { id, quantity, newOfferId }) {
+    console.log(id, quantity, newOfferId)
     return new Promise((resolve, reject) => {
-      this.$axios.$post('basket.php', {
-        action: "update",
-        new_offer_id: newOfferId,
-        id,
-        quantity
-      }).then(data => {
-        context.commit('updateCart', data);
-        resolve(data);
-      }).catch(error => {
-        reject(error);
-      })
+      this.$axios
+        .$post('basket.php', {
+          action: 'update',
+          new_offer_id: newOfferId,
+          id,
+          quantity,
+        })
+        .then((data) => {
+          context.commit('updateCart', data)
+          resolve(data)
+        })
+        .catch((error) => {
+          reject(error)
+        })
     })
-  }
+  },
 }
 
 export const getters = {
