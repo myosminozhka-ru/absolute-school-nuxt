@@ -1,18 +1,18 @@
 export const state = () => ({
-    login: '',
-    password: '',
-    isAuthorized: false
-});
+  login: '',
+  password: '',
+  isAuthorized: false,
+})
 
 export const mutations = {
-    updateAuthData(state, {login, password}) {
-        state.login = login;
-        state.password = password;
-    },
-    setAuthorization(state, authorized) {
-        state.isAuthorized = authorized;
-    }
-};
+  updateAuthData(state, { login, password }) {
+    state.login = login
+    state.password = password
+  },
+  setAuthorization(state, authorized) {
+    state.isAuthorized = authorized
+  },
+}
 
 export const actions = {
     updateAuthData(context, {login, password}) {
@@ -33,5 +33,12 @@ export const actions = {
                 reject(error);
             })
         })
-    }
-};
+        .then((data) => {
+          resolve(data)
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    })
+  },
+}

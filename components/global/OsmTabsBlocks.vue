@@ -67,8 +67,8 @@ export default {
   },
   props: {
     title: {
-      type: String,
-      default: '',
+      type: Boolean,
+      default: false,
     },
     sectionList: {
       type: Array,

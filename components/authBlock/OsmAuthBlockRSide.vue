@@ -55,29 +55,35 @@ export default {
     isLoading: false,
   }),
   methods: {
-    ...mapActions('localStorage', ['signIn', 'setAuthorization', 'updateAuthData']),
+    ...mapActions('localStorage', [
+      'signIn',
+      'setAuthorization',
+      'updateAuthData',
+    ]),
     onLogin() {
       this.isLoading = true
       this.signIn({
         login: this.login,
-        password: this.password
-      }).then(response => {
-        this.isLoading = false;
-        if (response.status === 'error') {
-          this.$toast.error(response.message);
-        } else {
-          this.setAuthorization(true);
-          this.updateAuthData({
-            login: this.login,
-            password: this.password
-          })
-          this.$router.push({name: 'index'});
-          this.$toast.success('Добро пожаловать');
-        }
-      }).catch(error => {
-        this.isLoading = false;
-        this.$toast.error(error);
-      });
+        password: this.password,
+      })
+        .then((response) => {
+          this.isLoading = false
+          if (response.status === 'error') {
+            this.$toast.error(response.message)
+          } else {
+            this.setAuthorization(true)
+            this.updateAuthData({
+              login: this.login,
+              password: this.password,
+            })
+            this.$router.push({ name: 'index' })
+            this.$toast.success('Добро пожаловать')
+          }
+        })
+        .catch((error) => {
+          this.isLoading = false
+          this.$toast.error(error)
+        })
     },
   },
 }

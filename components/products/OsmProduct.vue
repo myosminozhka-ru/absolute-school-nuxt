@@ -5,7 +5,7 @@
       :class="{ 'cards__item--l-side--full': !product.images.length }"
     >
       <osm-hn class="cards__item--title">{{ product.name }}</osm-hn>
-      
+
       <div class="cards__item--text">
         {{ product.description }}
       </div>
@@ -223,8 +223,8 @@ export default {
           this.$toast.success(`Товар "${offerId}" добавлен в корзину`)
         })
         .catch((error) => {
-          this.isLoading = false;
-          this.$toast.error(error);
+          this.isLoading = false
+          this.$toast.error(error)
         })
     },
   },

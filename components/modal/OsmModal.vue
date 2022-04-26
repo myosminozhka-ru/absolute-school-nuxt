@@ -106,7 +106,7 @@
   </div>
 </template>
 <script>
-import { mapActions } from 'vuex';
+import { mapActions } from 'vuex'
 export default {
   name: 'OsmModal',
   components: {
@@ -123,7 +123,7 @@ export default {
     },
   },
   data: () => ({
-    isLoading: false
+    isLoading: false,
   }),
   methods: {
     ...mapActions('orders', ['sendOrder']),
@@ -131,14 +131,16 @@ export default {
       this.$emit('onClose')
     },
     makeOrder() {
-      this.isLoading = true;
-      this.sendOrder().then(result => {
-        this.isLoading = false;
-        this.onClose();
-      }).catch(error => {
-        this.$toast.error(error);
-      })
-    }
+      this.isLoading = true
+      this.sendOrder()
+        .then((result) => {
+          this.isLoading = false
+          this.onClose()
+        })
+        .catch((error) => {
+          this.$toast.error(error)
+        })
+    },
   },
 }
 </script>
