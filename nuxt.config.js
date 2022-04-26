@@ -1,7 +1,7 @@
 export default {
   router: {
     base: '/absolute-school-nuxt/',
-    middleware: ['auth'],
+    middleware: ['auth', 'forward-set-cookie'],
   },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {

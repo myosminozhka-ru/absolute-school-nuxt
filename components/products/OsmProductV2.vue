@@ -256,7 +256,7 @@ export default {
         })
         .catch((error) => {
           this.isLoading = false
-          console.log(error)
+          this.$toast.error(error);
         })
     },
   },

@@ -1,5 +1,5 @@
 <template>
-  <div class="modal" :class="{ isOpened: isShow }">
+  <div class="modal" :class="{ isOpened: isShow, isLoading }">
     <div v-if="typeModal === 'arrange'" class="modal__in">
       <div class="modal__closer">
         <osm-button class-name="button--close" @click="onClose">
@@ -67,42 +67,46 @@
       </div>
       <div class="modal__title">Вы хотите купить все товары в корзине?</div>
       <div class="modal__buttons">
-        <osm-button class-name="button--no_btn">
-          <svg
-            width="165"
-            height="100"
-            viewBox="0 0 165 100"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M30.0898 2.1148C30.9504 0.8242 32.4796 0.147535 34.0135 0.378557L100.032 10.3215C100.506 10.3929 100.988 10.3785 101.457 10.279L145.078 1.02472C147.566 0.496917 149.909 2.3944 149.909 4.93763V46.6252C149.909 47.0322 149.971 47.4368 150.093 47.8251L164.717 94.3286C165.569 97.0376 163.405 99.7468 160.575 99.5152L57.2525 91.0616C56.7552 91.0209 56.2547 91.0736 55.7769 91.2169L29.7166 99.035C27.8565 99.5931 25.8643 98.7344 24.9927 96.9991L1.04418 49.3182C0.398678 48.033 0.49279 46.5002 1.29067 45.3037L30.0898 2.1148Z"
-              fill="#E49535"
-            />
-          </svg>
-          <span>Нет</span>
-        </osm-button>
-
-        <osm-button class-name="button--yes_btn">
-          <svg
-            width="160"
-            height="100"
-            viewBox="0 0 160 100"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M6.75954 4.49914C6.75954 2.10442 8.8495 0.246327 11.2277 0.526632L94.594 10.3524C95.0271 10.4034 95.4657 10.3833 95.8924 10.2928L139.578 1.02472C142.066 0.496917 144.408 2.3944 144.408 4.93763V46.6252C144.408 47.0322 144.471 47.4368 144.593 47.8251L159.115 94.0059C159.993 96.7983 157.673 99.5571 154.771 99.1709L50.9909 85.3562C50.5921 85.3031 50.1876 85.3105 49.791 85.3781L5.4195 92.9413C2.74292 93.3975 0.399215 91.1113 0.788775 88.4242L6.71816 47.5247C6.74571 47.3347 6.75954 47.1429 6.75954 46.9508V4.49914Z"
-              fill="#E49535"
-            />
-          </svg>
-          <span>Да</span>
-        </osm-button>
+        <div @click="onClose">
+          <osm-button class-name="button--no_btn">
+            <svg
+              width="165"
+              height="100"
+              viewBox="0 0 165 100"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M30.0898 2.1148C30.9504 0.8242 32.4796 0.147535 34.0135 0.378557L100.032 10.3215C100.506 10.3929 100.988 10.3785 101.457 10.279L145.078 1.02472C147.566 0.496917 149.909 2.3944 149.909 4.93763V46.6252C149.909 47.0322 149.971 47.4368 150.093 47.8251L164.717 94.3286C165.569 97.0376 163.405 99.7468 160.575 99.5152L57.2525 91.0616C56.7552 91.0209 56.2547 91.0736 55.7769 91.2169L29.7166 99.035C27.8565 99.5931 25.8643 98.7344 24.9927 96.9991L1.04418 49.3182C0.398678 48.033 0.49279 46.5002 1.29067 45.3037L30.0898 2.1148Z"
+                fill="#E49535"
+              />
+            </svg>
+            <span>Нет</span>
+          </osm-button>
+        </div>
+        <div @click="makeOrder">
+          <osm-button class-name="button--yes_btn">
+            <svg
+              width="160"
+              height="100"
+              viewBox="0 0 160 100"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M6.75954 4.49914C6.75954 2.10442 8.8495 0.246327 11.2277 0.526632L94.594 10.3524C95.0271 10.4034 95.4657 10.3833 95.8924 10.2928L139.578 1.02472C142.066 0.496917 144.408 2.3944 144.408 4.93763V46.6252C144.408 47.0322 144.471 47.4368 144.593 47.8251L159.115 94.0059C159.993 96.7983 157.673 99.5571 154.771 99.1709L50.9909 85.3562C50.5921 85.3031 50.1876 85.3105 49.791 85.3781L5.4195 92.9413C2.74292 93.3975 0.399215 91.1113 0.788775 88.4242L6.71816 47.5247C6.74571 47.3347 6.75954 47.1429 6.75954 46.9508V4.49914Z"
+                fill="#E49535"
+              />
+            </svg>
+            <span>Да</span>
+          </osm-button>
+        </div>
       </div>
     </div>
   </div>
 </template>
 <script>
+import { mapActions } from 'vuex';
 export default {
   name: 'OsmModal',
   components: {
@@ -118,10 +122,23 @@ export default {
       default: false,
     },
   },
+  data: () => ({
+    isLoading: false
+  }),
   methods: {
+    ...mapActions('orders', ['sendOrder']),
     onClose() {
       this.$emit('onClose')
     },
+    makeOrder() {
+      this.isLoading = true;
+      this.sendOrder().then(result => {
+        this.isLoading = false;
+        this.onClose();
+      }).catch(error => {
+        this.$toast.error(error);
+      })
+    }
   },
 }
 </script>
@@ -141,6 +158,12 @@ export default {
   &.isOpened {
     opacity: 1;
     visibility: visible;
+  }
+  &.isLoading {
+    pointer-events: none;
+  }
+  &.isLoading &__in {
+    opacity: 0.5;
   }
   &:after {
     content: '';

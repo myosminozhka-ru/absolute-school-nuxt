@@ -199,7 +199,6 @@ export default {
     }),
     activeOffer() {
       const activeOffer = this.cart.offers.filter(offer => +offer.id === +this.item.product_id);
-      console.log('activeOffer', this.cart.offers);
       return activeOffer[0];
     },
     activeColor() {
@@ -270,7 +269,6 @@ export default {
       });
     },
     updateOffer({ id, quantity, newOfferId }) {
-      console.log('asdasdasdasd', id, quantity, newOfferId)
       this.isLoading = true
       this.updateActiveOffer({
         id,

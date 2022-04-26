@@ -223,8 +223,8 @@ export default {
           this.$toast.success(`Товар "${offerId}" добавлен в корзину`)
         })
         .catch((error) => {
-          this.isLoading = false
-          console.log(error)
+          this.isLoading = false;
+          this.$toast.error(error);
         })
     },
   },

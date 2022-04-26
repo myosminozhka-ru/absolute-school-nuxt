@@ -14,6 +14,15 @@ export const actions = {
         context.commit('addOrders', response);
     });
   },
+  sendOrder() {
+    return new Promise((resolve, reject) => {
+      this.$axios.$post('basket.php', {
+        action: "order"
+      }).then(response => {
+        resolve(response);
+      });
+    })
+  }
 }
 
 export const getters = {}

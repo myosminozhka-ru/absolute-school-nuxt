@@ -7,6 +7,7 @@ export const state = () => ({
 export const actions = {
   loadProducts(context) {
     this.$axios.$get('catalog.php?action=list').then((response) => {
+      console.log(response);
       context.commit('addSection', { id: null, name: 'all' })
       context.commit('loadProducts', response)
     })
