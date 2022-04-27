@@ -41,7 +41,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .checkbox {
   .custom-checkbox {
     position: absolute;

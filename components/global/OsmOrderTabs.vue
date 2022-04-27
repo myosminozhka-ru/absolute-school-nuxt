@@ -88,7 +88,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .tabs_blocks {
   position: relative;
   z-index: 2;
