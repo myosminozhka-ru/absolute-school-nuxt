@@ -65,7 +65,7 @@ export default {
   ],
   toast: {
     position: 'bottom-right',
-    duration: 6000000,
+    duration: 6000,
     keepOnHover: true,
     theme: 'outlined',
     className: 'osm-toast',
