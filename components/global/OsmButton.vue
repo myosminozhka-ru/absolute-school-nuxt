@@ -207,7 +207,7 @@ export default {
     &:hover,
     &:active,
     &.isActive {
-      box-shadow: 0px vw(7) vw(24) rgba(230, 119, 31, 0.2);
+      box-shadow: 0px vw(7) vw(16) rgba(230, 119, 31, 0.2);
     }
   }
   &--order {
