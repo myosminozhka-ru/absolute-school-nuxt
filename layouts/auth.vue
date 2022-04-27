@@ -17,7 +17,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .wrapper {
   background: rgba(255, 249, 228, 1) url('~/assets/img/bg_site.png') 0;
   // &:before {
@@ -40,11 +40,12 @@ export default {
     height: 100%;
     padding: 0;
     position: relative;
+    padding: 0;
     &.isTablet {
-      padding: 22px 15px 50px 15px;
+      padding: 0;
     }
     &.isMobile {
-      padding: 22px 15px 50px 15px;
+      padding: 0;
     }
   }
 }
