@@ -12,7 +12,7 @@ export default {
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/main_icon.ico' }],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/absolute-school-nuxt/main_icon.ico' }],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
