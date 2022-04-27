@@ -212,7 +212,7 @@
       </div>
       <div class="menu_burger--items">
         <div class="menu_burger--menu">
-          <osm-button class-name="button--order" :link="{ name: 'index' }">
+          <osm-button class-name="button--order" :link="{ name: 'orders' }">
             <svg
               width="78"
               height="68"
@@ -252,7 +252,7 @@
             </svg>
             <span>Мои заказы</span>
           </osm-button>
-          <osm-button class-name="button--cart_min" :link="{ name: 'index' }">
+          <osm-button class-name="button--cart_min" :link="{ name: 'cart' }">
             <div class="icon">
               <svg
                 width="72"
