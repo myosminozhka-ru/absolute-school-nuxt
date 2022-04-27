@@ -1,8 +1,5 @@
 <template>
   <div class="cart__product" :class="{ isLoading }">
-    <pre>
-      {{ item }}
-    </pre>
     <div class="cart__product--img">
       <osm-button class-name="button--close">
         <div @click="removeProduct(item.basket_id)">
