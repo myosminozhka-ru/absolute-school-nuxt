@@ -29,6 +29,10 @@ export const actions = {
         })
     })
   },
+  signOut(context) {
+    context.commit('setAuthorization', false);
+    
+  }
 }
 
 export const getters = {}
