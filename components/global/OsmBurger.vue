@@ -291,7 +291,7 @@
                   fill-opacity="0.3"
                 />
               </svg>
-              <div v-if="cart.amount" class="cart_amount">
+              <div v-if="cart.items" class="cart_amount">
                 <svg
                   width="31"
                   height="38"
@@ -342,7 +342,7 @@
                     </filter>
                   </defs>
                 </svg>
-                <div class="amt">{{ cart.amount }}</div>
+                <div class="amt">{{ cart.items.length }}</div>
               </div>
             </div>
 
@@ -358,18 +358,21 @@
 </template>
 
 <script>
-import OsmButton from './OsmButton.vue'
+import { mapGetters } from 'vuex';
+import OsmButton from './OsmButton.vue';
 export default {
   name: 'OsmBurger',
   components: {
     OsmButton,
   },
   data: () => ({
-    cart: {
-      amount: 10,
-    },
     isBurgerOpened: false,
   }),
+  computed: {
+    ...mapGetters('cart', {
+      cart: 'getCartItems',
+    }),
+  },
   mounted() {
     document.addEventListener('click', () => {
       this.isBurgerOpened = false
