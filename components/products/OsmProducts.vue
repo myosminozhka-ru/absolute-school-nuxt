@@ -1,6 +1,6 @@
 <template>
   <div class="cards">
-    <template v-if="products.products.length">
+    <template v-if="getProductsList.length">
       <osm-product-v2
         v-for="product in getProductsList"
         :key="'n-' + product.id"

@@ -127,15 +127,19 @@ export default {
   }),
   methods: {
     ...mapActions('orders', ['sendOrder']),
+    ...mapActions('cart', ['loadCart']),
     onClose() {
       this.$emit('onClose')
     },
     makeOrder() {
       this.isLoading = true
       this.sendOrder()
-        .then((result) => {
+        .then((response) => {
           this.isLoading = false
-          this.onClose()
+          this.onClose();
+          this.loadCart();
+          this.$toast.success(`Заказ №${response.order} создан`)
+          this.$router.push({ name: 'orders' });
         })
         .catch((error) => {
           this.$toast.error(error)

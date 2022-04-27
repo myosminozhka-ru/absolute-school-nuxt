@@ -12,7 +12,7 @@
   </div>
 </template>
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'CartPage',
   components: {
@@ -28,12 +28,18 @@ export default {
       cart: 'getCartItems',
     }),
   },
+  created() {
+    this.loadCart();
+  },
   beforeMount() {
     if (!this.cart.items) {
       this.$router.push({ name: 'index' })
       this.$toast.info('Корзина пуста, но вы можете что-то туда добавить')
     }
   },
+  methods: {
+    ...mapActions('cart', ['loadCart']),
+  }
 }
 </script>
 <style lang="scss" scoped></style>

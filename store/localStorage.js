@@ -33,12 +33,5 @@ export const actions = {
                 reject(error);
             })
         })
-        .then((data) => {
-          resolve(data)
-        })
-        .catch((error) => {
-          reject(error)
-        })
-    })
-  },
+    },
 }

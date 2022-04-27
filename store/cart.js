@@ -19,6 +19,7 @@ export const actions = {
           quantity: '1',
         }, { withCredentials: true })
         .then((data) => {
+          console.log(data);
           context.commit('updateCart', data)
           resolve(data)
         })
@@ -38,7 +39,7 @@ export const actions = {
         .$post('basket.php', {
           action: 'delete',
           id: basketId,
-        }, { withCredentials: true })
+        })
         .then((data) => {
           context.commit('updateCart', data)
           resolve(data)
@@ -66,7 +67,6 @@ export const actions = {
     })
   },
   updateActiveOffer(context, { id, quantity, newOfferId }) {
-    console.log(id, quantity, newOfferId)
     return new Promise((resolve, reject) => {
       this.$axios
         .$post('basket.php', {

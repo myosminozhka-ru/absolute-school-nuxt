@@ -1,126 +1,49 @@
+import {Base64} from 'js-base64';
+
+
 export const state = () => ({
-  orders: [
-    {
-      id: '8',
-      status: 'Принят, ожидается оплата',
-      date: '25.04.2022',
-      basket: [],
-    },
-    {
-      id: '7',
-      status: 'Принят, ожидается оплата',
-      date: '25.04.2022',
-      basket: [],
-    },
-    {
-      id: '6',
-      status: 'Принят, ожидается оплата',
-      date: '25.04.2022',
-      basket: ['250'],
-    },
-    {
-      id: '5',
-      status: 'Принят, ожидается оплата',
-      date: '19.04.2022',
-      basket: ['11', '8'],
-    },
-    {
-      id: '4',
-      status: 'Принят, ожидается оплата',
-      date: '19.04.2022',
-      basket: ['4'],
-    },
-    {
-      id: '3',
-      status: 'Принят, ожидается оплата',
-      date: '19.04.2022',
-      basket: [],
-    },
-    {
-      id: '2',
-      status: 'Принят, ожидается оплата',
-      date: '19.04.2022',
-      basket: [],
-    },
-    {
-      id: '1',
-      status: 'Принят, ожидается оплата',
-      date: '08.04.2022',
-      basket: ['1'],
-    },
-  ],
-  basket: [
-    {
-      id: '250',
-      product_id: '24',
-      name: 'Тестовая Игрушка',
-      price: '1100.0000',
-      quantity: '4.0000',
-    },
-    {
-      id: '11',
-      product_id: '23',
-      name: 'Тестовая Игрушка',
-      price: '1100.0000',
-      quantity: '1.0000',
-    },
-    {
-      id: '8',
-      product_id: '22',
-      name: 'Тестовая футболка  Синий  M',
-      price: '1000.0000',
-      quantity: '2.0000',
-    },
-    {
-      id: '4',
-      product_id: '23',
-      name: 'Тестовая Игрушка',
-      price: '1100.0000',
-      quantity: '9.0000',
-    },
-  ],
-  products: [
-    {
-      id: '22',
-      name: 'Тестовая футболка  Синий  M',
-      picture: null,
-      description: 'Тестовая футболка  Синий  M описание',
-    },
-    {
-      id: '23',
-      name: 'Тестовая Игрушка',
-      picture: null,
-      description: 'Тестовая игрушка описание',
-    },
-    {
-      id: '24',
-      name: 'Тестовая Игрушка',
-      picture: null,
-      description: '',
-    },
-  ],
+  orders: [],
+  basket: [],
+  products: [],
 })
 
 export const mutations = {
-  addOrders(context, section) {
-    context.commit('addSection', section)
+  addOrders(state, data) {
+    if (data.orders) {
+      state.orders = data.orders;
+      state.basket = data.basket;
+      state.products = data.products;
+      console.log(state.orders);
+    }
   },
 }
 
 export const actions = {
-  async loadOrders(context) {
-    await this.$axios.$get('order.php?action=list').then((response) => {
-      context.commit('addOrders', response)
+  loadOrders({ state, commit, dispatch, rootState, rootGetters }) {
+    const base64EncodedLoginAndPassword = Base64.encode(`${rootState.localStorage.login}:${rootState.localStorage.password}`);
+    this.$axios.$get('order.php?action=list', {
+      headers: {
+        'Authorization': `Basic ${base64EncodedLoginAndPassword}`,
+      }
+    }).then((response) => {
+      commit('addOrders', response)
     })
   },
-  repeatOrder(context, orderId) {
+  repeatOrder({dispatch, rootState}, orderId) {
+    const base64EncodedLoginAndPassword = Base64.encode(`${rootState.localStorage.login}:${rootState.localStorage.password}`);
     return new Promise((resolve, reject) => {
       this.$axios
-        .$post('order.php', {
-          action: 'repeat',
-          id: orderId,
-        })
-        .then((data) => {
+      .$post('order.php', {
+        action: 'repeat',
+        id: orderId,
+      }, {
+        headers: {
+          'Authorization': `Basic ${base64EncodedLoginAndPassword}`,
+        }
+      })
+      .then((data) => {
+          console.log('repeatOrder', orderId, data)
+          dispatch('loadOrders');
           resolve(data)
         })
         .catch((error) => {
@@ -128,59 +51,69 @@ export const actions = {
         })
     })
   },
-  sendOrder(context) {
+  sendOrder({ rootState }) {
+    const base64EncodedLoginAndPassword = Base64.encode(`${rootState.localStorage.login}:${rootState.localStorage.password}`);
     return new Promise((resolve, reject) => {
       this.$axios
-        .$post('basket.php', {
-          action: 'order',
-        })
-        .then((response) => {
-          resolve(response)
-        })
+      .$post('basket.php', {
+        action: 'order',
+      }, {
+        headers: {
+          'Authorization': `Basic ${base64EncodedLoginAndPassword}`,
+        }
+      })
+      .then((response) => {
+        resolve(response)
+      })
     })
   },
 }
 
 export const getters = {
   getOrders: (state) => {
-    let orders = [...state.orders.filter((order) => order.basket.length)]
-
-    orders = orders.map((order) => {
+    let orders = state.orders.filter((order) => order.basket.length).map((order) => {
       const newOrder = { ...order }
-      newOrder.basket.forEach((item, index) => {
-        const findBasket = state.basket.find((basket) => +basket.id === +item)
-        if (!findBasket) {
-          newOrder.basket.splice(index)
-        }
-      })
+      newOrder.basket.map((item, index) => state.basket.find((basket) => +basket.id === +item))
 
       return newOrder
     })
 
     orders = orders.filter((order) => order.basket.length)
-
+    
     return orders
   },
-  getProducts: (state) => (arrBasketId) => {
-    let products = []
+  getProducts: (state, getters, rootState) => (arrBasketId) => {
+    let products = [];
+    
 
     arrBasketId.forEach((product) => {
       const findBasket = state.basket.find(
         (basketItem) => +basketItem.id === +product
       )
-
       if (findBasket) {
         const findProduct = state.products.find(
           (productItem) => +productItem.id === +findBasket.product_id
         )
-
+        console.log('findProduct', rootState.products.products.offers.filter(offer => +offer.id === +findProduct.id).map(offer => {
+          return rootState.products.products.products.filter(product => product.id === offer.product).map(product => {
+            return product.images
+          });
+        }), findProduct.id);
         if (findProduct) {
+          let image = '';
+          rootState.products.products.offers.filter(offer => +offer.id === +findProduct.id).map(offer => {
+            return rootState.products.products.products.filter(product => product.id === offer.product).map(product => {
+              console.log('product', product)
+              image = product.images[0];
+              return product.images
+            });
+          });
           products = [
             ...products,
             {
               basketId: +findBasket.id,
               productId: +findProduct.id,
-              img: findProduct.picture,
+              img: image,
               name: findProduct.name,
               description: findProduct.description,
               price: +findBasket.price,

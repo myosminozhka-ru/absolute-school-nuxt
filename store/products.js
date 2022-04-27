@@ -41,7 +41,7 @@ export const getters = {
       filteredProducts = state.products.products.filter((product) =>
         `${product.name}${product.description}`
           .toLocaleLowerCase()
-          .includes(state.searchText)
+          .includes(state.searchText.toLocaleLowerCase())
       )
     } else {
       filteredProducts = state.products.products.filter((product) => {
@@ -49,7 +49,7 @@ export const getters = {
           product.section === state.section.id &&
           `${product.name}${product.description}`
             .toLocaleLowerCase()
-            .includes(state.searchText)
+            .includes(state.searchText.toLocaleLowerCase())
         ) {
           return product
         } else {
@@ -61,7 +61,6 @@ export const getters = {
       ...state.products,
       products: filteredProducts,
     }
-    console.log('getFilteredProducts', data)
     return data
   },
 

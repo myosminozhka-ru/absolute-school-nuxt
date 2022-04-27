@@ -14,7 +14,7 @@
         class="orders__block--card"
       >
         <div class="orders__block--img">
-          <img :src="product.img" alt="" />
+          <img :src="`https://one.kutuzovv.ru/${product.img}`" alt="" />
         </div>
         <div class="orders__block--item">
           <div class="orders__block--text">
@@ -42,7 +42,7 @@
       <div class="orders__block--price">
         <span>Итого:</span>
         <osm-price type="price">{{ resultPrice }}</osm-price>
-        <osm-button @click="onRepeatOrder">
+        <osm-button @click="onRepeatOrder(order.id)">
           <span>Повторить</span>
         </osm-button>
         <div
@@ -97,11 +97,25 @@ export default {
     ...mapActions('orders', {
       repeatOrder: 'repeatOrder',
     }),
+    ...mapActions('cart', {
+      repeatOrder: 'loadCart',
+    }),
     onToggleIsMobileShowMore() {
       this.isMobileShowMore = !this.isMobileShowMore
     },
     onRepeatOrder(orderId) {
-      this.repeatOrder(orderId)
+      console.log('onRepeatOrder', orderId)
+      this.repeatOrder(orderId).then(response => {
+        console.log(response);
+        // if (response.status) {
+        //   this.$toast.error(response.message);
+        // } else if (response.items) {
+        //   this.loadCart();
+        //   this.$toast.success('Добавили в корзину этот заказ');
+        // } else {
+        //   this.$toast.info(response);
+        // }
+      })
       // TODO: Тут действия при нажатии на кнопку повторить заказ
     },
   },

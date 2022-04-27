@@ -199,19 +199,20 @@ export default {
 </script>
 <style lang="scss">
 .wrapper {
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    pointer-events: none;
-    height: 100%;
-    background: rgba(255, 249, 228, 1) url('~/assets/img/bg_site.png') 0;
-    z-index: 1;
-  }
+  background: rgba(255, 249, 228, 1) url('~/assets/img/bg_site.png') 0;
+  // &:before {
+  //   content: '';
+  //   position: absolute;
+  //   top: 0;
+  //   bottom: 0;
+  //   left: 0;
+  //   right: 0;
+  //   width: 100%;
+  //   pointer-events: none;
+  //   height: 100%;
+  //   background: rgba(255, 249, 228, 1) url('~/assets/img/bg_site.png') 0;
+  //   z-index: 1;
+  // }
   &__in {
     overflow-x: hidden;
     display: flex;
