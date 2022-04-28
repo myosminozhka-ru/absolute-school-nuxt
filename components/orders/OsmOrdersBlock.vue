@@ -7,6 +7,7 @@
       <div class="orders__block--date">От: {{ order.date }}</div>
       <div class="orders__block--status">{{ order.status }}</div>
     </div>
+    {{productsList}}
     <div class="orders__block--info" :class="{ isActive: isMobileShowMore }">
       <div
         v-for="product in productsList"
