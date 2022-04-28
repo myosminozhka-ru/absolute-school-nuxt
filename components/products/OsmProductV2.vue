@@ -72,7 +72,7 @@
             />
           </svg>
           <span>Добавить</span>
-        <div v-if="true" class="cart__product--plus-warn product_main">
+        <div v-if="false" class="cart__product--plus-warn product_main">
           На вашем балансе недостаточно средств
         </div>
         </osm-button>
