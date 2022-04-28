@@ -55,7 +55,7 @@ export default {
 
 <style lang="scss">
 .wrapper {
-  background: rgba(255, 249, 228, 1) url('~/assets/img/bg_site.png') 0;
+  background: rgba(255, 249, 228, 1) url('~/assets/img/bg_site.svg') 0;
   // &:before {
   //   content: '';
   //   position: absolute;
