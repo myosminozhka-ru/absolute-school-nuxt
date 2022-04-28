@@ -1,7 +1,7 @@
 <template>
   <div>
     <template v-if="getOrders">
-      <osm-order-tabs :title="true" :section-list="tabs" :selected="tabs[0]"  />
+      <osm-order-tabs :title="true" :section-list="tabs" :selected="section"  />
       <osm-orders />
     </template>
     <template v-else>
@@ -21,16 +21,9 @@ export default {
   computed: {
     ...mapGetters('orders', {
       getOrders: 'getOrders',
+      section: 'getSection',
+      tabs: 'getTabs'
     }),
-    tabs() {
-      const tabs = [];
-      this.getOrders.map(order => {
-        if (tabs.includes(order.status)) return false;
-        tabs.push(order.status);
-        return order;
-      });
-      return tabs;
-    }
   },
   mounted() {
     this.loadOrders();

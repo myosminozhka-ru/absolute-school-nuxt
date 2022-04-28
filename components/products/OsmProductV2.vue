@@ -251,8 +251,12 @@ export default {
       this.isLoading = true
       this.addProductToCart(offerId)
         .then((response) => {
-          this.isLoading = false
-          this.$toast.success(`Товар "${offerId}" добавлен в корзину`)
+          this.isLoading = false;
+          if (response.items) {
+            this.$toast.success(`Товар "${offerId}" добавлен в корзину`)
+          } else {
+            this.$toast.info(response);
+          }
         })
         .catch((error) => {
           this.isLoading = false

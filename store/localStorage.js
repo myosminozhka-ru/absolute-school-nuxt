@@ -22,25 +22,37 @@ export const mutations = {
 }
 
 export const actions = {
-    updateAuthData(context, {login, password, user}) {
-        context.commit('updateAuthData', {login, password, user});
-    },
-    setAuthorization(context, authorized) {
-        context.commit('setAuthorization', authorized);
-    },
-    signIn(context, {login, password}) {
-        return new Promise((resolve, reject) => {
-            this.$axios.$post('user.php', {
-                action: "login",
-                login,
-                password
-            }, { withCredentials: true }).then(data => {
-                resolve(data);
-            }).catch(error => {
-                reject(error);
-            })
-        })
-    },
+  updateAuthData(context, {login, password, user}) {
+      context.commit('updateAuthData', {login, password, user});
+  },
+  setAuthorization(context, authorized) {
+      context.commit('setAuthorization', authorized);
+  },
+  signIn(context, {login, password}) {
+      return new Promise((resolve, reject) => {
+          this.$axios.$post('user.php', {
+              action: "login",
+              login,
+              password
+          }, { withCredentials: true }).then(data => {
+              resolve(data);
+          }).catch(error => {
+              reject(error);
+          })
+      })
+  },
+  signOut(context) {
+    context.commit('setAuthorization', false);
+    context.commit('updateAuthData', {
+      login: '',
+      password: '',
+      user: {
+        name: '',
+        lastname: '',
+        balance: null
+      }
+    });
+  }
 }
 export const getters = {
   getUser: (state) => {

@@ -157,7 +157,7 @@
       <span>Корзина</span>
     </osm-button>
     <osm-header-info />
-    <osm-button :link="{ name: 'auth' }">
+    <osm-button @click="logout">
       <span>Выход</span>
     </osm-button>
     <osm-burger :is-burger-opened.sync="isBurgerOpened" />
@@ -165,7 +165,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'OsmHeader',
   data: () => ({
@@ -181,6 +181,15 @@ export default {
       this.isBurgerOpened = false
     })
   },
+  methods: {
+    ...mapActions('localStorage', {
+      signOut: 'signOut'
+    }),
+    logout() {
+      this.signOut();
+      this.$router.push({name: 'auth'})
+    }
+  }
 }
 </script>
 

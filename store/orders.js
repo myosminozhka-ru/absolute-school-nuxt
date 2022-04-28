@@ -5,6 +5,7 @@ export const state = () => ({
   orders: [],
   basket: [],
   products: [],
+  section: 'all',
 })
 
 export const mutations = {
@@ -13,8 +14,10 @@ export const mutations = {
       state.orders = data.orders;
       state.basket = data.basket;
       state.products = data.products;
-      console.log(state.orders);
     }
+  },
+  addSection(state, section) {
+    state.section = section
   },
 }
 
@@ -67,6 +70,9 @@ export const actions = {
       })
     })
   },
+  addSection(context, section) {
+    context.commit('addSection', section)
+  },
 }
 
 export const getters = {
@@ -78,8 +84,13 @@ export const getters = {
       return newOrder
     })
 
-    orders = orders.filter((order) => order.basket.length)
     
+    if (state.section === 'all') {
+      orders = orders.filter((order) => order.basket.length)
+    } else {
+      orders = orders.filter((order) => order.basket.length && order.status === state.section)
+    }
+    console.log(orders);
     return orders
   },
   getProducts: (state, getters, rootState) => (arrBasketId) => {
@@ -126,4 +137,16 @@ export const getters = {
 
     return products
   },
+  getSection(state) {
+    return state.section
+  },
+  getTabs(state) {
+    const tabs = [];
+    state.orders.map(order => {
+      if (tabs.includes(order.status)) return false;
+      tabs.push(order.status);
+      return order;
+    });
+    return tabs;
+  }
 }
