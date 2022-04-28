@@ -7,7 +7,7 @@
   >
     <div class="auth-block__in">
       <div class="auth-block__r-side--title">Авторизация</div>
-      <form action="" class="auth-block__form">
+      <form action="" class="auth-block__form" @submit.prevent="onLogin">
         <osm-input
           :value="login"
           text="Введите логин"
@@ -19,7 +19,7 @@
           text="Введите пароль"
           @update:value="password = $event"
         ></osm-input>
-        <osm-button class-name="button--back" @click="onLogin">
+        <osm-button class-name="button--back" type="submit">
           <svg
             width="311"
             height="100"
