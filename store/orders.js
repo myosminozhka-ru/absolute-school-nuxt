@@ -134,7 +134,7 @@ export const getters = {
         }
       }
     })
-
+    console.log(products, arrBasketId);
     return products
   },
   getSection(state) {

@@ -128,6 +128,7 @@ export default {
   methods: {
     ...mapActions('orders', ['sendOrder']),
     ...mapActions('cart', ['loadCart']),
+    ...mapActions('localStorage', ['updateBalance']),
     onClose() {
       this.$emit('onClose')
     },
@@ -140,6 +141,9 @@ export default {
           this.loadCart();
           this.$toast.success(`Заказ №${response.order} создан`)
           this.$router.push({ name: 'orders' });
+          if (response.balance) {
+            this.updateBalance(response.balance);
+          }
         })
         .catch((error) => {
           this.$toast.error(error)

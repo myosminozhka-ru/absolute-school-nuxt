@@ -19,6 +19,9 @@ export const mutations = {
   setAuthorization(state, authorized) {
     state.isAuthorized = authorized
   },
+  setBalance(state, balance) {
+    state.user.balance = balance
+  },
 }
 
 export const actions = {
@@ -52,6 +55,9 @@ export const actions = {
         balance: null
       }
     });
+  },
+  updateBalance(context, balance) {
+    context.commit('setBalance', balance);
   }
 }
 export const getters = {

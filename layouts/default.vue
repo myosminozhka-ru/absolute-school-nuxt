@@ -33,17 +33,17 @@ export default {
     this.loadProducts();
     this.loadCart();
     this.loadOrders();
-    setTimeout(() => {
-      this.$toast.info(
-        'Привет, это информационное оповещение, оно не имеет смысла, мы просто тестируем'
-      )
-    }, 1000)
-    setTimeout(() => {
-      this.$toast.success('А это сообщение об успехе')
-    }, 1500)
-    setTimeout(() => {
-      this.$toast.error('А такое будете получать когда возникнет ошибка')
-    }, 2000)
+    // setTimeout(() => {
+    //   this.$toast.info(
+    //     'Привет, это информационное оповещение, оно не имеет смысла, мы просто тестируем'
+    //   )
+    // }, 1000)
+    // setTimeout(() => {
+    //   this.$toast.success('А это сообщение об успехе')
+    // }, 1500)
+    // setTimeout(() => {
+    //   this.$toast.error('А такое будете получать когда возникнет ошибка')
+    // }, 2000)
   },
   methods: {
     ...mapActions('products', ['loadProducts']),
