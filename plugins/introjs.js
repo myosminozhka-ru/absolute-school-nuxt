@@ -6,9 +6,12 @@ const intro = introJs().setOptions({
     showProgress: true,
     nextLabel: "Далее",
     prevLabel: "Назад",
-    doneLabel: "Закрыть"
+    doneLabel: "Закрыть",
+    // showStepNumbers: true
 });
 
-export default ({ app }, inject) => {
+
+
+export default ({ app, store }, inject) => {
     inject('intro', Vue.observable(intro))
 }
