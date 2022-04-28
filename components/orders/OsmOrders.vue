@@ -6,7 +6,7 @@
         :key="order.id"
         :order="order"
       />
-      <div class="orders__more">
+      <div v-if="false" class="orders__more">
         <osm-button class-name="button--more" @click="onLoadMore">
           <svg
             width="261"
@@ -100,7 +100,7 @@ export default {
       inset 0px -16px 29px rgba(151, 113, 65, 0.2),
       inset 0px 10px 20px rgba(255, 255, 255, 0.15);
     border-radius: vw(30);
-    padding: vw(37) vw(69) vw(16) vw(44);
+    padding: vw(37) vw(69) vw(40) vw(44);
     display: flex;
     justify-content: space-between;
     margin-bottom: vw(40);
@@ -244,6 +244,7 @@ export default {
     }
     &--item {
       display: flex;
+      width: 100%;
       align-items: center;
       justify-content: space-between;
     }
@@ -272,6 +273,7 @@ export default {
       padding: 20px;
       border-radius: 20px;
       flex-wrap: wrap;
+      margin-bottom: 20px;
       &--l-side {
         max-width: 50%;
         order: 1;
@@ -328,7 +330,7 @@ export default {
       }
       &--status {
         font-size: 14px;
-        padding: 10px 20px;
+        padding: 10px 8px;
       }
       &--card {
         margin-bottom: 38px;
@@ -393,6 +395,10 @@ export default {
           display: block;
           margin-top: 20px;
           margin-bottom: 20px;
+          .product_amount {
+            font-size: 14px;
+            padding: 5px 20px;
+          }
         }
       }
       &--more {
@@ -408,7 +414,7 @@ export default {
         cursor: pointer;
         width: max-content;
         margin-left: auto;
-        margin-top: 50px;
+        margin-top: 55px;
         &:before {
           content: '';
           transition: all 0.3s ease-out;
@@ -430,18 +436,6 @@ export default {
     }
     &__more {
       margin-top: 60px;
-    }
-  }
-}
-.isMobile {
-  .orders {
-    &__block {
-      &--more {
-        margin-top: 40px;
-        @media all and (max-width: 350px) {
-          margin-top: 72px;
-        }
-      }
     }
   }
 }

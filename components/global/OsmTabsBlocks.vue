@@ -26,6 +26,7 @@
       <osm-hn v-if="title">Мои заказы:</osm-hn>
       <form v-else action="">
         <osm-input
+          class-name="input--white"
           :value="searchText"
           text="Введите что нужно найти"
           @update:value="addSearchText($event)"

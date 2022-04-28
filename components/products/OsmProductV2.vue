@@ -286,7 +286,7 @@ export default {
 }
 </style>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .cards {
   &__item {
     background: #f7dd85;
@@ -295,7 +295,7 @@ export default {
       inset 0px 10px 20px rgba(255, 255, 255, 0.15);
     border-radius: vw(50);
     margin-bottom: vw(100);
-    padding: vw(64) vw(160) vw(56) vw(104);
+    padding: vw(64) vw(160) vw(56) vw(160);
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -350,13 +350,23 @@ export default {
           right: -100%;
         }
     }
+    &--more {
+      margin-top: vw(100);
+      display: flex;
+      justify-content: center;
+      > div {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
     &--r-side {
       width: vw(580);
       .glide {
         position: relative;
         &__track {
+          overflow: hidden;
           background: #ffffff;
-          padding: vw(85) 0;
+          padding: vw(10) 0;
           width: 100%;
           border-radius: vw(50);
           filter: drop-shadow(0px 10px 30px rgba(0, 0, 0, 0.1));
@@ -375,7 +385,6 @@ export default {
             background: #ffffff;
             cursor: pointer;
             border-radius: vw(20);
-            filter: drop-shadow(0px 5px 30px rgba(0, 0, 0, 0.25));
             opacity: 0.7;
             transition: all 0.3s ease-out;
             margin-left: vw(9);
@@ -389,6 +398,7 @@ export default {
             }
             &.glide__bullet--active {
               opacity: 1;
+              filter: drop-shadow(0px 5px 30px rgba(0, 0, 0, 0.25));
             }
           }
         }
@@ -490,6 +500,38 @@ export default {
       &--l-side {
         max-width: 100%;
       }
+      &--more {        
+        display: block;
+        font-family: 'Gilroy';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        text-align: right;
+        color: #686868;
+        position: relative;
+        padding-right: 29px;
+        cursor: pointer;
+        width: max-content;
+        margin-left: auto;
+        margin-top: 55px;
+        &:before {
+          content: '';
+          transition: all 0.3s ease-out;
+          position: absolute;
+          width: 19px;
+          height: 10px;
+          right: 0;
+          top: 50%;
+          margin-top: -5px;
+          background: url("data:image/svg+xml,%3Csvg width='19' height='11' viewBox='0 0 19 11' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg filter='url(%23filter0_d_227_8913)'%3E%3Cpath d='M2 0L10 4L17 0L19 2L9.5 9L0 2L2 0Z' fill='%23E49535'/%3E%3C/g%3E%3Cdefs%3E%3Cfilter id='filter0_d_227_8913' x='0' y='0' width='19' height='11' filterUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3E%3CfeFlood flood-opacity='0' result='BackgroundImageFix'/%3E%3CfeColorMatrix in='SourceAlpha' type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0' result='hardAlpha'/%3E%3CfeOffset dy='2'/%3E%3CfeComposite in2='hardAlpha' operator='out'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.678431 0 0 0 0 0.439216 0 0 0 0 0.14902 0 0 0 1 0'/%3E%3CfeBlend mode='normal' in2='BackgroundImageFix' result='effect1_dropShadow_227_8913'/%3E%3CfeBlend mode='normal' in='SourceGraphic' in2='effect1_dropShadow_227_8913' result='shape'/%3E%3C/filter%3E%3C/defs%3E%3C/svg%3E%0A")
+            50% / 19px no-repeat;
+        }
+        &.isActive {
+          &:before {
+            transform: rotate(180deg);
+          }
+        }
+      }
       &--title {
         padding-left: 15px;
         padding-right: 15px;
@@ -541,7 +583,8 @@ export default {
         overflow-x: scroll;
         margin-bottom: 20px;
         padding-top: 2px;
-        width: calc(100% + 20px);
+        margin-left: -20px;
+        width: calc(100% + 40px);
       }
       &--size-item {
         overflow: hidden;
@@ -550,12 +593,13 @@ export default {
         padding-top: 2px;
       }
       &--colors {
-        margin-bottom: 5px;
+        margin-bottom: 10px;
         width: max-content;
         flex-wrap: nowrap;
+        padding-left: 20px;
       }
       &--size {
-        margin-bottom: 5px;
+        margin-bottom: 15px;
         width: max-content;
         flex-wrap: nowrap;
       }

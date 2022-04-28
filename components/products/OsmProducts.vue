@@ -8,7 +8,7 @@
       />
 
       <!-- <osm-product v-for="product in products.products" :key="product.id" :product="product" /> -->
-      <div class="cards__more">
+      <div v-if="false" class="cards__more">
         <div class="cards__more-in" @click="loadMoreProducts">
           <osm-button class-name="button--more">
             <svg
