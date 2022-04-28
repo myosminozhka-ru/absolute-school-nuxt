@@ -1,5 +1,5 @@
 <template>
-  <div class="menu_burger">
+  <div v-if="$device.isMobile || $device.isTablet" class="menu_burger">
     <div @click.stop="toggleBurger">
       <osm-button class-name="button--burger">
         <svg
@@ -125,7 +125,7 @@
 
     <div class="menu_burger--body" @click.stop>
       <div class="menu_burger--item">
-        <osm-button class-name="button--help">
+        <osm-button class-name="button--help" @click="startIntro">
           <svg
             width="35"
             height="31"
@@ -212,7 +212,7 @@
       </div>
       <div class="menu_burger--items">
         <div class="menu_burger--menu">
-          <osm-button class-name="button--order" :link="{ name: 'orders' }">
+          <osm-button class-name="button--order" :link="{ name: 'orders' }" data-intro="<div class='tour boy'><div class='tour__l'></div><div class='tour__r'><div class='tour__number'>01</div><div class='tour__title'>Ваши заказы</div><div class='tour__text'>Краткое пояснение по поводу заказов. Тут  вы можете посмотреть все свои заказы.</div></div></div>">
             <svg
               width="78"
               height="68"
@@ -252,7 +252,7 @@
             </svg>
             <span>Мои заказы</span>
           </osm-button>
-          <osm-button class-name="button--cart_min" :link="{ name: 'cart' }">
+          <osm-button class-name="button--cart_min" :link="{ name: 'cart' }" data-intro="<div class='tour boy'><div class='tour__l'></div><div class='tour__r'><div class='tour__number'>02</div><div class='tour__title'>Корзина</div><div class='tour__text'>Тут можете посмотреть что находится в вашей корзине и взаимодействовать с товарами.</div></div></div>" @click="logout">
             <div class="icon">
               <svg
                 width="72"
@@ -349,7 +349,7 @@
             <span>Корзина</span>
           </osm-button>
         </div>
-        <osm-button>
+        <osm-button data-intro="<div class='tour boy'><div class='tour__l'></div><div class='tour__r'><div class='tour__number'>04</div><div class='tour__title'>Выход</div><div class='tour__text'>Выход, для завершения покупок</div></div></div>">
           <span>Выход</span>
         </osm-button>
       </div>
@@ -358,7 +358,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import OsmButton from './OsmButton.vue';
 export default {
   name: 'OsmBurger',
@@ -374,11 +374,18 @@ export default {
     }),
   },
   mounted() {
-    document.addEventListener('click', () => {
-      this.isBurgerOpened = false
+    document.addEventListener('click', (event) => {
+      console.log(event.target);
+      if (!event.target.closest('.introjs-tooltipReferenceLayer')) {
+        this.isBurgerOpened = false
+      }
     })
+    
   },
   methods: {
+    ...mapActions('localStorage', {
+      signOut: 'signOut'
+    }),
     toggleBurger() {
       this.isBurgerOpened = !this.isBurgerOpened
       this.$emit('update:isBurgerOpened', this.isBurgerOpened)
@@ -387,6 +394,14 @@ export default {
       this.isBurgerOpened = false
       this.$emit('update:isBurgerOpened', this.isBurgerOpened)
     },
+    logout() {
+      this.signOut();
+      this.$router.push({name: 'auth'})
+    },
+    startIntro() {
+      // this.closeBurger();
+      this.$intro.start();
+    }
   },
 }
 </script>

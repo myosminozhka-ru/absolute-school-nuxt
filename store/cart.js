@@ -19,7 +19,6 @@ export const actions = {
           quantity: '1',
         }, { withCredentials: true })
         .then((data) => {
-          console.log(data);
           context.commit('updateCart', data)
           resolve(data)
         })
@@ -39,7 +38,7 @@ export const actions = {
         .$post('basket.php', {
           action: 'delete',
           id: basketId,
-        })
+        }, { withCredentials: true })
         .then((data) => {
           context.commit('updateCart', data)
           resolve(data)
