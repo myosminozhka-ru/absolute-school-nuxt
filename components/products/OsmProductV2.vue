@@ -370,6 +370,13 @@ export default {
             transition: all 0.3s ease-out;
             margin-left: vw(9);
             margin-right: vw(9);
+            height: 130px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            img { 
+              max-height: 100%;
+            }
             &.glide__bullet--active {
               opacity: 1;
             }
