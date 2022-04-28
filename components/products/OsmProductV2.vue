@@ -86,7 +86,7 @@
               :key="key"
               class="glide__slide"
             >
-              <img :src="`https://viessmann-otoplenie.ru/${image}`" alt="" />
+              <img :src="`https://one.kutuzovv.ru/${image}`" alt="" />
             </li>
           </ul>
         </div>
@@ -100,7 +100,7 @@
             :key="key"
             :data-glide-dir="`=${key}`"
           >
-            <img :src="`https://viessmann-otoplenie.ru/${image}`" alt="" />
+            <img :src="`https://one.kutuzovv.ru/${image}`" alt="" />
           </div>
         </div>
         <div
