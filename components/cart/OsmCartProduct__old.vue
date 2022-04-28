@@ -138,7 +138,8 @@
         <osm-price type="prod_amount">{{ product.quantity }}шт</osm-price>
         <button class="cart__product--plus" @click="addProduct">
           <span>+</span>
-          <div v-if="isPlusWarn" class="cart__product--plus-warn">
+          {{ user.balance }} {{ cart.total }}
+          <div v-if="user.balance >= cart.total" class="cart__product--plus-warn">
             На вашем балансе недостаточно средств
           </div>
         </button>
@@ -150,7 +151,7 @@
   </div>
 </template>
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   name: 'OsmCartProduct',
@@ -170,6 +171,12 @@ export default {
     isPlusWarn: false,
   }),
   computed: {
+    ...mapGetters('localStorage', {
+      user: 'getUser'
+    }),
+    ...mapGetters('cart', {
+      cart: 'getCartItems'
+    }),
     selectedColor() {
       return this.colors.find((color) => color.select === true)
     },

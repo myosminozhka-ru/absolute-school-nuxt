@@ -158,7 +158,7 @@
           "
         >
           <span>+</span>
-          <div v-if="isPlusWarn" class="cart__product--plus-warn">
+          <div v-if="user.balance < cart.total" class="cart__product--plus-warn">
             На вашем балансе недостаточно средств
           </div>
         </button>
@@ -171,7 +171,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'OsmCartProduct',
   components: {
@@ -193,6 +193,9 @@ export default {
   computed: {
     ...mapGetters('cart', {
       cart: 'getCartItems',
+    }),
+    ...mapGetters('localStorage', {
+      user: 'getUser'
     }),
     ...mapGetters('products', {
       products: 'getProducts',
