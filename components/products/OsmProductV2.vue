@@ -37,9 +37,8 @@
           />
         </div>
       </div>
-
       <div class="cards__item--buttons">
-        <osm-price>{{ price }}</osm-price>
+        <osm-price>{{ Number(price).toLocaleString() }}</osm-price>
 
         <osm-button
           class-name="button--cart"
@@ -73,12 +72,15 @@
             />
           </svg>
           <span>Добавить</span>
+        <div v-if="true" class="cart__product--plus-warn product_main">
+          На вашем балансе недостаточно средств
+        </div>
         </osm-button>
       </div>
     </div>
     <!-- /.cards__item--l-side -->
     <div v-if="product.images.length" class="cards__item--r-side">
-      <div ref="cards__slider" class="glide cards__slider--js">
+      <div :ref="product.images.length > 1 ? 'cards__slider' : ''" class="glide cards__slider--js">
         <div class="glide__track" data-glide-el="track">
           <ul class="glide__slides">
             <li
@@ -340,6 +342,14 @@ export default {
         margin-right: vw(44);
       }
     }
+    &--buttons {
+        position: relative;
+        .product_main {
+          top: unset;
+          left: unset;
+          right: -100%;
+        }
+    }
     &--r-side {
       width: vw(580);
       .glide {
@@ -394,7 +404,7 @@ export default {
           margin-top: vw(-93);
           div {
             &:nth-child(1) {
-              div {
+              button {
                 left: vw(-30);
                 position: relative;
                 transform: rotate(191deg);

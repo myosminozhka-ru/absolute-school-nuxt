@@ -138,7 +138,6 @@
         <osm-price type="prod_amount">{{ product.quantity }}шт</osm-price>
         <button class="cart__product--plus" @click="addProduct">
           <span>+</span>
-          {{ user.balance }} {{ cart.total }}
           <div v-if="user.balance >= cart.total" class="cart__product--plus-warn">
             На вашем балансе недостаточно средств
           </div>
@@ -146,7 +145,7 @@
       </div>
     </div>
     <div class="cart__product--price">
-      <osm-price>{{ product.price }}</osm-price>
+      <osm-price>{{ Number(product.price).toLocaleString() }}</osm-price>
     </div>
   </div>
 </template>

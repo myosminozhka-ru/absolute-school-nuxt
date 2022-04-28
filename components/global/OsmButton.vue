@@ -371,6 +371,7 @@ export default {
     text-decoration: none;
     padding: vw(45) vw(10) vw(45) vw(62);
     width: vw(283);
+    text-align: left;
     position: relative;
     svg {
       transition: all 0.3s ease-out;

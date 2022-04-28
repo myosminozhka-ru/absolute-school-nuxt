@@ -8,13 +8,13 @@
       <div class="cart__total--block">
         <div class="cart__total--title">Товары</div>
         <div class="cart__total--text">
-          <osm-price>{{ cart.price }}</osm-price>
+          <osm-price>{{ Number(cart.price).toLocaleString() }}</osm-price>
         </div>
       </div>
       <div class="cart__total--totals">
         <div class="cart__total--t-title">Итого</div>
         <div class="cart__total--t-text">
-          <osm-price>{{ cart.price }}</osm-price>
+          <osm-price>{{ Number(cart.price).toLocaleString() }}</osm-price>
         </div>
       </div>
       <osm-button v-if="user.balance >= cart.price" class-name="button--checkout" @click="$emit('onArrange')">
