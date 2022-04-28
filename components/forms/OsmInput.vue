@@ -4,6 +4,7 @@
       :type="type"
       :placeholder="text"
       :value="value"
+      required
       @input="$emit('update:value', $event.target.value)"
     />
   </div>
