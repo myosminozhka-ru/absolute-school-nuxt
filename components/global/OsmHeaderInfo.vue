@@ -9,7 +9,7 @@
     <div class="header__info--text">
       <div class="header__info--name">{{ user.lastname }} {{ user.name }}</div>
       <div class="header__info--price">
-        <span>Баланс:</span>
+        <span>Баланс: </span>
         <osm-price> {{ user.balance === null ? 0 : user.balance }} </osm-price>
       </div>
     </div>

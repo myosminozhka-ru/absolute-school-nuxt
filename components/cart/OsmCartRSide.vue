@@ -17,7 +17,7 @@
           <osm-price>{{ cart.price }}</osm-price>
         </div>
       </div>
-      <osm-button v-if="user.balance >= cart.total" class-name="button--checkout" @click="$emit('onArrange')">
+      <osm-button v-if="user.balance >= cart.price" class-name="button--checkout" @click="$emit('onArrange')">
         <svg
           class="desc_icon"
           width="235"

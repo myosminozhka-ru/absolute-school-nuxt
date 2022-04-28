@@ -158,7 +158,7 @@
           "
         >
           <span>+</span>
-          <div v-if="user.balance < cart.total" class="cart__product--plus-warn">
+          <div v-if="user.balance < cart.price" class="cart__product--plus-warn">
             На вашем балансе недостаточно средств
           </div>
         </button>

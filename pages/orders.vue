@@ -25,7 +25,7 @@ export default {
       tabs: 'getTabs'
     }),
   },
-  mounted() {
+  created() {
     this.loadOrders();
   },
   methods: {
