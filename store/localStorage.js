@@ -7,6 +7,7 @@ export const state = () => ({
     balance: null
   },
   isAuthorized: false,
+  tourStep: 1,
 })
 
 export const mutations = {
@@ -22,9 +23,15 @@ export const mutations = {
   setBalance(state, balance) {
     state.user.balance = balance
   },
+  setTourStep(state, step) {
+    state.tourStep = step;
+  }
 }
 
 export const actions = {
+  setTourStep(context, step) {
+    context.commit('setTourStep', step);
+  },
   updateAuthData(context, {login, password, user}) {
       context.commit('updateAuthData', {login, password, user});
   },
@@ -62,6 +69,9 @@ export const actions = {
 }
 export const getters = {
   getUser: (state) => {
-    return state.user
+    return state.user;
   },
+  getTourStep: (state) => {
+    return state.tourStep;
+  }
 }
