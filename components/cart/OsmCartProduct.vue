@@ -210,6 +210,13 @@ export default {
       }
     },
   },
+  watch: {
+    item: {
+      handler(newval, oldval) {
+        this.updateData()
+      }
+    }
+  },
   beforeMount() {
     this.selectedColor = this.getSelectedColor(this.item.productId)
     this.moreColors = this.getMoreColors(this.item.productId)
@@ -227,8 +234,21 @@ export default {
       'removeProductFromCart',
       'updateOfferQuantity',
       'updateActiveOffer',
-      'loadCart'
     ]),
+    updateData() {
+      const offer = this.getOffer(
+        this.item.productId,
+        this.selectedColor.id,
+        this.selectedSize ? this.selectedSize.id : null
+      )
+
+      this.price = offer.price
+      this.currentOffer = offer
+
+      if (offer.quantity) {
+        this.quantity = offer.quantity
+      }
+    },
     removeProduct(basketId) {
       this.isLoading = true
       this.removeProductFromCart(basketId)
@@ -278,25 +298,17 @@ export default {
         })
     },
     updateOffer() {
-      const offer = this.getOffer(
-        this.item.productId,
-        this.selectedColor.id,
-        this.selectedSize ? this.selectedSize.id : null
-      )
-
-      this.price = offer.price
-      this.currentOffer = offer
+      this.updateData()
 
       this.isLoading = true
+
       this.updateActiveOffer({
         id: this.item.basketId,
         quantity: this.quantity,
         newOfferId: this.currentOffer.id,
       })
         .then((response) => {
-          console.log('response: ', response);
           this.isLoading = false
-          this.loadCart()
         })
         .catch((error) => {
           this.isLoading = false
