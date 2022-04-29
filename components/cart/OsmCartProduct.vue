@@ -280,7 +280,7 @@ export default {
       const offer = this.getOffer(
         this.item.productId,
         this.selectedColor.id,
-        this.selectedSize.id
+        this.selectedSize ? this.selectedSize.id : null
       )
 
       this.price = offer.price
