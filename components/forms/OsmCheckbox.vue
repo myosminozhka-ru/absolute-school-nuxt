@@ -76,7 +76,7 @@ export default {
           bottom: -2px;
           left: -2px;
           right: -2px;
-          opacity: .6;
+          opacity: 0.6;
           background: radial-gradient(
               86.46% 111% at 86% 12%,
               rgba(255, 105, 95, 0) 0%,
@@ -128,7 +128,7 @@ export default {
           bottom: -2px;
           left: -2px;
           right: -2px;
-          opacity: .6;
+          opacity: 0.6;
           background: radial-gradient(
               86.46% 111% at 86% 12%,
               rgba(255, 105, 95, 0) 0%,

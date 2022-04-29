@@ -138,7 +138,10 @@
         <osm-price type="prod_amount">{{ product.quantity }}шт</osm-price>
         <button class="cart__product--plus" @click="addProduct">
           <span>+</span>
-          <div v-if="user.balance >= cart.total" class="cart__product--plus-warn">
+          <div
+            v-if="user.balance >= cart.total"
+            class="cart__product--plus-warn"
+          >
             На вашем балансе недостаточно средств
           </div>
         </button>
@@ -171,10 +174,10 @@ export default {
   }),
   computed: {
     ...mapGetters('localStorage', {
-      user: 'getUser'
+      user: 'getUser',
     }),
     ...mapGetters('cart', {
-      cart: 'getCartItems'
+      cart: 'getCartItems',
     }),
     selectedColor() {
       return this.colors.find((color) => color.select === true)

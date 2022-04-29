@@ -159,7 +159,7 @@ export default {
       font-size: vw(25);
       text-transform: uppercase;
       color: #fff;
-      letter-spacing: .5px;
+      letter-spacing: 0.5px;
       cursor: pointer;
       -webkit-clip-path: polygon(0% 12%, 100% 0%, 100% 100%, 0% 90%);
       clip-path: polygon(0% 12%, 100% 0%, 100% 100%, 0% 90%);

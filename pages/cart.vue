@@ -29,7 +29,7 @@ export default {
     }),
   },
   created() {
-    this.loadCart();
+    this.loadCart()
   },
   beforeMount() {
     if (!this.cart.items) {
@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     ...mapActions('cart', ['loadCart']),
-  }
+  },
 }
 </script>
 <style lang="scss" scoped></style>

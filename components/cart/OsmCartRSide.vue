@@ -17,7 +17,11 @@
           <osm-price>{{ Number(cart.price).toLocaleString() }}</osm-price>
         </div>
       </div>
-      <osm-button v-if="user.balance >= cart.price" class-name="button--checkout" @click="$emit('onArrange')">
+      <osm-button
+        v-if="user.balance >= cart.price"
+        class-name="button--checkout"
+        @click="$emit('onArrange')"
+      >
         <svg
           class="desc_icon"
           width="235"
@@ -62,7 +66,7 @@ export default {
       cart: 'getCartItems',
     }),
     ...mapGetters('localStorage', {
-      user: 'getUser'
+      user: 'getUser',
     }),
   },
 }

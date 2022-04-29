@@ -2,7 +2,7 @@
   <div class="cart__product" :class="{ isLoading }">
     <div class="cart__product--img">
       <osm-button class-name="button--close">
-        <div @click="removeProduct(item.basket_id)">
+        <div @click="removeProduct(item.basketId)">
           <svg
             width="60"
             height="60"
@@ -79,58 +79,48 @@
               class-name="check_standart"
               :style="`
 
-                  --background: ${activeColor.code}
+                  --background: ${selectedColor.code}
 
               `"
-              :text="activeColor.code"
+              :text="selectedColor.code"
               name="colors"
             />
           </span>
           <div class="cart__product--blocks">
             <osm-checkbox
-              v-for="offer in offers"
-              :key="offer.id"
+              v-for="color in moreColors"
+              :key="color.id"
               class-name="check_standart"
+              :class="{ 'is-checked': +color.id === +selectedColor.id }"
               :style="`
 
-                  --background: ${offer.colors[0].code}
+                  --background: ${color.code}
 
               `"
-              :text="offer.colors[0].code"
+              :text="color.code"
               name="colors"
-              @input="
-                updateOffer({
-                  id: item.basket_id,
-                  quantity: activeOffer.quantity,
-                  newOfferId: offer.id,
-                })
-              "
+              @input="onSelectColor(color)"
             />
           </div>
         </div>
 
-        <div v-if="activeSize" class="cart__product--size-item">
+        <div v-if="selectedSize" class="cart__product--size-item">
           <span class="item">
             <osm-checkbox
               class-name="check_size"
-              :text="activeSize.name"
+              :text="selectedSize.name"
               name="sizes"
             />
           </span>
           <div class="cart__product--blocks">
             <osm-checkbox
-              v-for="offer in offers"
-              :key="offer.id"
+              v-for="size in moreSizes"
+              :key="size.id"
               class-name="check_size"
-              :text="offer.sizes[0].name"
+              :text="size.name"
+              :checked="+size.id === +selectedSize.id"
               name="sizes"
-              @input="
-                updateOffer({
-                  id: item.basket_id,
-                  quantity: activeOffer.quantity,
-                  newOfferId: offer.id,
-                })
-              "
+              @input="onSelectSize(size)"
             />
           </div>
         </div>
@@ -140,32 +130,35 @@
           class="cart__product--minus"
           @click="
             updateQuantity({
-              id: item.basket_id,
-              quantity: activeOffer.quantity - 1,
+              id: item.basketId,
+              quantity: quantity - 1,
             })
           "
         >
           -
         </button>
-        <osm-price type="prod_amount">{{ activeOffer.quantity }}шт</osm-price>
+        <osm-price type="prod_amount">{{ quantity }}шт</osm-price>
         <button
           class="cart__product--plus"
           @click="
             updateQuantity({
-              id: item.basket_id,
-              quantity: activeOffer.quantity + 1,
+              id: item.basketId,
+              quantity: quantity + 1,
             })
           "
         >
           <span>+</span>
-          <div v-if="user.balance < cart.price" class="cart__product--plus-warn">
+          <div
+            v-if="user.balance < cart.price"
+            class="cart__product--plus-warn"
+          >
             На вашем балансе недостаточно средств
           </div>
         </button>
       </div>
     </div>
     <div class="cart__product--price">
-      <osm-price>{{ Number(activeOffer.price).toLocaleString() }}</osm-price>
+      <osm-price>{{ price }}</osm-price>
     </div>
   </div>
 </template>
@@ -189,52 +182,45 @@ export default {
   data: () => ({
     isPlusWarn: false,
     isLoading: false,
+    selectedColor: {},
+    moreColors: [],
+    selectedSize: {},
+    moreSizes: [],
+    quantity: 0,
+    price: 0,
+    currentOffer: {},
   }),
   computed: {
     ...mapGetters('cart', {
       cart: 'getCartItems',
+      getOffer: 'getOffer',
+      getSelectedColor: 'getSelectedColor',
+      getMoreColors: 'getMoreColors',
+      getSelectedSize: 'getSelectedSize',
+      getMoreSizes: 'getMoreSizes',
     }),
     ...mapGetters('localStorage', {
-      user: 'getUser'
+      user: 'getUser',
     }),
-    ...mapGetters('products', {
-      products: 'getProducts',
-    }),
-    activeOffer() {
-      const activeOffer = this.cart.offers.filter(
-        (offer) => +offer.id === +this.item.product_id
-      )
-      return activeOffer[0]
+    colorsAndSize() {
+      const { selectedColor, selectedSize } = this
+      return {
+        selectedColor,
+        selectedSize,
+      }
     },
-    activeColor() {
-      const activeColor = this.cart.colors.filter(
-        (color) => color.id === this.activeOffer.color
-      )
-      return activeColor[0]
-    },
-    activeSize() {
-      const activeSize = this.products.sizes.filter(
-        (size) => size.id === this.activeOffer.size
-      )
-      return activeSize[0]
-    },
-    product() {
-      const product = this.products.products.filter(
-        (product) => product.id === this.activeOffer.product
-      )
-      return product[0]
-    },
-    offers() {
-      return this.products.offers
-        .filter((offer) => offer.product === this.product.id)
-        .map((offer) => ({
-          ...offer,
-          colors: this.products.colors.filter(
-            (color) => color.id === offer.color
-          ),
-          sizes: this.products.sizes.filter((size) => size.id === offer.size),
-        }))
-    },
+  },
+  beforeMount() {
+    this.selectedColor = this.getSelectedColor(this.item.productId)
+    this.moreColors = this.getMoreColors(this.item.productId)
+    this.selectedSize = this.getSelectedSize(this.item.productId)
+    this.moreSizes = this.getMoreSizes(
+      this.item.productId,
+      this.selectedColor.id
+    )
+    this.currentOffer = this.getOffer(this.item.productId)
+    this.quantity = +this.currentOffer.quantity
+    this.price = this.currentOffer.price
   },
   methods: {
     ...mapActions('cart', [
@@ -253,8 +239,20 @@ export default {
           this.$toast.error(error)
         })
     },
+    onSelectColor(color) {
+      this.selectedColor = color
+      this.moreSizes = [...this.getMoreSizes(this.item.productId, color.id)]
+      this.selectedSize = this.getSelectedSize(
+        this.getOffer(this.item.productId, color.id).id
+      )
+      this.updateOffer()
+    },
+    onSelectSize(size) {
+      this.selectedSize = size
+      this.updateOffer()
+    },
     updateQuantity({ id, quantity }) {
-      if (quantity > this.activeOffer.max_quantity) {
+      if (quantity > +this.currentOffer.max_quantity) {
         this.$toast.info('Столько товаров у нас нет')
         return false
       }
@@ -262,6 +260,9 @@ export default {
         this.$toast.info('Меньше не получится')
         return false
       }
+
+      this.quantity = +quantity
+
       this.isLoading = true
       this.updateOfferQuantity({
         id,
@@ -275,12 +276,21 @@ export default {
           this.$toast.error(error)
         })
     },
-    updateOffer({ id, quantity, newOfferId }) {
+    updateOffer() {
+      const offer = this.getOffer(
+        this.item.productId,
+        this.selectedColor.id,
+        this.selectedSize.id
+      )
+
+      this.price = offer.price
+      this.currentOffer = offer
+
       this.isLoading = true
       this.updateActiveOffer({
-        id,
-        quantity,
-        newOfferId,
+        id: this.item.basketId,
+        quantity: this.quantity,
+        newOfferId: this.currentOffer.id,
       })
         .then((response) => {
           this.isLoading = false

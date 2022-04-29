@@ -1,7 +1,7 @@
 <template>
   <div>
     <template v-if="getOrders">
-      <osm-order-tabs :title="true" :section-list="tabs" :selected="section"  />
+      <osm-order-tabs :title="true" :section-list="tabs" :selected="section" />
       <osm-orders />
     </template>
     <template v-else>
@@ -22,11 +22,11 @@ export default {
     ...mapGetters('orders', {
       getOrders: 'getOrders',
       section: 'getSection',
-      tabs: 'getTabs'
+      tabs: 'getTabs',
     }),
   },
   created() {
-    this.loadOrders();
+    this.loadOrders()
   },
   methods: {
     ...mapActions('orders', ['loadOrders']),

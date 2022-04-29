@@ -4,7 +4,7 @@ export const state = () => ({
   user: {
     name: '',
     lastname: '',
-    balance: null
+    balance: null,
   },
   isAuthorized: false,
 })
@@ -25,40 +25,47 @@ export const mutations = {
 }
 
 export const actions = {
-  updateAuthData(context, {login, password, user}) {
-      context.commit('updateAuthData', {login, password, user});
+  updateAuthData(context, { login, password, user }) {
+    context.commit('updateAuthData', { login, password, user })
   },
   setAuthorization(context, authorized) {
-      context.commit('setAuthorization', authorized);
+    context.commit('setAuthorization', authorized)
   },
-  signIn(context, {login, password}) {
-      return new Promise((resolve, reject) => {
-          this.$axios.$post('user.php', {
-              action: "login",
-              login,
-              password
-          }, { withCredentials: true }).then(data => {
-              resolve(data);
-          }).catch(error => {
-              reject(error);
-          })
-      })
+  signIn(context, { login, password }) {
+    return new Promise((resolve, reject) => {
+      this.$axios
+        .$post(
+          'user.php',
+          {
+            action: 'login',
+            login,
+            password,
+          },
+          { withCredentials: true }
+        )
+        .then((data) => {
+          resolve(data)
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    })
   },
   signOut(context) {
-    context.commit('setAuthorization', false);
+    context.commit('setAuthorization', false)
     context.commit('updateAuthData', {
       login: '',
       password: '',
       user: {
         name: '',
         lastname: '',
-        balance: null
-      }
-    });
+        balance: null,
+      },
+    })
   },
   updateBalance(context, balance) {
-    context.commit('setBalance', balance);
-  }
+    context.commit('setBalance', balance)
+  },
 }
 export const getters = {
   getUser: (state) => {

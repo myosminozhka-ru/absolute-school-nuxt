@@ -20,7 +20,12 @@
       </svg>
       <span>Помощь</span>
     </osm-button>
-    <osm-button v-if="$device.isDesktop" class-name="button--order" :link="{ name: 'orders' }" data-intro="<div class='tour boy'><div class='tour__l'></div><div class='tour__r'><div class='tour__number'>01</div><div class='tour__title'>Ваши заказы</div><div class='tour__text'>Краткое пояснение по поводу заказов. Тут  вы можете посмотреть все свои заказы.</div></div></div>">
+    <osm-button
+      v-if="$device.isDesktop"
+      class-name="button--order"
+      :link="{ name: 'orders' }"
+      data-intro="<div class='tour boy'><div class='tour__l'></div><div class='tour__r'><div class='tour__number'>01</div><div class='tour__title'>Ваши заказы</div><div class='tour__text'>Краткое пояснение по поводу заказов. Тут  вы можете посмотреть все свои заказы.</div></div></div>"
+    >
       <svg
         width="78"
         height="68"
@@ -60,7 +65,12 @@
       </svg>
       <span>Мои заказы</span>
     </osm-button>
-    <osm-button v-if="$device.isDesktop" class-name="button--cart_min" :link="{ name: 'cart' }" data-intro="<div class='tour boy'><div class='tour__l'></div><div class='tour__r'><div class='tour__number'>02</div><div class='tour__title'>Корзина</div><div class='tour__text'>Тут можете посмотреть что находится в вашей корзине и взаимодействовать с товарами.</div></div></div>">
+    <osm-button
+      v-if="$device.isDesktop"
+      class-name="button--cart_min"
+      :link="{ name: 'cart' }"
+      data-intro="<div class='tour boy'><div class='tour__l'></div><div class='tour__r'><div class='tour__number'>02</div><div class='tour__title'>Корзина</div><div class='tour__text'>Тут можете посмотреть что находится в вашей корзине и взаимодействовать с товарами.</div></div></div>"
+    >
       <div class="icon">
         <svg
           width="72"
@@ -157,7 +167,11 @@
       <span>Корзина</span>
     </osm-button>
     <osm-header-info />
-    <osm-button v-if="$device.isDesktop" data-intro="<div class='tour boy'><div class='tour__l'></div><div class='tour__r'><div class='tour__number'>04</div><div class='tour__title'>Выход</div><div class='tour__text'>Выход, для завершения покупок</div></div></div>" @click="logout">
+    <osm-button
+      v-if="$device.isDesktop"
+      data-intro="<div class='tour boy'><div class='tour__l'></div><div class='tour__r'><div class='tour__number'>04</div><div class='tour__title'>Выход</div><div class='tour__text'>Выход, для завершения покупок</div></div></div>"
+      @click="logout"
+    >
       <span>Выход</span>
     </osm-button>
     <osm-burger :is-burger-opened.sync="isBurgerOpened" />
@@ -185,16 +199,16 @@ export default {
   },
   methods: {
     ...mapActions('localStorage', {
-      signOut: 'signOut'
+      signOut: 'signOut',
     }),
     logout() {
-      this.signOut();
-      this.$router.push({name: 'auth'})
+      this.signOut()
+      this.$router.push({ name: 'auth' })
     },
     startIntro() {
-      this.$intro.start();
-    }
-  }
+      this.$intro.start()
+    },
+  },
 }
 </script>
 

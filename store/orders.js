@@ -1,5 +1,4 @@
-import {Base64} from 'js-base64';
-
+import { Base64 } from 'js-base64'
 
 export const state = () => ({
   orders: [],
@@ -11,9 +10,9 @@ export const state = () => ({
 export const mutations = {
   addOrders(state, data) {
     if (data.orders) {
-      state.orders = data.orders;
-      state.basket = data.basket;
-      state.products = data.products;
+      state.orders = data.orders
+      state.basket = data.basket
+      state.products = data.products
     }
   },
   addSection(state, section) {
@@ -23,30 +22,40 @@ export const mutations = {
 
 export const actions = {
   loadOrders({ state, commit, dispatch, rootState, rootGetters }) {
-    const base64EncodedLoginAndPassword = Base64.encode(`${rootState.localStorage.login}:${rootState.localStorage.password}`);
-    this.$axios.$get('order.php?action=list', {
-      headers: {
-        'Authorization': `Basic ${base64EncodedLoginAndPassword}`,
-      }
-    }).then((response) => {
-      commit('addOrders', response)
-    })
+    const base64EncodedLoginAndPassword = Base64.encode(
+      `${rootState.localStorage.login}:${rootState.localStorage.password}`
+    )
+    this.$axios
+      .$get('order.php?action=list', {
+        headers: {
+          Authorization: `Basic ${base64EncodedLoginAndPassword}`,
+        },
+      })
+      .then((response) => {
+        commit('addOrders', response)
+      })
   },
-  repeatOrder({dispatch, rootState}, orderId) {
-    const base64EncodedLoginAndPassword = Base64.encode(`${rootState.localStorage.login}:${rootState.localStorage.password}`);
+  repeatOrder({ dispatch, rootState }, orderId) {
+    const base64EncodedLoginAndPassword = Base64.encode(
+      `${rootState.localStorage.login}:${rootState.localStorage.password}`
+    )
     return new Promise((resolve, reject) => {
       this.$axios
-      .$post('order.php', {
-        action: 'repeat',
-        id: orderId,
-      }, {
-        headers: {
-          'Authorization': `Basic ${base64EncodedLoginAndPassword}`,
-        }
-      })
-      .then((data) => {
+        .$post(
+          'order.php',
+          {
+            action: 'repeat',
+            id: orderId,
+          },
+          {
+            headers: {
+              Authorization: `Basic ${base64EncodedLoginAndPassword}`,
+            },
+          }
+        )
+        .then((data) => {
           console.log('repeatOrder', orderId, data)
-          dispatch('loadOrders');
+          dispatch('loadOrders')
           resolve(data)
         })
         .catch((error) => {
@@ -55,19 +64,25 @@ export const actions = {
     })
   },
   sendOrder({ rootState }) {
-    const base64EncodedLoginAndPassword = Base64.encode(`${rootState.localStorage.login}:${rootState.localStorage.password}`);
+    const base64EncodedLoginAndPassword = Base64.encode(
+      `${rootState.localStorage.login}:${rootState.localStorage.password}`
+    )
     return new Promise((resolve, reject) => {
       this.$axios
-      .$post('basket.php', {
-        action: 'order',
-      }, {
-        headers: {
-          'Authorization': `Basic ${base64EncodedLoginAndPassword}`,
-        }
-      })
-      .then((response) => {
-        resolve(response)
-      })
+        .$post(
+          'basket.php',
+          {
+            action: 'order',
+          },
+          {
+            headers: {
+              Authorization: `Basic ${base64EncodedLoginAndPassword}`,
+            },
+          }
+        )
+        .then((response) => {
+          resolve(response)
+        })
     })
   },
   addSection(context, section) {
@@ -77,25 +92,29 @@ export const actions = {
 
 export const getters = {
   getOrders: (state) => {
-    let orders = state.orders.filter((order) => order.basket.length).map((order) => {
-      const newOrder = { ...order }
-      newOrder.basket.map((item, index) => state.basket.find((basket) => +basket.id === +item))
+    let orders = state.orders
+      .filter((order) => order.basket.length)
+      .map((order) => {
+        const newOrder = { ...order }
+        newOrder.basket.map((item, index) =>
+          state.basket.find((basket) => +basket.id === +item)
+        )
 
-      return newOrder
-    })
+        return newOrder
+      })
 
-    
     if (state.section === 'all') {
       orders = orders.filter((order) => order.basket.length)
     } else {
-      orders = orders.filter((order) => order.basket.length && order.status === state.section)
+      orders = orders.filter(
+        (order) => order.basket.length && order.status === state.section
+      )
     }
-    console.log(orders);
+    console.log(orders)
     return orders
   },
   getProducts: (state, getters, rootState) => (arrBasketId) => {
-    let products = [];
-    
+    let products = []
 
     arrBasketId.forEach((product) => {
       const findBasket = state.basket.find(
@@ -105,20 +124,32 @@ export const getters = {
         const findProduct = state.products.find(
           (productItem) => +productItem.id === +findBasket.product_id
         )
-        console.log('findProduct', rootState.products.products.offers.filter(offer => +offer.id === +findProduct.id).map(offer => {
-          return rootState.products.products.products.filter(product => product.id === offer.product).map(product => {
-            return product.images
-          });
-        }), findProduct.id);
+        console.log(
+          'findProduct',
+          rootState.products.products.offers
+            .filter((offer) => +offer.id === +findProduct.id)
+            .map((offer) => {
+              return rootState.products.products.products
+                .filter((product) => product.id === offer.product)
+                .map((product) => {
+                  return product.images
+                })
+            }),
+          findProduct.id
+        )
         if (findProduct) {
-          let image = '';
-          rootState.products.products.offers.filter(offer => +offer.id === +findProduct.id).map(offer => {
-            return rootState.products.products.products.filter(product => product.id === offer.product).map(product => {
-              console.log('product', product)
-              image = product.images[0];
-              return product.images
-            });
-          });
+          let image = ''
+          rootState.products.products.offers
+            .filter((offer) => +offer.id === +findProduct.id)
+            .map((offer) => {
+              return rootState.products.products.products
+                .filter((product) => product.id === offer.product)
+                .map((product) => {
+                  console.log('product', product)
+                  image = product.images[0]
+                  return product.images
+                })
+            })
           products = [
             ...products,
             {
@@ -134,19 +165,19 @@ export const getters = {
         }
       }
     })
-    console.log(products, arrBasketId);
+    console.log(products, arrBasketId)
     return products
   },
   getSection(state) {
     return state.section
   },
   getTabs(state) {
-    const tabs = [];
-    state.orders.map(order => {
-      if (tabs.includes(order.status)) return false;
-      tabs.push(order.status);
-      return order;
-    });
-    return tabs;
-  }
+    const tabs = []
+    state.orders.map((order) => {
+      if (tabs.includes(order.status)) return false
+      tabs.push(order.status)
+      return order
+    })
+    return tabs
+  },
 }

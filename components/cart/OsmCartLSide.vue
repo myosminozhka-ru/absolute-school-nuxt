@@ -1,7 +1,7 @@
 <template>
   <div class="cart__l-side">
     <osm-cart-product
-      v-for="item in cart.items"
+      v-for="item in getItems"
       :key="item.basketId"
       :item="item"
     />
@@ -18,6 +18,7 @@ export default {
   computed: {
     ...mapGetters('cart', {
       cart: 'getCartItems',
+      getItems: 'getItems',
     }),
     ...mapGetters('products', {
       products: 'getProducts',

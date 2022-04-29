@@ -6,10 +6,12 @@ export const state = () => ({
 
 export const actions = {
   loadProducts(context) {
-    this.$axios.$get('catalog.php?action=list', { withCredentials: true }).then((response) => {
-      context.commit('addSection', { id: null, name: 'all' })
-      context.commit('loadProducts', response)
-    })
+    this.$axios
+      .$get('catalog.php?action=list', { withCredentials: true })
+      .then((response) => {
+        context.commit('addSection', { id: null, name: 'all' })
+        context.commit('loadProducts', response)
+      })
   },
   addSection(context, section) {
     context.commit('addSection', section)

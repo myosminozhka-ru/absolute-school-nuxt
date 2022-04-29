@@ -30,9 +30,9 @@ export default {
     },
   },
   mounted() {
-    this.loadProducts();
-    this.loadCart();
-    this.loadOrders();
+    this.loadProducts()
+    this.loadCart()
+    this.loadOrders()
     // setTimeout(() => {
     //   this.$toast.info(
     //     'Привет, это информационное оповещение, оно не имеет смысла, мы просто тестируем'
