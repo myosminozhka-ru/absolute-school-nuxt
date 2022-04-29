@@ -119,6 +119,7 @@ export default {
 
   &__item {
     overflow: auto;
+    -webkit-overflow-scrolling: touch;
     padding: 20px 0;
     margin-left: -20px;
     padding-left: 20px;
