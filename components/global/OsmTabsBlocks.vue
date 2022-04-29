@@ -31,7 +31,7 @@
           text="Введите что нужно найти"
           @update:value="addSearchText($event)"
         />
-        <osm-button class-name="button--search">
+        <osm-button v-if="false" class-name="button--search">
           <svg
             width="100"
             height="100"
@@ -131,7 +131,7 @@ export default {
 
     .input {
       margin-right: 7px;
-      width: vw(370);
+      // width: vw(370);
 
       @media all and (min-width: 1940px) {
         width: 100%;
