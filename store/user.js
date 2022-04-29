@@ -15,11 +15,15 @@ export const actions = {
   signIn(context, { login, password }) {
     return new Promise((resolve, reject) => {
       this.$axios
-        .$post('user.php', {
-          action: 'login',
-          login,
-          password,
-        }, { withCredentials: true })
+        .$post(
+          'user.php',
+          {
+            action: 'login',
+            login,
+            password,
+          },
+          { withCredentials: true }
+        )
         .then((data) => {
           console.log(data)
           resolve(data)
@@ -30,8 +34,8 @@ export const actions = {
     })
   },
   signOut(context) {
-    context.commit('setAuthorization', false);
-  }
+    context.commit('setAuthorization', false)
+  },
 }
 
 export const getters = {}

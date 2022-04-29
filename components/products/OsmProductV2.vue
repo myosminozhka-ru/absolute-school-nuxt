@@ -74,15 +74,18 @@
             />
           </svg>
           <span>Добавить</span>
-        <div v-if="false" class="cart__product--plus-warn product_main">
-          На вашем балансе недостаточно средств
-        </div>
+          <div v-if="false" class="cart__product--plus-warn product_main">
+            На вашем балансе недостаточно средств
+          </div>
         </osm-button>
       </div>
     </div>
     <!-- /.cards__item--l-side -->
     <div v-if="product.images.length" class="cards__item--r-side">
-      <div :ref="product.images.length > 1 ? 'cards__slider' : ''" class="glide cards__slider--js">
+      <div
+        :ref="product.images.length > 1 ? 'cards__slider' : ''"
+        class="glide cards__slider--js"
+      >
         <div class="glide__track" data-glide-el="track">
           <ul class="glide__slides">
             <li
@@ -255,12 +258,12 @@ export default {
       this.isLoading = true
       this.addProductToCart(offerId)
         .then((response) => {
-          this.isLoading = false;
+          this.isLoading = false
           if (response.items) {
             console.log(response.items);
             this.$toast.success(`Товар "${response.items[0].name}" добавлен в корзину`)
           } else {
-            this.$toast.info(response);
+            this.$toast.info(response)
           }
         })
         .catch((error) => {
@@ -346,12 +349,12 @@ export default {
       }
     }
     &--buttons {
-        position: relative;
-        .product_main {
-          top: unset;
-          left: unset;
-          right: -290px;
-        }
+      position: relative;
+      .product_main {
+        top: unset;
+        left: unset;
+        right: -290px;
+      }
     }
     &--more {
       margin-top: vw(100);
@@ -403,7 +406,7 @@ export default {
             display: flex;
             align-items: center;
             justify-content: center;
-            img { 
+            img {
               max-height: 100%;
             }
             &.glide__bullet--active {
@@ -510,7 +513,7 @@ export default {
       &--l-side {
         max-width: 100%;
       }
-      &--more {        
+      &--more {
         display: block;
         font-family: 'Gilroy';
         font-style: normal;
@@ -635,7 +638,8 @@ export default {
           pointer-events: none;
           font-size: 0;
           bottom: -30px;
-          background: url("data:image/svg+xml,%3Csvg width='70' height='70' viewBox='0 0 70 70' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='10' y='10' width='50' height='50' rx='14' fill='%23EE1C1C'/%3E%3Crect x='5' y='5' width='60' height='60' rx='19' stroke='%23FEA840' stroke-opacity='0.3' stroke-width='10'/%3E%3Cpath d='M31.6828 45.6012V50.9083H37.2737V45.231L31.6828 45.6012ZM37.41 42.5569L38.0919 20.0945L31.2737 19.8477L31.6373 42.3923L37.41 42.5569Z' fill='white'/%3E%3Cpath d='M24.6487 47.3676L25.5864 51.1041L29.0021 50.247L27.999 46.2498L24.6487 47.3676ZM27.6098 44.3462L24.0577 28.4266L19.8486 29.2981L24.054 45.1153L27.6098 44.3462Z' fill='white'/%3E%3Cpath d='M45.0956 47.3676L44.158 51.1041L40.7423 50.247L41.7453 46.2498L45.0956 47.3676ZM42.1345 44.3462L45.6866 28.4266L49.8957 29.2981L45.6903 45.1153L42.1345 44.3462Z' fill='white'/%3E%3C/svg%3E%0A") 50% / 100% no-repeat;
+          background: url("data:image/svg+xml,%3Csvg width='70' height='70' viewBox='0 0 70 70' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='10' y='10' width='50' height='50' rx='14' fill='%23EE1C1C'/%3E%3Crect x='5' y='5' width='60' height='60' rx='19' stroke='%23FEA840' stroke-opacity='0.3' stroke-width='10'/%3E%3Cpath d='M31.6828 45.6012V50.9083H37.2737V45.231L31.6828 45.6012ZM37.41 42.5569L38.0919 20.0945L31.2737 19.8477L31.6373 42.3923L37.41 42.5569Z' fill='white'/%3E%3Cpath d='M24.6487 47.3676L25.5864 51.1041L29.0021 50.247L27.999 46.2498L24.6487 47.3676ZM27.6098 44.3462L24.0577 28.4266L19.8486 29.2981L24.054 45.1153L27.6098 44.3462Z' fill='white'/%3E%3Cpath d='M45.0956 47.3676L44.158 51.1041L40.7423 50.247L41.7453 46.2498L45.0956 47.3676ZM42.1345 44.3462L45.6866 28.4266L49.8957 29.2981L45.6903 45.1153L42.1345 44.3462Z' fill='white'/%3E%3C/svg%3E%0A")
+            50% / 100% no-repeat;
         }
       }
       .price_all {

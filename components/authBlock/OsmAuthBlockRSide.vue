@@ -76,7 +76,7 @@ export default {
             this.updateAuthData({
               login: this.login,
               password: this.password,
-              user: response.user
+              user: response.user,
             })
             this.$router.push({ name: 'index' })
             this.$toast.success('Добро пожаловать')

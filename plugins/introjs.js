@@ -1,5 +1,5 @@
-import introJs from 'intro.js';
-import Vue from 'vue';
+import introJs from 'intro.js'
+import Vue from 'vue'
 
 const intro = introJs().setOptions({
     showBullets: false,

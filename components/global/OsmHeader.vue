@@ -237,13 +237,13 @@ export default {
       setTourStep: 'setTourStep'
     }),
     logout() {
-      this.signOut();
-      this.$router.push({name: 'auth'})
+      this.signOut()
+      this.$router.push({ name: 'auth' })
     },
     startIntro() {
-      this.$intro.start();
-    }
-  }
+      this.$intro.start()
+    },
+  },
 }
 </script>
 

@@ -62,7 +62,7 @@ export default {
       cart: 'getCartItems',
     }),
     ...mapGetters('localStorage', {
-      user: 'getUser'
+      user: 'getUser',
     }),
   },
 }

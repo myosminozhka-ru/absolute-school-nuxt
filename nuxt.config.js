@@ -12,7 +12,13 @@ export default {
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/absolute-school-nuxt/main_icon.ico' }],
+    link: [
+      {
+        rel: 'icon',
+        type: 'image/x-icon',
+        href: '/absolute-school-nuxt/main_icon.ico',
+      },
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -83,7 +89,7 @@ export default {
 
   axios: {
     baseURL: 'https://one.kutuzovv.ru/local/api/site/',
-    withCredentials: true
+    withCredentials: true,
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
@@ -92,7 +98,7 @@ export default {
       lang: 'ru',
       name: 'Школа АБСОЛЮТ',
       background_color: '#fff9e4',
-      theme_color: '#fff9e4'
+      theme_color: '#fff9e4',
     },
   },
 

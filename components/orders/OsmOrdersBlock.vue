@@ -103,14 +103,14 @@ export default {
       this.isMobileShowMore = !this.isMobileShowMore
     },
     onRepeatOrder(orderId) {
-      this.repeatOrder(orderId).then(response => {
+      this.repeatOrder(orderId).then((response) => {
         if (response.status) {
-          this.$toast.error(response.message);
+          this.$toast.error(response.message)
         } else if (response.items) {
-          this.loadCart();
-          this.$toast.success('Добавили в корзину этот заказ');
+          this.loadCart()
+          this.$toast.success('Добавили в корзину этот заказ')
         } else {
-          this.$toast.info(response);
+          this.$toast.info(response)
         }
       })
       // TODO: Тут действия при нажатии на кнопку повторить заказ
