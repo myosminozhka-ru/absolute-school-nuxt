@@ -353,7 +353,7 @@
             </osm-button>
           </div>
         </div>
-        <osm-button data-intro="<div class='tour boy'><div class='tour__l'></div><div class='tour__r'><div class='tour__number'>04</div><div class='tour__title'>Выход</div><div class='tour__text'>Выход, для завершения покупок</div></div></div>" data-step="4">
+        <osm-button data-intro="<div class='tour boy'><div class='tour__l'></div><div class='tour__r'><div class='tour__number'>04</div><div class='tour__title'>Выход</div><div class='tour__text'>Выход, для завершения покупок</div></div></div>" data-step="4" @click="logout">
           <span>Выход</span>
         </osm-button>
       </div>
