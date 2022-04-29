@@ -78,15 +78,17 @@ export const getters = {
           images: product.images,
           section: product.section,
           offers: [
-            ...data.offers.filter((offer) => +offer.product === +product.id),
+            ...data.offers.filter(
+              (offer) => +offer.product === +product.id
+            ),
           ],
         }
       })
       .filter((product) => product.offers.length)
-      .map((product) => {
-        delete product.offers
-        return product
-      })
+      // .map((product) => {
+      //   delete product.offers
+      //   return product
+      // })
 
     return productsList
   },

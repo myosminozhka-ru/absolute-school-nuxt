@@ -2,7 +2,7 @@
   <div class="cart__l-side">
     <osm-cart-product
       v-for="item in getItems"
-      :key="item.basketId"
+      :key="item.productId"
       :item="item"
     />
   </div>

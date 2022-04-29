@@ -227,6 +227,7 @@ export default {
       'removeProductFromCart',
       'updateOfferQuantity',
       'updateActiveOffer',
+      'loadCart'
     ]),
     removeProduct(basketId) {
       this.isLoading = true
@@ -293,7 +294,9 @@ export default {
         newOfferId: this.currentOffer.id,
       })
         .then((response) => {
+          console.log('response: ', response);
           this.isLoading = false
+          this.loadCart()
         })
         .catch((error) => {
           this.isLoading = false
