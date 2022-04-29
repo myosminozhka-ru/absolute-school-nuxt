@@ -376,6 +376,13 @@ export default {
             display: flex;
             align-items: center;
             justify-content: center;
+            max-height: vw(580);
+            img {
+              max-height: inherit;
+              width: 100%;
+              height: 100%;
+              object-fit: contain;
+            }
           }
         }
         &__bullets {
@@ -554,6 +561,9 @@ export default {
           &__track {
             padding: 45px 0;
             border-radius: 20px;
+            li {
+              max-height: inherit;
+            }
           }
           &__controls {
             display: none;

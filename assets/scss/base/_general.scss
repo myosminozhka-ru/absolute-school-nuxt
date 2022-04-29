@@ -160,3 +160,17 @@ button {
   box-shadow: none;
   background: transparent;
 }
+::-webkit-scrollbar {
+  width: vw(10);
+}
+::-webkit-scrollbar-track {
+  @media all and (min-width: 1023px) {
+    background: #c4c4c4;
+  }
+}
+::-webkit-scrollbar-thumb {
+  background: #e49535;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #e49535;
+}

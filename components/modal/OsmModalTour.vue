@@ -66,22 +66,13 @@
         </osm-button>
       </div>
       <div class="modal__title">Отлично!</div>
-      <div class="modal__text">Терепрь вы смело можете выбрать себе товар Или любой мотивационный текст призывающий к действию.</div>
+      <div class="modal__subtitle">Терепрь вы смело можете выбрать себе товар Или любой мотивационный текст призывающий к действию.</div>
       <div class="modal__buttons">
-        <div @click="onClose">
-          <osm-button class-name="button--yes_btn">
-            <svg
-              width="160"
-              height="100"
-              viewBox="0 0 160 100"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M6.75954 4.49914C6.75954 2.10442 8.8495 0.246327 11.2277 0.526632L94.594 10.3524C95.0271 10.4034 95.4657 10.3833 95.8924 10.2928L139.578 1.02472C142.066 0.496917 144.408 2.3944 144.408 4.93763V46.6252C144.408 47.0322 144.471 47.4368 144.593 47.8251L159.115 94.0059C159.993 96.7983 157.673 99.5571 154.771 99.1709L50.9909 85.3562C50.5921 85.3031 50.1876 85.3105 49.791 85.3781L5.4195 92.9413C2.74292 93.3975 0.399215 91.1113 0.788775 88.4242L6.71816 47.5247C6.74571 47.3347 6.75954 47.1429 6.75954 46.9508V4.49914Z"
-                fill="#E49535"
-              />
-            </svg>
+        <div class="modal__back" @click="onClose">
+          <osm-button class-name="button--back">
+            <svg width="311" height="100" viewBox="0 0 311 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6.75954 4.17817C6.75954 1.90067 8.65841 0.0827765 10.9337 0.181965L245.5 10.4073C245.837 10.422 246.174 10.394 246.504 10.324L290.338 1.02472C292.826 0.496915 295.168 2.3944 295.168 4.93763V46.6252C295.168 47.0322 295.23 47.4368 295.352 47.8251L309.874 94.0059C310.753 96.7983 308.432 99.5571 305.531 99.1709L201.496 85.3224C201.265 85.2916 201.031 85.2811 200.798 85.291L4.82166 93.6591C2.31728 93.7661 0.332776 91.5696 0.692418 89.0889L6.71816 47.5247C6.74571 47.3347 6.75954 47.1429 6.75954 46.9508V4.17817Z" fill="#E49535"/>
+        </svg>
             <span>к выбору</span>
           </osm-button>
         </div>
@@ -136,7 +127,7 @@ export default {
   },
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .modal {
   position: fixed;
   top: 0;
@@ -171,7 +162,8 @@ export default {
     position: relative;
     width: 100%;
     max-width: vw(796);
-    padding: vw(115) vw(174) vw(120) vw(174);
+    // padding: vw(115) vw(174) vw(120) vw(174);
+    padding: vw(115) vw(150) vw(120) vw(110);
     min-height: vw(530);
     background: url("data:image/svg+xml,%3Csvg width='771' height='513' viewBox='0 0 771 513' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.34181 27.7142C-3.80466 13.5504 7.96817 -1.00112 22.8943 1.07471L216.5 28H729.559C742.515 28 752.052 40.1316 748.993 52.7221L683.505 322.25C682.224 327.522 683.14 333.089 686.043 337.673L767.068 465.607C775.393 478.751 766.18 495.95 750.625 496.303L37.4747 512.49C25.5095 512.761 15.9862 502.534 17.1091 490.619L48.078 161.979C48.3559 159.03 47.9753 156.056 46.9638 153.272L1.34181 27.7142Z' fill='white'/%3E%3C/svg%3E%0A")
       50% / contain no-repeat;
@@ -232,7 +224,16 @@ export default {
     align-items: center;
   }
   &__back {
+    max-width: vw(447);
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     .button {
+      max-width: vw(447);
+      width: 100%;
       margin-left: auto;
       margin-right: auto;
     }
@@ -325,7 +326,7 @@ export default {
     }
     &__closer {
       right: 0;
-      top: -4px;
+      top: 16px;
     }
     &__title {
       margin-bottom: 30px;
@@ -341,8 +342,14 @@ export default {
       font-size: 16px;
       margin-bottom: 30px;
     }
+  &__back {
+    max-width: 230px;
+  }
     &__buttons {
+    max-width: 230px;
+      .button {
       max-width: 230px;
+      }
     }
     &.education {
       .modal__controls {
