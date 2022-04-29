@@ -229,6 +229,7 @@ export default {
     width: max-content;
     cursor: pointer;
     transition: all 0.3s ease-out;
+    padding: vw(22) 0;
     padding-right: vw(88);
     span {
       position: relative;
@@ -283,11 +284,12 @@ export default {
     width: max-content;
     cursor: pointer;
     transition: all 0.3s ease-out;
+    padding: vw(22) 0;
     padding-right: vw(88);
     .cart_amount {
       z-index: 2;
       position: absolute;
-      top: vw(-45);
+      top: vw(-23);
       right: vw(-14);
       min-width: vw(37);
       min-height: vw(37);
