@@ -121,8 +121,7 @@ export default {
     overflow: auto;
     -webkit-overflow-scrolling: touch;
     padding: 20px 0;
-    margin-left: -20px;
-    padding-left: 20px;
+    padding-left: 5px;
   }
 
   &__r-side {
@@ -178,6 +177,10 @@ export default {
     &__l-side {
       width: calc(100% - 30px - 344px);
     }
+  &__item {
+    margin-left: -10px;
+    padding-left: 0;
+  }
 
     &__r-side {
       margin-left: 30px;
