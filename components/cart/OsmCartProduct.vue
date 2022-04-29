@@ -1,8 +1,8 @@
 <template>
   <div class="cart__product" :class="{ isLoading }">
     <div class="cart__product--img">
-      <osm-button class-name="button--close" data-intro="<div class='tour boy'><div class='tour__l'></div><div class='tour__r'><div class='tour__number'>06</div><div class='tour__title'>Удалите позицию</div><div class='tour__text'>Вы можете удалить выбранную позицию</div></div></div>" data-step="6">
-        <div @click="removeProduct(item.basket_id)">
+      <osm-button class-name="button--close">
+        <div @click="removeProduct(item.basketId)">
           <svg
             width="60"
             height="60"
@@ -78,9 +78,7 @@
             <osm-checkbox
               class-name="check_standart"
               :style="`
-
                   --background: ${selectedColor.code}
-
               `"
               :text="selectedColor.code"
               name="colors"
@@ -93,9 +91,7 @@
               class-name="check_standart"
               :class="{ 'is-checked': +color.id === +selectedColor.id }"
               :style="`
-
                   --background: ${color.code}
-
               `"
               :text="color.code"
               name="colors"
@@ -125,7 +121,7 @@
           </div>
         </div>
       </div>
-      <div class="cart__product--amount" data-intro="<div class='tour boy'><div class='tour__l'></div><div class='tour__r'><div class='tour__number'>05</div><div class='tour__title'>Меняйте количество</div><div class='tour__text'>Вы можете поменять выбранное количество товаров</div></div></div>" data-step="5">
+      <div class="cart__product--amount">
         <button
           class="cart__product--minus"
           @click="
@@ -241,10 +237,8 @@ export default {
         this.selectedColor.id,
         this.selectedSize ? this.selectedSize.id : null
       )
-
       this.price = offer.price
       this.currentOffer = offer
-
       if (offer.quantity) {
         this.quantity = offer.quantity
       }
@@ -281,9 +275,7 @@ export default {
         this.$toast.info('Меньше не получится')
         return false
       }
-
       this.quantity = +quantity
-
       this.isLoading = true
       this.updateOfferQuantity({
         id,
@@ -299,9 +291,7 @@ export default {
     },
     updateOffer() {
       this.updateData()
-
       this.isLoading = true
-
       this.updateActiveOffer({
         id: this.item.basketId,
         quantity: this.quantity,
