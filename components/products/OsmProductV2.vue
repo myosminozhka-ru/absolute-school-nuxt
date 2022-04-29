@@ -257,7 +257,8 @@ export default {
         .then((response) => {
           this.isLoading = false;
           if (response.items) {
-            this.$toast.success(`Товар "${offerId}" добавлен в корзину`)
+            console.log(response.items);
+            this.$toast.success(`Товар "${response.items[0].name}" добавлен в корзину`)
           } else {
             this.$toast.info(response);
           }
