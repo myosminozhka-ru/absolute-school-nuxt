@@ -131,7 +131,7 @@ export default {
 
     .input {
       margin-right: 7px;
-      // width: vw(370);
+      min-width: 100%;
 
       @media all and (min-width: 1940px) {
         width: 100%;
