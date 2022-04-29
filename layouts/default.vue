@@ -1,8 +1,10 @@
 <template>
   <div class="wrapper">
     <div
-      :class="`wrapper__in${isMobile ? ' isMobile' : ''}${
+      :class="`wrapper__in${isMobile || isIos ? ' isMobile' : ''}${
         isTablet ? ' isTablet' : ''
+      }${
+        isIos ? ' isIos' : ''
       }`"
     >
       <osm-header />
@@ -27,6 +29,9 @@ export default {
     },
     isDesktop() {
       return this.$device.isDesktop
+    },
+    isIos() {
+      return this.$device.isIos
     },
   },
   mounted() {
