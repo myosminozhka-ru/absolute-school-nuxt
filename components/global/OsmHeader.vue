@@ -158,7 +158,7 @@
     </osm-button>
     <osm-header-info />
     <osm-button v-if="$device.isDesktop" data-intro="<div class='tour boy'><div class='tour__l'></div><div class='tour__r'><div class='tour__number'>04</div><div class='tour__title'>Выход</div><div class='tour__text'>Выход, для завершения покупок</div></div></div>" data-step="4" @click="logout">
-      <span>Выход {{ tourStep }}</span>
+      <span>Выход</span>
     </osm-button>
     <osm-burger :is-burger-opened.sync="isBurgerOpened" />
     <osm-modal-tour

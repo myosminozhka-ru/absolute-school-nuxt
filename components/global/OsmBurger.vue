@@ -389,6 +389,7 @@
                   <div class="amt">{{ cart.items.length }}</div>
                 </div>
               </div>
+            </div>
 
               <span>Корзина</span>
             </osm-button>
