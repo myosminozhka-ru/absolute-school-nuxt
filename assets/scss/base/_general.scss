@@ -164,13 +164,13 @@ button {
   width: vw(10);
 }
 ::-webkit-scrollbar-track {
-  @media all and (min-width: 1023px) {
-    background: #c4c4c4;
-  }
+  background: none;
 }
 ::-webkit-scrollbar-thumb {
   background: #e49535;
+  border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #e49535;
+  border-radius: 10px;
 }

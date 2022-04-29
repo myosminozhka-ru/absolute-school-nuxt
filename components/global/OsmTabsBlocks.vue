@@ -200,6 +200,12 @@ export default {
 .isMobile {
   .tabs_blocks {
     flex-direction: column;
+    &__item {
+      
+    &::-webkit-scrollbar, &::-webkit-scrollbar-thumb {
+     height: 7px;
+    }
+    }
 
     &__l-side {
       width: 100%;
@@ -227,7 +233,7 @@ export default {
           rgba(255, 253, 247, 0) 100%
         );
         width: 20px;
-        height: 100%;
+        height: calc(100% - 20px);
         z-index: 3;
       }
     }
