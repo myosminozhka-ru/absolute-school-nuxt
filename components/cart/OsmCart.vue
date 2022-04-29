@@ -374,8 +374,12 @@ export default {
         height: 39px;
       }
       .product_amount {
+        min-width: 74px;
         font-size: 18px;
         height: 39px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
     }
     &__total {
