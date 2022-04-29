@@ -639,6 +639,11 @@ export default {
       }
       .price_all {
         margin-bottom: -13px;
+          font-size: 50px;
+        svg {
+          width: 26px;
+          height: 26px;
+        }
         @media all and (max-width: 360px) {
           font-size: 40px;
         }
