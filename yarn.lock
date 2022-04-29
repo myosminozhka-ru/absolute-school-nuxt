@@ -1450,6 +1450,11 @@
   "resolved" "https://registry.npmjs.org/@polka/url/-/url-1.0.0-next.21.tgz"
   "version" "1.0.0-next.21"
 
+"@popperjs/core@^2.9.1":
+  "integrity" "sha512-9X2obfABZuDVLCgPK9aX0a/x4jaOEweTTWE2+9sr0Qqqevj2Uv5XorvusThmc9XGYpS9yI+fhh8RTafBtGposw=="
+  "resolved" "https://registry.npmjs.org/@popperjs/core/-/core-2.11.5.tgz"
+  "version" "2.11.5"
+
 "@types/cookie@^0.3.3":
   "integrity" "sha512-LKVP3cgXBT9RYj+t+9FDKwS5tdI+rPBXaNSkma7hvqy35lc7mAokC2zsqWJH0LaqIt3B962nuYI77hsJoT1gow=="
   "resolved" "https://registry.npmjs.org/@types/cookie/-/cookie-0.3.3.tgz"
@@ -5585,6 +5590,11 @@
   optionalDependencies:
     "graceful-fs" "^4.1.6"
 
+"jump.js@^1.0.2":
+  "integrity" "sha1-4GQbR/QKOPITnCX9oFAL8o5DAVo="
+  "resolved" "https://registry.npmjs.org/jump.js/-/jump.js-1.0.2.tgz"
+  "version" "1.0.2"
+
 "kind-of@^3.0.2":
   "integrity" "sha1-MeohpzS6ubuw8yRm2JOupR5KPGQ="
   "resolved" "https://registry.npmjs.org/kind-of/-/kind-of-3.2.2.tgz"
@@ -9523,6 +9533,16 @@
   "integrity" "sha512-UUzr5LX51UbbiROSGZ49GOgSzFxaMHK6L00JV8fir/CYNJCpIIvNZ5YmS4Qc8Y2+Z/4VVYRpeQL2UO0G800Raw=="
   "resolved" "https://registry.npmjs.org/vue-toasted/-/vue-toasted-1.1.28.tgz"
   "version" "1.1.28"
+
+"vue-tour@^2.0.0":
+  "integrity" "sha512-vhKzqdhunQ3EoO1733UxhOB389u3EKv2X8JqYhX4tIq4ilqlZtnY3azPFBYPFmnAqHn5RyZBrP2CpqSaxTs8og=="
+  "resolved" "https://registry.npmjs.org/vue-tour/-/vue-tour-2.0.0.tgz"
+  "version" "2.0.0"
+  dependencies:
+    "@popperjs/core" "^2.9.1"
+    "hash-sum" "^2.0.0"
+    "jump.js" "^1.0.2"
+    "vue" "^2.6.12"
 
 "vue@^2.0.0", "vue@^2.6.12", "vue@^2.6.14":
   "integrity" "sha512-x2284lgYvjOMj3Za7kqzRcUSxBboHqtgRE2zlos1qWaOye5yUmHn42LB1250NJBLRwEcdrB0JRwyPTEPhfQjiQ=="
