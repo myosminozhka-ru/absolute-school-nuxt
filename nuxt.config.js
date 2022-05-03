@@ -4,7 +4,7 @@ export default {
     middleware: ['auth'],
   },
   generate: {
-    fallback: '404.html'
+    fallback: true
   },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
