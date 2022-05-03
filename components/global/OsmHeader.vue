@@ -60,7 +60,7 @@
       </svg>
       <span>Мои заказы</span>
     </osm-button>
-    <osm-button v-if="$device.isDesktop" class-name="button--cart_min" :link="{ name: 'cart' }" data-intro="<div class='tour boy'><div class='tour__l'></div><div class='tour__r'><div class='tour__number'>02</div><div class='tour__title'>Корзина</div><div class='tour__text'>Тут можете посмотреть что находится в вашей корзине и взаимодействовать с товарами.</div></div></div>" data-step="2">
+    <osm-button v-if="$device.isDesktop" class-name="button--cart_min" :class="{'isDisabled': !cart.items}" :link="{ name: 'cart' }" data-intro="<div class='tour boy'><div class='tour__l'></div><div class='tour__r'><div class='tour__number'>02</div><div class='tour__title'>Корзина</div><div class='tour__text'>Тут можете посмотреть что находится в вашей корзине и взаимодействовать с товарами.</div></div></div>" data-step="2">
       <div class="icon">
         <svg
           width="72"
@@ -493,5 +493,8 @@ export default {
       }
     }
   }
+}
+.isDisabled {
+  pointer-events: none;
 }
 </style>

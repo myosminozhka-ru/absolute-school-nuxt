@@ -365,6 +365,15 @@ export default {
           height: 30px;
         }
       }
+      &--blocks {
+        display: flex;
+        flex-direction: column;
+        bottom: auto;
+        top: 23px;
+        .checkbox {
+          margin-right: 0 !important;
+        }
+      }
       &--minus {
         height: 39px;
         margin-right: 14px;
@@ -428,10 +437,13 @@ export default {
       }
     }
     // delete
-    .cart__product--check-item:hover .cart__product--blocks,
-    .cart__product--size-item:hover .cart__product--blocks,
-    .cart__product--plus-warn {
-      display: none;
+    // .cart__product--check-item:hover .cart__product--blocks,
+    // .cart__product--size-item:hover .cart__product--blocks,
+    // .cart__product--plus-warn {
+    //   display: none;
+    // }
+    .cart__product--blocks {
+      width: auto;
     }
   }
 }
