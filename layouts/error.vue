@@ -1,7 +1,7 @@
 <template>
   <div>
       <osm-subtract />
-      <main class="content">
+      <main class="content" style="position: static;">
         <div class="page_error">
           <div
             class="page_error__image"
