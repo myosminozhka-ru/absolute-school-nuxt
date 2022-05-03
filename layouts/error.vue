@@ -1,10 +1,5 @@
 <template>
-  <div class="wrapper">
-    <div
-      v-if="error.statusCode === 404"
-      class="wrapper__in"
-      :class="{ isMobile: $device.isMobile, isTablet: $device.isTablet }"
-    >
+  <div>
       <osm-subtract />
       <main class="content">
         <div class="page_error">
@@ -178,7 +173,6 @@
           </div>
         </div>
       </main>
-    </div>
   </div>
 </template>
 
@@ -189,7 +183,7 @@ export default {
     OsmSubtract: () => import('~/components/subtract/OsmSubtract.vue'),
     OsmButton: () => import('~/components/global/OsmButton.vue'),
   },
-  layout: 'error',
+  // layout: 'error',
   props: {
     error: {
       type: Object,
