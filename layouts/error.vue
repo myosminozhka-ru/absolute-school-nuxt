@@ -1,10 +1,5 @@
 <template>
-  <div class="wrapper">
-    <div
-      v-if="error.statusCode === 404"
-      class="wrapper__in"
-      :class="{ isMobile: $device.isMobile, isTablet: $device.isTablet }"
-    >
+  <div>
       <osm-subtract />
       <main class="content">
         <div class="page_error">
@@ -150,8 +145,7 @@
           </div>
           <div class="page_error__text" data-aos="zoom-in" data-aos-delay="900">
             <div class="page_error__text--title">
-              Извините такой страницы не существует. Нажмите на кнопку, чтобы
-              прейти в каталог товаров.
+              Извините такой страницы не существует. Нажмите на кнопку, чтобы прейти в каталог товаров.
             </div>
             <osm-button class-name="button--back" :link="{ name: 'index' }">
               <svg
@@ -178,7 +172,6 @@
           </div>
         </div>
       </main>
-    </div>
   </div>
 </template>
 
