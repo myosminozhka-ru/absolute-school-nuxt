@@ -1,5 +1,10 @@
 <template>
-  <div>
+  <div class="wrapper">
+    <div
+      v-if="error.statusCode === 404"
+      class="wrapper__in"
+      :class="{ isMobile: $device.isMobile, isTablet: $device.isTablet }"
+    >
       <osm-subtract />
       <main class="content">
         <div class="page_error">
@@ -173,6 +178,7 @@
           </div>
         </div>
       </main>
+    </div>
   </div>
 </template>
 
