@@ -1,7 +1,7 @@
 export default {
   router: {
     base: '/absolute-school-nuxt/',
-    middleware: ['auth'],
+    // middleware: ['auth'],
   },
   generate: {
     fallback: true
