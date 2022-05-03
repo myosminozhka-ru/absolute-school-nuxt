@@ -68,7 +68,7 @@ export default {
     '@nuxtjs/pwa',
     '@nuxtjs/style-resources',
     '@nuxtjs/toast',
-    // 'cookie-universal-nuxt',
+    'cookie-universal-nuxt',
   ],
   toast: {
     position: 'bottom-right',

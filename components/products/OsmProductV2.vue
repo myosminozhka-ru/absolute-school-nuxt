@@ -74,7 +74,7 @@
             />
           </svg>
           <span>Добавить</span>
-          <div v-if="false" class="cart__product--plus-warn product_main">
+          <div v-if="isBalanceEnough" class="cart__product--plus-warn product_main">
             На вашем балансе недостаточно средств
           </div>
         </osm-button>
@@ -181,6 +181,7 @@ export default {
     price: null,
     slider: null,
     isLoading: false,
+    isBalanceEnough: true
   }),
   computed: {
     ...mapGetters('products', {

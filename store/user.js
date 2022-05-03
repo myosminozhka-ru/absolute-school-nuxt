@@ -34,7 +34,9 @@ export const actions = {
     })
   },
   signOut(context) {
-    context.commit('setAuthorization', false)
+    // const cookies = this.$cookies.getAll();
+    console.log('cookies', context)
+    context.commit('setAuthorization', false);
   },
 }
 

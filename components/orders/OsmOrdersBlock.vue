@@ -84,7 +84,8 @@ export default {
     resultPrice() {
       let resultPrice = 0
       this.productsList.forEach((product) => {
-        resultPrice = resultPrice + product.price
+        console.log('product', product);
+        resultPrice = resultPrice + (product.price * product.quantity)
       })
       return resultPrice.toLocaleString()
     },
