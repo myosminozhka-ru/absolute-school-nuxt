@@ -74,9 +74,9 @@
             />
           </svg>
           <span>Добавить</span>
-          <div v-if="isBalanceEnough" class="cart__product--plus-warn product_main">
+          <!-- <div v-if="isBalanceEnough" class="cart__product--plus-warn product_main">
             На вашем балансе недостаточно средств
-          </div>
+          </div> -->
         </osm-button>
       </div>
     </div>
@@ -188,6 +188,10 @@ export default {
       getColors: 'getProductColors',
       getSizes: 'getProductSizes',
       getOffer: 'getProductOffer',
+      getFilteredProducts: 'getFilteredProducts'
+    }),
+    ...mapGetters('localStorage', {
+      user: 'getUser',
     }),
     colorsAndSize() {
       const { selectedColorId, selectedSizeId } = this
@@ -256,21 +260,27 @@ export default {
       this.selectedSizeId = +sizeId
     },
     addToCart(offerId) {
-      this.isLoading = true
-      this.addProductToCart(offerId)
-        .then((response) => {
-          this.isLoading = false
-          if (response.items) {
-            console.log(response.items);
-            this.$toast.success(`Товар "${response.items[0].name}" добавлен в корзину`)
-          } else {
-            this.$toast.info(response)
-          }
-        })
-        .catch((error) => {
-          this.isLoading = false
-          this.$toast.error(error)
-        })
+      const offer = this.getFilteredProducts.offers.filter(offer => offer.id === offerId)[0];
+      console.log(offer.price, this.user.balance, +offer.price > +this.user.balance);
+      if (offer && +offer.price > +this.user.balance) {
+        this.$toast.info('На вашем балансе недостаточно средств');
+      } else {
+        this.isLoading = true;
+        this.addProductToCart(offerId)
+          .then((response) => {
+            this.isLoading = false
+            if (response.items) {
+              console.log(response.items);
+              this.$toast.success(`Товар "${response.items[0].name}" добавлен в корзину`)
+            } else {
+              this.$toast.info(response)
+            }
+          })
+          .catch((error) => {
+            this.isLoading = false
+            this.$toast.error(error)
+          })
+      }
     },
   },
 }

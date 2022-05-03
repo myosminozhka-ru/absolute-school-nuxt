@@ -105,7 +105,8 @@ export default {
     ...mapActions('cart', ['loadCart']),
     ...mapActions('localStorage', ['updateBalance']),
     onClose() {
-      this.$emit('onClose')
+      this.$emit('onClose');
+      this.$router.push({ name: 'index'})
     },
     makeOrder() {
       this.isLoading = true

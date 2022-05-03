@@ -71,7 +71,8 @@ export const actions = {
           { withCredentials: true }
         )
         .then((data) => {
-          context.commit('updateCart', data)
+          context.commit('updateCart', data);
+          context.dispatch('loadCart');
           resolve(data)
         })
         .catch((error) => {

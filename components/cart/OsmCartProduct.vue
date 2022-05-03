@@ -72,7 +72,7 @@
       <div class="cart__product--text">
         {{ item.description ? item.description : 'lorem ipsum dolor sit amet' }}
       </div>
-      <div class="cart__product--check">
+      <div v-if="selectedColor" class="cart__product--check">
         <div class="cart__product--check-item">
           <span class="item">
             <osm-checkbox
@@ -213,14 +213,17 @@ export default {
       }
     }
   },
-  beforeMount() {
+  mounted() {
     this.selectedColor = this.getSelectedColor(this.item.productId)
     this.moreColors = this.getMoreColors(this.item.productId)
     this.selectedSize = this.getSelectedSize(this.item.productId)
-    this.moreSizes = this.getMoreSizes(
-      this.item.productId,
-      this.selectedColor.id
-    )
+    console.log(this.item, this.selectedColor);
+    if (this.selectedColor) {
+      this.moreSizes = this.getMoreSizes(
+        this.item.productId,
+        this.selectedColor.id
+      )
+    }
     this.currentOffer = this.getOffer(this.item.productId)
     this.quantity = +this.currentOffer.quantity
     this.price = this.currentOffer.price
@@ -234,7 +237,7 @@ export default {
     updateData() {
       const offer = this.getOffer(
         this.item.productId,
-        this.selectedColor.id,
+        this.selectedColor ? this.selectedColor.id : null,
         this.selectedSize ? this.selectedSize.id : null
       )
       this.price = offer.price
