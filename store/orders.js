@@ -25,17 +25,23 @@ export const actions = {
     const base64EncodedLoginAndPassword = Base64.encode(
       `${rootState.localStorage.login}:${rootState.localStorage.password}`
     )
-    this.$axios
-      .$get('order.php?action=list', {
-        headers: {
-          Authorization: `Basic ${base64EncodedLoginAndPassword}`,
-        },
-      }, {
-        withCredentials: true
-      })
-      .then((response) => {
-        commit('addOrders', response)
-      })
+    return new Promise((resolve, reject) => {
+      this.$axios
+        .$get('order.php?action=list', {
+          headers: {
+            Authorization: `Basic ${base64EncodedLoginAndPassword}`,
+          },
+        }, {
+          withCredentials: true
+        })
+        .then((response) => {
+          resolve(response);
+          commit('addOrders', response);
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    });
   },
   repeatOrder({ dispatch, rootState }, orderId) {
     const base64EncodedLoginAndPassword = Base64.encode(
@@ -117,60 +123,46 @@ export const getters = {
   },
   getProducts: (state, getters, rootState) => (arrBasketId) => {
     let products = [];
-    setTimeout(() => {
-      arrBasketId.forEach((product) => {
-      const findBasket = state.basket.find(
-        (basketItem) => +basketItem.id === +product
+    arrBasketId.forEach((product) => {
+    const findBasket = state.basket.find(
+      (basketItem) => +basketItem.id === +product
+    )
+    if (findBasket) {
+      const findProduct = state.products.find(
+        (productItem) => +productItem.id === +findBasket.product_id
       )
-      if (findBasket) {
-        const findProduct = state.products.find(
-          (productItem) => +productItem.id === +findBasket.product_id
-        )
-        // console.log(
-        //   'findProduct',
-        //   rootState.products.products.offers
-        //     .filter((offer) => +offer.id === +findProduct.id)
-        //     .map((offer) => {
-        //       return rootState.products.products.products
-        //         .filter((product) => product.id === offer.product)
-        //         .map((product) => {
-        //           return product.images
-        //         })
-        //     }),
-        //   findProduct.id
-        // )
-        if (findProduct && rootState.products.products.offers && rootState.products.products.products) {
-          let image = ''
-          console.log('rootState.products.products.offers', rootState.products.products.offers);
-          rootState.products.products.offers
-            .filter((offer) => +offer.id === +findProduct.id)
-            .map((offer) => {
-              console.log('rootState.products.products.products', rootState.products.products.products);
-              return rootState.products.products.products
-                .filter((product) => product.id === offer.product)
-                .map((product) => {
-                  // console.log('product', product)
-                  image = product.images[0]
-                  return product.images
-                })
-            })
-          products = [
-            ...products,
-            {
-              basketId: +findBasket.id,
-              productId: +findProduct.id,
-              img: image,
-              name: findProduct.name,
-              description: findProduct.description,
-              price: +findBasket.price,
-              quantity: +findBasket.quantity,
-            },
-          ]
-        }
+      if (findProduct && rootState.products.products.offers && rootState.products.products.products) {
+        let image = ''
+        console.log('rootState.products.products.offers', rootState.products.products.offers);
+        rootState.products.products.offers
+          .filter((offer) => +offer.id === +findProduct.id)
+          .map((offer) => {
+            console.log('rootState.products.products.products', rootState.products.products.products);
+            return rootState.products.products.products
+              .filter((product) => product.id === offer.product)
+              .map((product) => {
+                // console.log('product', product)
+                image = product.images[0]
+                return product.images
+              })
+          })
+        products = [
+          ...products,
+          {
+            basketId: +findBasket.id,
+            productId: +findProduct.id,
+            img: image,
+            name: findProduct.name,
+            description: findProduct.description,
+            price: +findBasket.price,
+            quantity: +findBasket.quantity,
+          },
+        ]
+        console.log('products', products);
       }
-      });
-      return products;
-    }, 0);
+    }
+    });
+    return products;
 
   },
   getSection(state) {
