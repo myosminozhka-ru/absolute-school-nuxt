@@ -17,6 +17,20 @@
 <script>
 export default {
   name: 'AuthLayout',
+  computed: {
+    isMobile() {
+      return this.$device.isMobile
+    },
+    isTablet() {
+      return this.$device.isTablet
+    },
+    isDesktop() {
+      return this.$device.isDesktop
+    },
+    isIos() {
+      return this.$device.isIos
+    },
+  },
 }
 </script>
 
