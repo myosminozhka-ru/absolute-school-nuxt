@@ -116,9 +116,9 @@ export const getters = {
     return orders
   },
   getProducts: (state, getters, rootState) => (arrBasketId) => {
-    let products = []
-
-    arrBasketId.forEach((product) => {
+    let products = [];
+    setTimeout(() => {
+      arrBasketId.forEach((product) => {
       const findBasket = state.basket.find(
         (basketItem) => +basketItem.id === +product
       )
@@ -168,9 +168,10 @@ export const getters = {
           ]
         }
       }
-    })
-    // console.log(products, arrBasketId)
-    return products
+      });
+      return products;
+    }, 0);
+
   },
   getSection(state) {
     return state.section
