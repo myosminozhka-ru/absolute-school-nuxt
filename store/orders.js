@@ -141,9 +141,11 @@ export const getters = {
         // )
         if (findProduct) {
           let image = ''
+          console.log('rootState.products.products.offers', rootState.products.products.offers);
           rootState.products.products.offers
             .filter((offer) => +offer.id === +findProduct.id)
             .map((offer) => {
+              console.log('rootState.products.products.products', rootState.products.products.products);
               return rootState.products.products.products
                 .filter((product) => product.id === offer.product)
                 .map((product) => {
