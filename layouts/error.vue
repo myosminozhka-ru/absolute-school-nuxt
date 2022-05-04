@@ -192,7 +192,7 @@ export default {
 </script>
 <style lang="scss">
 .wrapper {
-  background: rgba(255, 249, 228, 1) url('~/assets/img/bg_site.svg') 0;
+  background: rgba(255, 249, 228, 1) url('~/assets/img/bg_site.svg') 0 0 repeat;
   // &:before {
   //   content: '';
   //   position: absolute;

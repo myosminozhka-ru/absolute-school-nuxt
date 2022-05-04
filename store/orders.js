@@ -126,19 +126,19 @@ export const getters = {
         const findProduct = state.products.find(
           (productItem) => +productItem.id === +findBasket.product_id
         )
-        console.log(
-          'findProduct',
-          rootState.products.products.offers
-            .filter((offer) => +offer.id === +findProduct.id)
-            .map((offer) => {
-              return rootState.products.products.products
-                .filter((product) => product.id === offer.product)
-                .map((product) => {
-                  return product.images
-                })
-            }),
-          findProduct.id
-        )
+        // console.log(
+        //   'findProduct',
+        //   rootState.products.products.offers
+        //     .filter((offer) => +offer.id === +findProduct.id)
+        //     .map((offer) => {
+        //       return rootState.products.products.products
+        //         .filter((product) => product.id === offer.product)
+        //         .map((product) => {
+        //           return product.images
+        //         })
+        //     }),
+        //   findProduct.id
+        // )
         if (findProduct) {
           let image = ''
           rootState.products.products.offers
