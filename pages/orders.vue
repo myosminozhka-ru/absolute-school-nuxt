@@ -25,8 +25,8 @@ export default {
       tabs: 'getTabs',
     }),
   },
-  created() {
-    this.loadOrders()
+  mounted() {
+    this.loadOrders();
   },
   methods: {
     ...mapActions('orders', ['loadOrders']),
