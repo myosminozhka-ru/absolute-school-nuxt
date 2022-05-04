@@ -25,7 +25,7 @@ export const actions = {
           { withCredentials: true }
         )
         .then((data) => {
-          console.log(data)
+          // console.log(data)
           resolve(data)
         })
         .catch((error) => {
@@ -35,7 +35,7 @@ export const actions = {
   },
   signOut(context) {
     // const cookies = this.$cookies.getAll();
-    console.log('cookies', context)
+    // console.log('cookies', context)
     context.commit('setAuthorization', false);
   },
 }

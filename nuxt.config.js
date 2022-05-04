@@ -100,6 +100,7 @@ export default {
     manifest: {
       lang: 'ru',
       name: 'Школа АБСОЛЮТ',
+      short_name: 'Школа АБСОЛЮТ',
       background_color: '#fff9e4',
       theme_color: '#fff9e4',
     },

@@ -12,7 +12,7 @@ export const state = () => ({
 
 export const mutations = {
   updateAuthData(state, { login, password, user }) {
-    console.log(login, password, user)
+    // console.log(login, password, user)
     state.login = login
     state.password = password
     state.user = user

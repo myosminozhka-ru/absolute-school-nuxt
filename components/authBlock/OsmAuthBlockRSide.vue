@@ -71,7 +71,7 @@ export default {
           if (response.status === 'error') {
             this.$toast.error(response.message)
           } else {
-            console.log('response', response)
+            // console.log('response', response)
             this.setAuthorization(true)
             this.updateAuthData({
               login: this.login,

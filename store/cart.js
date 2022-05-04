@@ -4,7 +4,7 @@ export const state = () => ({
 
 export const mutations = {
   updateCart(state, items) {
-    console.log('Корзина обновлена')
+    // console.log('Корзина обновлена')
     state.cart = items
   },
 }

@@ -217,7 +217,7 @@ export default {
     this.selectedColor = this.getSelectedColor(this.item.productId)
     this.moreColors = this.getMoreColors(this.item.productId)
     this.selectedSize = this.getSelectedSize(this.item.productId)
-    console.log(this.item, this.selectedColor);
+    // console.log(this.item, this.selectedColor);
     if (this.selectedColor) {
       this.moreSizes = this.getMoreSizes(
         this.item.productId,

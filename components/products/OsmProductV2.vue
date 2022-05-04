@@ -261,7 +261,7 @@ export default {
     },
     addToCart(offerId) {
       const offer = this.getFilteredProducts.offers.filter(offer => offer.id === offerId)[0];
-      console.log(offer.price, this.user.balance, +offer.price > +this.user.balance);
+      // console.log(offer.price, this.user.balance, +offer.price > +this.user.balance);
       if (offer && +offer.price > +this.user.balance) {
         this.$toast.info('На вашем балансе недостаточно средств');
       } else {
@@ -270,7 +270,7 @@ export default {
           .then((response) => {
             this.isLoading = false
             if (response.items) {
-              console.log(response.items);
+              // console.log(response.items);
               this.$toast.success(`Товар "${response.items[0].name}" добавлен в корзину`)
             } else {
               this.$toast.info(response)

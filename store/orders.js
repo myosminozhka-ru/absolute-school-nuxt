@@ -56,7 +56,7 @@ export const actions = {
           }
         )
         .then((data) => {
-          console.log('repeatOrder', orderId, data)
+          // console.log('repeatOrder', orderId, data)
           dispatch('loadOrders')
           resolve(data)
         })
@@ -112,7 +112,7 @@ export const getters = {
         (order) => order.basket.length && order.status === state.section
       )
     }
-    console.log(orders)
+    // console.log(orders)
     return orders
   },
   getProducts: (state, getters, rootState) => (arrBasketId) => {
@@ -139,7 +139,7 @@ export const getters = {
         //     }),
         //   findProduct.id
         // )
-        if (findProduct) {
+        if (findProduct && rootState.products.products.offers && rootState.products.products.products) {
           let image = ''
           console.log('rootState.products.products.offers', rootState.products.products.offers);
           rootState.products.products.offers
@@ -149,7 +149,7 @@ export const getters = {
               return rootState.products.products.products
                 .filter((product) => product.id === offer.product)
                 .map((product) => {
-                  console.log('product', product)
+                  // console.log('product', product)
                   image = product.images[0]
                   return product.images
                 })
@@ -169,7 +169,7 @@ export const getters = {
         }
       }
     })
-    console.log(products, arrBasketId)
+    // console.log(products, arrBasketId)
     return products
   },
   getSection(state) {
