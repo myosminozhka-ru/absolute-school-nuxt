@@ -100,7 +100,8 @@ export const actions = {
 
 export const getters = {
   getOrders: (state, getters) => {
-    let orders = state.orders
+    let orders = [];
+    orders = state.orders
       .filter((order) => order.basket.length)
       .map((order) => {
         const newOrder = { ...order }
@@ -118,7 +119,7 @@ export const getters = {
         (order) => order.basket.length && order.status === state.section
       )
     }
-    console.log('getters', getters);
+    console.log('getters', getters.getProducts());
     return orders
   },
   getProducts: (state, getters, rootState) => (arrBasketId) => {
