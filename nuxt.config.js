@@ -100,7 +100,7 @@ export default {
   pwa: {
     manifest: {
       lang: 'ru',
-      name: 'Школа АБСОЛЮТ',
+      name: 'Школа Абсолют - интернет-магазин для учащихся',
       short_name: 'Школа АБСОЛЮТ',
       background_color: '#fff9e4',
       theme_color: '#fff9e4',
