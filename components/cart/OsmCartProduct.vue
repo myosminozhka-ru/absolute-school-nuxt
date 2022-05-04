@@ -2,7 +2,7 @@
   <div class="cart__product" :class="{ isLoading }">
     <div class="cart__product--img">
       <osm-button class-name="button--close">
-        <div @click="removeProduct(item.basketId)">
+        <div data-intro="<div class='tour boy'><div class='tour__l'></div><div class='tour__r'><div class='tour__number'>05</div><div class='tour__title'>Удалите позицию</div><div class='tour__text'>Вы можете удалить выбранную позицию</div></div></div>" data-step="5" @click="removeProduct(item.basketId)">
           <svg
             width="60"
             height="60"
@@ -121,7 +121,7 @@
           </div>
         </div>
       </div>
-      <div class="cart__product--amount">
+      <div class="cart__product--amount" data-intro="<div class='tour boy'><div class='tour__l'></div><div class='tour__r'><div class='tour__number'>06</div><div class='tour__title'>Меняйте количество</div><div class='tour__text'>Вы можете поменять выбранное количество товаров</div></div></div>" data-step="6">
         <button
           class="cart__product--minus"
           @click="

@@ -59,8 +59,6 @@ export const actions = {
     })
   },
   signOut(context) {
-    const cookiesRes = this.$cookies.getAll();
-    console.log('cookiesRes', cookiesRes)
     context.commit('setAuthorization', false)
     context.commit('updateAuthData', {
       login: '',

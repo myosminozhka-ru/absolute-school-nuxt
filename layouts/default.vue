@@ -39,11 +39,6 @@ export default {
     this.loadCart()
     this.loadOrders()
     // setTimeout(() => {
-    //   this.$toast.info(
-    //     'Привет, это информационное оповещение, оно не имеет смысла, мы просто тестируем'
-    //   )
-    // }, 1000)
-    // setTimeout(() => {
     //   this.$toast.success('А это сообщение об успехе')
     // }, 1500)
     // setTimeout(() => {
