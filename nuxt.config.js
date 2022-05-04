@@ -9,6 +9,7 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'Школа Абсолют - интернет-магазин для учащихся',
+    description: 'Интернет-магазин школы Абсолют в городе Серпухов',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
