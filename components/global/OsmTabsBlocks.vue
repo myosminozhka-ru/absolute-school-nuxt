@@ -27,28 +27,14 @@
       <form v-else action="" data-intro="<div class='tour girl'><div class='tour__l'></div><div class='tour__r'><div class='tour__number'>06</div><div class='tour__title'>Поиск</div><div class='tour__text'>Вы можете ввести ваш запрос вручную и найти что вас интересует</div></div></div>" data-step="6">
         <osm-input
           class-name="input--white"
-          :value="searchText"
+          :value="getSearchText"
           text="Введите что нужно найти"
           @update:value="addSearchText($event)"
         />
-        <osm-button v-if="false" class-name="button--search">
-          <svg
-            width="100"
-            height="100"
-            viewBox="0 0 100 100"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M0 16.0311C0 14.0138 1.50215 12.3122 3.50386 12.062L95.5039 0.562017C97.8913 0.26359 100 2.12514 100 4.53113V95.5018C100 97.8962 97.9106 99.7542 95.5326 99.4744L3.53264 88.6509C1.51818 88.4139 0 86.7066 0 84.6783V16.0311Z"
-              fill="#85A832"
-            />
-            <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
-              d="M57.6247 55.9745L58.7665 57.1178H60.0891L72 69.0302V73H68.0344L56.1234 61.0877V59.7721L54.9745 58.6247C52.0259 60.994 48.28 62.4115 44.2031 62.4109C34.7017 62.4096 27 54.7069 27 45.2055C27 40.6411 28.8137 36.2637 32.0419 33.0369C35.27 29.81 39.6481 27.9981 44.2125 28C53.7139 28.0039 61.4135 35.7088 61.4109 45.2102C61.4098 49.2845 59.9926 53.0278 57.6247 55.9745ZM44.2125 33.2945C50.7889 33.3023 56.1145 38.6384 56.1094 45.2148C56.1042 51.7912 50.7702 57.119 44.1938 57.1164C37.6174 57.1138 32.2875 51.7819 32.2875 45.2055C32.2894 42.0446 33.5468 39.014 35.7832 36.7803C38.0195 34.5465 41.0517 33.2927 44.2125 33.2945Z"
-              fill="#FFFBFB"
-            />
+        <osm-button v-if="getSearchText" class-name="button--search" @click="removeSearchText">
+          <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" fill="none">
+            <path d="M0 16.0311C0 14.0138 1.50215 12.3122 3.50386 12.062L95.5039 0.562026C97.8913 0.263599 100 2.12515 100 4.53114V95.5018C100 97.8962 97.9106 99.7542 95.5326 99.4744L3.53264 88.6509C1.51818 88.4139 0 86.7066 0 84.6783V16.0311Z" fill="#85A832"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M68 32.0286C66.8857 30.9143 65.0857 30.9143 63.9714 32.0286L50 45.9714L36.0286 32C34.9143 30.8857 33.1143 30.8857 32 32C30.8857 33.1143 30.8857 34.9143 32 36.0286L45.9714 50L32 63.9714C30.8857 65.0857 30.8857 66.8857 32 68C33.1143 69.1143 34.9143 69.1143 36.0286 68L50 54.0286L63.9714 68C65.0857 69.1143 66.8857 69.1143 68 68C69.1143 66.8857 69.1143 65.0857 68 63.9714L54.0286 50L68 36.0286C69.0857 34.9428 69.0857 33.1143 68 32.0286Z" fill="white"/>
           </svg>
           <span>Поиск</span>
         </osm-button>
@@ -58,7 +44,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'OsmTabsBlocks',
   components: {
@@ -83,8 +69,14 @@ export default {
   data: () => ({
     searchText: '',
   }),
+  computed: {
+    ...mapGetters('products', ['getSearchText'])
+  },  
   methods: {
     ...mapActions('products', ['addSection', 'addSearchText']),
+    removeSearchText() {
+      this.addSearchText('');
+    }
   },
 }
 </script>
@@ -130,13 +122,13 @@ export default {
     width: 100%;
 
     .input {
-      margin-right: 7px;
-      min-width: 100%;
+      // margin-right: 7px;
+      // min-width: 100%;
 
-      @media all and (min-width: 1940px) {
-        width: 100%;
-        max-width: 100%;
-      }
+      // @media all and (min-width: 1940px) {
+      //   width: 100%;
+      //   max-width: 100%;
+      // }
 
       input {
         -webkit-clip-path: polygon(0% 0%, 100% 7%, 100% 86%, 1% 94%);
@@ -183,13 +175,13 @@ export default {
   }
 
     &__r-side {
-      margin-left: 30px;
-      max-width: 344px;
+      // margin-left: 30px;
+      // max-width: 344px;
       width: 100%;
 
-      .input {
-        width: 284px;
-      }
+      // .input {
+      //   width: 284px;
+      // }
     }
 
     &.orders_status {
@@ -247,7 +239,7 @@ export default {
       margin-top: 20px;
 
       .input {
-        max-width: calc(100% - 60px);
+        // max-width: calc(100% - 60px);
         width: 100%;
 
         &:before {

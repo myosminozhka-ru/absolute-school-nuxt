@@ -172,4 +172,7 @@ export const getters = {
   getSection: (state) => {
     return state.section
   },
+  getSearchText(state) {
+    return state.searchText;
+  }
 }
