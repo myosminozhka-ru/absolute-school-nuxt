@@ -32,10 +32,10 @@ export default {
     this.loadCart()
   },
   beforeMount() {
-    if (!this.cart.items) {
-      this.$router.push({ name: 'index' })
-      this.$toast.info('Корзина пуста, но вы можете что-то туда добавить')
-    }
+    // if (!this.cart.items) {
+    //   this.$router.push({ name: 'index' })
+    // }
+    this.$toast.info('Корзина пуста, но вы можете что-то туда добавить')
   },
   methods: {
     ...mapActions('cart', ['loadCart']),
