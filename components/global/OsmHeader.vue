@@ -461,9 +461,9 @@ export default {
 }
 .isMobile {
   .header {
-    &__info {
-      max-width: 165px;
-    }
+    // &__info {
+    //   max-width: 165px;
+    // }
     @media all and (max-width: 345px) {
       &__logo {
         max-width: 65px;
