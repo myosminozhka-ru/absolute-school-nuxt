@@ -123,13 +123,14 @@ export const getters = {
   },
   getProducts: (state, getters, rootState) => (arrBasketId) => {
     let products = [];
+    console.log()
     arrBasketId.forEach((product) => {
-    const findBasket = state.basket.find(
+    const basketItem = state.basket.find(
       (basketItem) => +basketItem.id === +product
     )
-    if (findBasket) {
+    if (basketItem) {
       const findProduct = state.products.find(
-        (productItem) => +productItem.id === +findBasket.product_id
+        (productItem) => +productItem.id === +basketItem.product_id
       )
       if (findProduct && rootState.products.products.offers && rootState.products.products.products) {
         let image = ''
@@ -149,13 +150,13 @@ export const getters = {
         products = [
           ...products,
           {
-            basketId: +findBasket.id,
+            basketId: +basketItem.id,
             productId: +findProduct.id,
             img: image,
             name: findProduct.name,
             description: findProduct.description,
-            price: +findBasket.price,
-            quantity: +findBasket.quantity,
+            price: +basketItem.price,
+            quantity: +basketItem.quantity,
           },
         ]
         console.log('products', products);
