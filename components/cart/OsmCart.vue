@@ -455,7 +455,7 @@ export default {
         max-width: 122px;
         margin-right: 25px;
         filter: unset;
-        background: transparent;
+        // background: transparent;
         @media all and (max-width: 370px) {
           max-width: 100px;
         }
