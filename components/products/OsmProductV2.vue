@@ -336,7 +336,7 @@ export default {
       font-weight: 600;
       font-size: vw(20);
       line-height: 160%;
-      text-transform: lowercase;
+      // text-transform: lowercase;
       color: #686868;
     }
     .price_all {

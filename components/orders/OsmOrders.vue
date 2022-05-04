@@ -183,7 +183,7 @@ export default {
       font-weight: 400;
       font-size: vw(14);
       line-height: 160%;
-      text-transform: lowercase;
+      // text-transform: lowercase;
       color: #686868;
       margin-bottom: vw(34);
     }
