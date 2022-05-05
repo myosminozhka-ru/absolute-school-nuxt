@@ -9,6 +9,11 @@
       :is-show="isArrangeModalShow"
       @onClose="isArrangeModalShow = false"
     />
+    <osm-modal-cart
+      v-if="!cart.items"
+      :is-show="!cart.items"
+      @onClose="isModalShow = false"
+    />
   </div>
 </template>
 <script>
@@ -19,9 +24,11 @@ export default {
     OsmHn: () => import('~/components/typografy/OsmHn.vue'),
     OsmCart: () => import('~/components/cart/OsmCart.vue'),
     OsmModal: () => import('~/components/modal/OsmModal.vue'),
+    OsmModalCart: () => import('~/components/modal/OsmModalCart.vue'),
   },
   data: () => ({
     isArrangeModalShow: false,
+    isModalShow: false,
   }),
   computed: {
     ...mapGetters('cart', {
@@ -31,11 +38,11 @@ export default {
   created() {
     this.loadCart()
   },
-  beforeMount() {
-    // if (!this.cart.items) {
-    //   this.$router.push({ name: 'index' })
-    // }
-    this.$toast.info('Корзина пуста, но вы можете что-то туда добавить')
+  mounted() {
+    if (!this.cart.items) {
+      this.isModalShow = true;
+    }
+    // this.$toast.info('Корзина пуста, но вы можете что-то туда добавить')
   },
   methods: {
     ...mapActions('cart', ['loadCart']),
