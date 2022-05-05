@@ -97,7 +97,7 @@ export default {
   },
 
   axios: {
-    baseURL: 'http://preprod.space/local/api/site/',
+    baseURL: 'http://31.31.201.123/local/api/site/',
     withCredentials: true,
   },
 
