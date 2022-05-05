@@ -48,6 +48,7 @@ export const actions = {
             login,
             password,
           },
+          { withCredentials: true }
         )
         .then((data) => {
           resolve(data)
