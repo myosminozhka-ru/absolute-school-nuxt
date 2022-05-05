@@ -4,7 +4,7 @@ export default {
     port: process.env.NODE_ENV === 'dev' ? 3000 : 8080 // default: 3000
   },
   router: {
-    base: '/frontend/',
+    // base: '/frontend/',
     middleware: ['auth'],
   },
   generate: {
