@@ -1,8 +1,8 @@
 export default {
-  server: {
-    host: '0', // default: localhost
-    port: process.env.NODE_ENV === 'dev' ? 3000 : 8080 // default: 3000
-  },
+  // server: {
+  //   host: '0', // default: localhost
+  //   port: process.env.NODE_ENV === 'dev' ? 3000 : 8080 // default: 3000
+  // },
   router: {
     // base: '/frontend/',
     middleware: ['auth'],
