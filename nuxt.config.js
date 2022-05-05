@@ -97,7 +97,7 @@ export default {
   },
 
   axios: {
-    baseURL: 'https://one.kutuzovv.ru/local/api/site/',
+    baseURL: 'http://preprod.space/local/api/site/',
     withCredentials: true,
   },
 
