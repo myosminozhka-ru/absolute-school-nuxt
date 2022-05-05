@@ -66,7 +66,7 @@
         </osm-button>
       </div>
       <div class="modal__title">Отлично!</div>
-      <div class="modal__subtitle">Терепрь вы смело можете выбрать себе товар.</div>
+      <div class="modal__subtitle">Вперед за покупками!</div>
       <div class="modal__buttons">
         <div class="modal__back" @click="onClose">
           <osm-button class-name="button--back">

@@ -65,7 +65,7 @@
           </svg>
         </osm-button>
       </div>
-      <div class="modal__title">Вы хотите купить все товары в корзине?</div>
+      <div class="modal__title">Хочешь купить все товары в корзине?</div>
       <div class="modal__buttons">
         <div @click="onClose">
           <osm-button class-name="button--no_btn">

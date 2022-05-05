@@ -17,7 +17,7 @@
           <osm-price>{{ Number(cart.price).toLocaleString() }}</osm-price>
         </div>
       </div>
-      <osm-button v-if="user.balance >= cart.price" class-name="button--checkout" data-intro="<div class='tour boy'><div class='tour__l'></div><div class='tour__r'><div class='tour__number'>07</div><div class='tour__title'>Оформляйте заказ</div><div class='tour__text'>Информация по действию с кнопки</div></div></div>" data-step="7" @click="$emit('onArrange')">
+      <osm-button v-if="user.balance >= cart.price" class-name="button--checkout" data-intro="<div class='tour boy'><div class='tour__l'></div><div class='tour__r'><div class='tour__number'>07</div><div class='tour__title'>Оформить</div><div class='tour__text'>Нажми для оформления заказа</div></div></div>" data-step="7" @click="$emit('onArrange')">
         <svg
           class="desc_icon"
           width="235"

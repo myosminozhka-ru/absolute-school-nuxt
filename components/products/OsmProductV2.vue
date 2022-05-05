@@ -38,12 +38,12 @@
         </div>
       </div>
       <div class="cards__item--buttons">
-        <osm-price data-intro="<div class='tour girl'><div class='tour__l'></div><div class='tour__r'><div class='tour__number'>07</div><div class='tour__title'>Цена</div><div class='tour__text'>Тут вы можете увидеть цену на интересующий вас товар</div></div></div>" data-step="7">{{ Number(price).toLocaleString() }}</osm-price>
+        <osm-price data-intro="<div class='tour girl'><div class='tour__l'></div><div class='tour__r'><div class='tour__number'>07</div><div class='tour__title'>Стоимость</div><div class='tour__text'>Смотри стоимость товаров</div></div></div>" data-step="7">{{ Number(price).toLocaleString() }}</osm-price>
 
         <osm-button
           class-name="button--cart"
           :is-loading="isLoading"
-          data-intro="<div class='tour girl'><div class='tour__l'></div><div class='tour__r'><div class='tour__number'>08</div><div class='tour__title'>Добавление товара в корзину</div><div class='tour__text'>Для завершения покупки, необходимо добавить товар в корзину</div></div></div>"
+          data-intro="<div class='tour girl'><div class='tour__l'></div><div class='tour__r'><div class='tour__number'>08</div><div class='tour__title'>Добавить в корзину</div><div class='tour__text'>Нажми для добавления товара в корзину</div></div></div>"
           data-step="8"
           @click="addToCart(selectedOfferId)"
         >

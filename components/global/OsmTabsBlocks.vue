@@ -2,7 +2,7 @@
   <div class="tabs_blocks center-block" :class="{ orders_status: title }">
     <div class="tabs_blocks__l-side">
       <div class="tabs_blocks__buttons">
-        <div class="tabs_blocks__item" data-intro="<div class='tour girl'><div class='tour__l'></div><div class='tour__r'><div class='tour__number'>05</div><div class='tour__title'>Фильтрация по направлениям </div><div class='tour__text'>Вы можете выбрать что вас интересует по направлению и типу товаров.</div></div></div>" data-step="5">
+        <div class="tabs_blocks__item" data-intro="<div class='tour girl'><div class='tour__l'></div><div class='tour__r'><div class='tour__number'>05</div><div class='tour__title'>Виды товаров</div><div class='tour__text'>Отбирай товары по видам.</div></div></div>" data-step="5">
           <div class="tabs_blocks__buttons--owf">
             <div
               v-for="button in sectionList"
@@ -24,7 +24,7 @@
     </div>
     <div class="tabs_blocks__r-side">
       <osm-hn v-if="title">Мои заказы:</osm-hn>
-      <form v-else action="" data-intro="<div class='tour girl'><div class='tour__l'></div><div class='tour__r'><div class='tour__number'>06</div><div class='tour__title'>Поиск</div><div class='tour__text'>Вы можете ввести ваш запрос вручную и найти что вас интересует</div></div></div>" data-step="6">
+      <form v-else action="" data-intro="<div class='tour girl'><div class='tour__l'></div><div class='tour__r'><div class='tour__number'>06</div><div class='tour__title'>Поиск</div><div class='tour__text'>Ищи товары по названию</div></div></div>" data-step="6">
         <osm-input
           class-name="input--white"
           :value="getSearchText"
