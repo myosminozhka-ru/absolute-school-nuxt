@@ -21,7 +21,8 @@ export const actions = {
             action: 'login',
             login,
             password,
-          }
+          },
+          { withCredentials: true }
         )
         .then((data) => {
           // console.log(data)
