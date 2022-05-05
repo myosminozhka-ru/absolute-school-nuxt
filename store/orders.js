@@ -31,8 +31,6 @@ export const actions = {
           headers: {
             Authorization: `Basic ${base64EncodedLoginAndPassword}`,
           },
-        }, {
-          withCredentials: true
         })
         .then((response) => {
           resolve(response);
