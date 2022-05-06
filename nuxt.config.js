@@ -4,7 +4,7 @@ export default {
   //   port: process.env.NODE_ENV === 'dev' ? 3000 : 8080 // default: 3000
   // },
   router: {
-    // base: '/frontend/',
+    base: '/absolute-school-nuxt/',
     middleware: ['auth'],
   },
   generate: {
@@ -97,7 +97,7 @@ export default {
   },
 
   axios: {
-    baseURL: 'https://preprod.space:8080/local/api/site/',
+    baseURL: 'https://one.kutuzovv.ru/local/api/site/',
     withCredentials: true,
   },
 

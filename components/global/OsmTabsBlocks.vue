@@ -170,8 +170,10 @@ export default {
       width: calc(100% - 30px - 344px);
     }
   &__item {
-    margin-left: -10px;
+    // margin-left: -10px;
+    width: calc(100% - 54px);
     padding-left: 0;
+    margin-left: 10px;
   }
 
     &__r-side {
@@ -212,7 +214,7 @@ export default {
       }
 
       flex-direction: row-reverse;
-      width: calc(100% + 15px);
+      // width: calc(100% + 15px);
       position: relative;
 
       &:before {

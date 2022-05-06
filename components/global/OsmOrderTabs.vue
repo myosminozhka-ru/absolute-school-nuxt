@@ -177,7 +177,7 @@ export default {
       }
 
       flex-direction: row-reverse;
-      width: calc(100% + 15px);
+      // width: calc(100% + 15px);
       position: relative;
 
       &:before {
