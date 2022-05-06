@@ -2,7 +2,13 @@
   <div class="header__info" data-intro="<div class='tour boy'><div class='tour__l'></div><div class='tour__r'><div class='tour__number'>03</div><div class='tour__title'>Кошелек</div><div class='tour__text'>Доступные АбсКоины</div></div></div>" data-step="3">
     <div class="header__info--img">
       <img
-        :src="`https://one.kutuzovv.ru/${user.photo} `"
+        v-if="user.photo"
+        :src="`https://one.kutuzovv.ru/${user.photo}`"
+        :alt="`${user.lastname} ${user.name}`"
+      />
+      <img
+        v-else
+        src="~/assets/img/placeholder.webp"
         :alt="`${user.lastname} ${user.name}`"
       />
     </div>
