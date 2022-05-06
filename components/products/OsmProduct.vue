@@ -93,7 +93,7 @@
               :key="key"
               class="glide__slide"
             >
-              <img :src="`https://preprod.space:8080/${image}`" alt="" />
+              <img :src="`https://one.kutuzovv.ru/${image}`" alt="" />
             </li>
           </ul>
         </div>
@@ -107,7 +107,7 @@
             :key="key"
             :data-glide-dir="`=${key}`"
           >
-            <img :src="`https://preprod.space:8080/${image}`" alt="" />
+            <img :src="`https://one.kutuzovv.ru/${image}`" alt="" />
           </div>
         </div>
         <div class="glide__controls" data-glide-el="controls">

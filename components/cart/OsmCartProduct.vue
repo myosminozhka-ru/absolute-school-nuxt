@@ -65,7 +65,7 @@
           </svg>
         </div>
       </osm-button>
-      <img :src="`https://preprod.space:8080${item.image}`" alt="" />
+      <img :src="`https://one.kutuzovv.ru${item.image}`" alt="" />
     </div>
     <div class="cart__product--info">
       <osm-hn type="h2">{{ item.name }}</osm-hn>

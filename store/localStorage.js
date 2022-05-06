@@ -51,6 +51,7 @@ export const actions = {
           { withCredentials: true }
         )
         .then((data) => {
+          console.log('data', data);
           resolve(data)
         })
         .catch((error) => {

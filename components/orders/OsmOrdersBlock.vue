@@ -14,7 +14,7 @@
         class="orders__block--card"
       >
         <div class="orders__block--img">
-          <img :src="`https://preprod.space:8080/${product.img}`" alt="" />
+          <img :src="`https://one.kutuzovv.ru/${product.img}`" alt="" />
         </div>
         <div class="orders__block--item">
           <div class="orders__block--text">

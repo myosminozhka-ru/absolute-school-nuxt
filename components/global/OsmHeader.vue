@@ -272,9 +272,11 @@ export default {
     margin-right: vW(10);
     &--img {
       max-width: vw(80);
-      width: 100%;
+      min-width: vw(80);
+      width: vw(80);
       max-height: vw(80);
-      height: 100%;
+      min-height: vw(80);
+      height: vw(80);
       margin-right: vw(20);
       img {
         border-radius: 50%;
@@ -357,8 +359,16 @@ export default {
       max-width: 330px;
       &--img {
         max-width: 58px;
+        min-width: 58px;
         max-height: 58px;
+        min-height: 58px;
+        width: 58px;
+        height: 58px;
         margin-right: 10px;
+        font-size: 0;
+        img {
+          object-position: 50% 50%;
+        }
       }
       &--name {
         font-size: 14px;
