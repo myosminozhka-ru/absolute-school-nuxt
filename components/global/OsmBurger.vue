@@ -255,7 +255,7 @@
             </osm-button>
           </div>
           <div @click="closeBurger">
-            <osm-button :class-name="`button--cart_min${!cart.items ? ' isDisabled' : ''}`" :link="{ name: 'cart' }" data-intro="<div class='tour boy'><div class='tour__l'></div><div class='tour__r'><div class='tour__number'>02</div><div class='tour__title'>Корзина</div><div class='tour__text'>Добавляй сюда товары и оформляй новые заказы.</div></div></div>" data-step="2" @click="logout">
+            <osm-button :class-name="`button--cart_min`" :link="{ name: 'cart' }" data-intro="<div class='tour boy'><div class='tour__l'></div><div class='tour__r'><div class='tour__number'>02</div><div class='tour__title'>Корзина</div><div class='tour__text'>Добавляй сюда товары и оформляй новые заказы.</div></div></div>" data-step="2" @click="logout">
             <div class="icon">
               <svg
                 width="72"
