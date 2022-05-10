@@ -382,6 +382,17 @@ export default {
         margin-left: 17px;
         height: 39px;
       }
+      &--plus-warn {
+        transform: rotateY(180deg);
+        left: auto;
+        right: -64px;
+        top: 0;
+        span {
+          transform: rotateY(180deg);
+          display: block;
+          text-align: center;
+        }
+      }
       .product_amount {
         min-width: 74px;
         font-size: 18px;
