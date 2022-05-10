@@ -275,7 +275,7 @@ export default {
         return false
       }
       if (quantity < 1) {
-        this.$toast.info('Меньше не получится')
+        // this.$toast.info('Меньше не получится')
         return false
       }
       this.quantity = +quantity
