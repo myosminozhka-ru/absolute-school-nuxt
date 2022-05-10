@@ -12,7 +12,7 @@
       <main class="content">
         <nuxt />
       </main>
-      <osm-footer />
+      <osm-footer v-if="$route.name" />
     </div>
   </div>
 </template>
