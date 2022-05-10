@@ -1,6 +1,5 @@
 <template>
   <div class="wrapper">
-    {{$route}}
     <div
       :class="`wrapper__in${isMobile || isIos ? ' isMobile' : ''}${
         isTablet ? ' isTablet' : ''
