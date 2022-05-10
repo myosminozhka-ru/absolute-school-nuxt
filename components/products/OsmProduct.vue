@@ -352,7 +352,7 @@ export default {
           div {
             &:nth-child(1) {
               div {
-                left: vw(-30);
+                // left: vw(-30);
                 position: relative;
                 transform: rotate(191deg);
                 svg {
@@ -367,7 +367,7 @@ export default {
             }
             &:nth-child(2) {
               div {
-                right: vw(-30);
+                // right: vw(-30);
                 position: relative;
               }
             }
