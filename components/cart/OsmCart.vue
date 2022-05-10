@@ -226,7 +226,7 @@ export default {
       font-family: 'Jingleberry', serif;
       font-style: normal;
       font-weight: 900;
-      font-size: 35px;
+      font-size: 40px;
       text-transform: uppercase;
       color: #85a833;
       border: 0;
@@ -240,7 +240,7 @@ export default {
       font-family: 'Jingleberry', serif;
       font-style: normal;
       font-weight: 900;
-      font-size: 35px;
+      font-size: 40px;
       text-transform: uppercase;
       color: #85a833;
       border: 0;

@@ -380,6 +380,7 @@ export default {
       width: vw(580);
       .glide {
         position: relative;
+        cursor: auto;
         &__track {
           overflow: hidden;
           background: #ffffff;

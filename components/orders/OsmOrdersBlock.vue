@@ -25,7 +25,7 @@
             <div class="orders__block--amount mob">
               <osm-price type="prod_amount">{{ product.quantity }}шт</osm-price>
             </div>
-            <osm-price type="price">{{ product.price }}</osm-price>
+            <osm-price type="price">{{ Number(product.price).toLocaleString() }}</osm-price>
           </div>
           <div class="orders__block--amount">
             <osm-price type="prod_amount">{{ product.quantity }}шт</osm-price>

@@ -171,6 +171,9 @@ export default {
       display: flex;
       align-items: center;
       justify-content: center;
+      max-height: vw(238);
+      min-height: vw(238);
+      height: vw(238);
     }
     &--text {
       margin-right: vw(100);
@@ -346,8 +349,14 @@ export default {
         margin-right: 20px;
         border-radius: 10px;
         padding: 19px 13px;
+        max-height: 123px;
+        min-height: 123px;
+        height: 123px;
         @media all and (max-width: 370px) {
           width: 90px;
+          max-height: 90px;
+          min-height: 90px;
+          height: 90px;
         }
       }
       &--item {

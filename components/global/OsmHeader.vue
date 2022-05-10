@@ -324,8 +324,10 @@ export default {
   }
   .button--order {
     margin-left: auto;
+    margin-top: -9px;
   }
   .button--cart_min {
+    margin-top: -8px;
     margin-left: vw(33);
   }
   .button--orange {

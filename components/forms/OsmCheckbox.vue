@@ -72,10 +72,10 @@ export default {
           box-shadow: 0px 5px 20px rgba(21, 69, 102, 0.6);
         }
         &:after {
-          top: -2px;
-          bottom: -2px;
-          left: -2px;
-          right: -2px;
+          top: -3px;
+          bottom: -3px;
+          left: -3px;
+          right: -3px;
           opacity: 0.6;
           background: radial-gradient(
               86.46% 111% at 86% 12%,
@@ -124,10 +124,10 @@ export default {
           box-shadow: 0px 5px 20px rgba(21, 69, 102, 0.6);
         }
         &:after {
-          top: -2px;
-          bottom: -2px;
-          left: -2px;
-          right: -2px;
+          top: -3px;
+          bottom: -3px;
+          left: -3px;
+          right: -3px;
           opacity: 0.6;
           background: radial-gradient(
               86.46% 111% at 86% 12%,
