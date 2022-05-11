@@ -52,7 +52,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .wrapper {
   background: rgba(255, 249, 228, 1) url('~/assets/img/bg_site.svg') 0 0 repeat;
   // &:before {
