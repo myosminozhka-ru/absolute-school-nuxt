@@ -12,7 +12,8 @@
 export default {
   name: 'AuthLayout',
   layout: (ctx) => {
-    // console.log('ctx.$device: ', ctx.$device);
+    console.log('ctx.$device: ', ctx.$device);
+
   },
   data: () => ({
     sizes: {
