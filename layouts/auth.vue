@@ -1,8 +1,6 @@
 <template>
   <div class="wrapper auth">
-    <div class="wrapper__in" :class="[{'isMobile': isMobile || isIos }, {'isTablet': isTablet }, {'isIos': isIos}]"
-    >
-    {{ [{'isMobile': isMobile || isIos }, {'isTablet': isTablet }, {'isIos': isIos}] }}
+    <div class="wrapper__in" :class="addClass">
       <main class="content">
         <nuxt />
       </main>
@@ -13,24 +11,47 @@
 <script>
 export default {
   name: 'AuthLayout',
+  layout: (ctx) => {
+    // console.log('ctx.$device: ', ctx.$device);
+  },
+  data: () => ({
+    sizes: {
+      tablet: 1024,
+      mobile: 768,
+      window: null
+    },
+  }),
   computed: {
     isMobile() {
-      console.log('isMobile', this.$device.isMobile);
-      return this.$device.isMobile
+      // return this.$device.isMobile
+      return this.sizes.window < this.sizes.mobile;
     },
     isTablet() {
-      console.log('isTablet', this.$device.isTablet);
-      return this.$device.isTablet
+      // return this.$device.isTablet
+      return this.sizes.window < this.sizes.tablet && this.sizes.window > this.sizes.mobile;
     },
     isDesktop() {
-      console.log('isDesktop', this.$device.isDesktop);
       return this.$device.isDesktop
     },
     isIos() {
-      console.log('isIos', this.$device.isIos);
       return this.$device.isIos
     },
+    addClass() {
+      let addClass = '';
+        addClass += this.isMobile ? 'isMobile ' : '';
+        addClass += this.isTablet ? 'isTablet ' : '';
+        addClass += this.isIos ? 'isIos ' : '';
+        return addClass;
+    }
   },
+  mounted() {
+    window.dispatchEvent(new Event('resize'));
+    this.sizes.window = window.innerWidth;
+
+    window.addEventListener('resize', () => {
+        this.sizes.window = window.innerWidth;
+    });
+  }
 }
 </script>
 
