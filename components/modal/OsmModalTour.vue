@@ -106,7 +106,13 @@ export default {
     ...mapActions('localStorage', ['updateBalance']),
     onClose() {
       this.$emit('onClose');
-      this.$router.push({ name: 'index'})
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      });
+      // console.log(this.$route);
+      // this.$router.push({ name: 'index'})
     },
     makeOrder() {
       this.isLoading = true

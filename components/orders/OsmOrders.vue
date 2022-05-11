@@ -1,6 +1,6 @@
 <template>
   <div class="orders center-block">
-    <template v-if="getOrders">
+    <template v-if="getOrders.length">
       <osm-orders-block
         v-for="order in getOrders"
         :key="order.id"
