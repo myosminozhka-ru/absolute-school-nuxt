@@ -2,7 +2,6 @@
   <div class="wrapper auth">
     <div class="wrapper__in" :class="[{'isMobile': isMobile || isIos }, {'isTablet': isTablet }, {'isIos': isIos}]"
     >
-    {{ [{'isMobile': isMobile || isIos }, {'isTablet': isTablet }, {'isIos': isIos}] }}
       <main class="content">
         <nuxt />
       </main>
