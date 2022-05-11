@@ -1,7 +1,6 @@
 <template>
   <div class="wrapper auth">
-    <div class="wrapper__in">
-    <div :class="[{'isMobile': isMobile || isIos }, {'isTablet': isTablet }, {'isIos': isIos}]"></div>
+    <div class="wrapper__in" :class="addClass">
       <main class="content">
         <nuxt />
       </main>
@@ -12,24 +11,43 @@
 <script>
 export default {
   name: 'AuthLayout',
+  data: () => ({
+    addClass: null
+  }),
   computed: {
     isMobile() {
-      console.log('isMobile', this.$device.isMobile);
       return this.$device.isMobile
     },
     isTablet() {
-      console.log('isTablet', this.$device.isTablet);
       return this.$device.isTablet
     },
     isDesktop() {
-      console.log('isDesktop', this.$device.isDesktop);
       return this.$device.isDesktop
     },
     isIos() {
-      console.log('isIos', this.$device.isIos);
       return this.$device.isIos
     },
+    computedDevises() {
+      const {isMobile,isTablet, isDesktop, isIos} = this
+      return {
+        isMobile,
+        isTablet,
+        isDesktop,
+        isIos,
+      }
+    }
   },
+  watch: {
+    computedDevises: {
+      handler(val) {
+        this.addClass = '';
+        this.addClass += val.isMobile || val.isIos ? 'isMobile ' : '';
+        this.addClass += val.isTablet ? 'isTablet ' : '';
+        this.addClass += val.isIos ? 'isIos ' : '';
+      },
+      immediate: true
+    }
+  }
 }
 </script>
 
