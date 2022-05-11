@@ -111,7 +111,7 @@ export default {
         left: 0,
         behavior: 'smooth'
       });
-      if (this.$route !== 'index') {
+      if (this.$route.name !== 'index') {
         this.$router.push({ name: 'index'})
       }
     },
