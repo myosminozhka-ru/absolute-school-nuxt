@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper auth">
-    <div class="wrapper__in">
+    <div class="wrapper__in" :class="addClass">
       <div style="display: none" :class="addClass">{{addClass}}</div>
       <main class="content">
         <nuxt />
@@ -52,7 +52,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .wrapper {
   background: rgba(255, 249, 228, 1) url('~/assets/img/bg_site.svg') 0 0 repeat;
   // &:before {
