@@ -78,6 +78,23 @@ export default {
     '@nuxtjs/style-resources',
     '@nuxtjs/toast',
     'cookie-universal-nuxt',
+    ['nuxt-twa-module', {
+      /* module options */
+      defaultUrl: 'https://myosminozhka-ru.github.io/absolute-school-nuxt/auth',
+      hostName: 'https://myosminozhka-ru.github.io/absolute-school-nuxt',
+      sha256Fingerprints: ['/* your SHA-256 keys */'],
+      applicationId: 'com.example.example',
+      launcherName: 'Школа АБСОЛЮТ',
+      versionCode: 1,
+      versionName: '1.0',
+      statusBarColor: '#fff9e4',
+
+      /* optional */
+      /* overwrite default location for icon */
+      iconPath: '/static/icon.png',
+      /* Overwrite folder where to put .wellknown */
+      distFolder: '.nuxt/dist/client',
+    }],
   ],
   toast: {
     position: 'bottom-right',
