@@ -1,7 +1,11 @@
 <template>
-  <div class="auth-block">
-    <osm-auth-block-l-side />
-    <osm-auth-block-r-side />
+  <div class="wrapper__in" :class="addClass">
+    <main class="content">
+      <div class="auth-block">
+        <osm-auth-block-l-side />
+        <osm-auth-block-r-side />
+      </div>
+    </main>
   </div>
 </template>
 <script>
@@ -11,6 +15,28 @@ export default {
     osmAuthBlockLSide: () => import('./OsmAuthBlockLSide.vue'),
     osmAuthBlockRSide: () => import('./OsmAuthBlockRSide.vue'),
   },
+  computed: {
+    isMobile() {
+      return this.$device.isMobile
+    },
+    isTablet() {
+      return this.$device.isTablet
+    },
+    isDesktop() {
+      return this.$device.isDesktop
+    },
+    isIos() {
+      return this.$device.isIos
+    },
+    addClass() {
+      let addClass = '';
+        addClass += this.isMobile ? 'isMobile ' : '';
+        addClass += this.isTablet ? 'isTablet ' : '';
+        addClass += this.isIos ? 'isIos ' : '';
+        addClass = addClass.trim();
+        return addClass;
+    }
+  }
 }
 </script>
 <style lang="scss">
@@ -264,6 +290,40 @@ export default {
   }
   &.wrapper.auth {
     padding: 0;
+  }
+}
+</style>
+
+<style lang="scss" scoped>
+.wrapper {
+  background: rgba(255, 249, 228, 1) url('~/assets/img/bg_site.svg') 0 0 repeat;
+  // &:before {
+  //   content: '';
+  //   position: absolute;
+  //   top: 0;
+  //   bottom: 0;
+  //   left: 0;
+  //   right: 0;
+  //   width: 100%;
+  //   pointer-events: none;
+  //   height: 100%;
+  //   background: rgba(255, 249, 228, 1) url('~/assets/img/bg_site.png') 0;
+  //   z-index: 1;
+  // }
+  &__in {
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 0;
+    position: relative;
+    padding: 0;
+    &.isTablet {
+      padding: 0;
+    }
+    &.isMobile {
+      padding: 0;
+    }
   }
 }
 </style>
