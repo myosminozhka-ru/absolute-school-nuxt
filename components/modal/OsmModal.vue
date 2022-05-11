@@ -139,14 +139,14 @@ export default {
           this.isLoading = false
           this.onClose()
           this.loadCart()
-          this.$toast.success(`Заказ №${response.order} создан`)
+          // this.$toast.success(`Заказ №${response.order} создан`)
           this.$router.push({ name: 'orders' })
           if (response.balance) {
             this.updateBalance(response.balance)
           }
         })
         .catch((error) => {
-          this.$toast.error(error)
+          // this.$toast.error(error)
         })
     },
   },

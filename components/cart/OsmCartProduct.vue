@@ -258,10 +258,6 @@ export default {
         .then((response) => {
           this.isLoading = false
         })
-        .catch((error) => {
-          this.isLoading = false
-          this.$toast.error(error)
-        })
     },
     onSelectColor(color) {
       this.selectedColor = color
@@ -276,10 +272,10 @@ export default {
       this.updateOffer()
     },
     updateQuantity({ id, quantity }) {
-      if (quantity > +this.currentOffer.max_quantity) {
-        this.$toast.info('Столько товаров у нас нет')
-        return false
-      }
+      // if (quantity > +this.currentOffer.max_quantity) {
+      //   // this.$toast.info('Столько товаров у нас нет')
+      //   return false
+      // }
       if (quantity < 1) {
         // this.$toast.info('Меньше не получится')
         return false
@@ -293,10 +289,6 @@ export default {
         .then((response) => {
           this.isLoading = false
         })
-        .catch((error) => {
-          this.isLoading = false
-          this.$toast.error(error)
-        })
     },
     updateOffer() {
       this.updateData()
@@ -308,10 +300,6 @@ export default {
       })
         .then((response) => {
           this.isLoading = false
-        })
-        .catch((error) => {
-          this.isLoading = false
-          this.$toast.error(error)
         })
     },
   },

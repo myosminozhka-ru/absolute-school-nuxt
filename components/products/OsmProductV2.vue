@@ -263,7 +263,7 @@ export default {
       const offer = this.getFilteredProducts.offers.filter(offer => offer.id === offerId)[0];
       // console.log(offer.price, this.user.balance, +offer.price > +this.user.balance);
       if (offer && +offer.price > +this.user.balance) {
-        this.$toast.info('На вашем балансе недостаточно средств');
+        // this.$toast.info('На вашем балансе недостаточно средств');
       } else {
         this.isLoading = true;
         this.addProductToCart(offerId)
@@ -271,14 +271,14 @@ export default {
             this.isLoading = false
             if (response.items) {
               // console.log(response.items);
-              this.$toast.success(`Товар "${response.items[0].name}" добавлен в корзину`)
+              // this.$toast.success(`Товар "${response.items[0].name}" добавлен в корзину`)
             } else {
-              this.$toast.info(response)
+              // this.$toast.info(response)
             }
           })
           .catch((error) => {
             this.isLoading = false
-            this.$toast.error(error)
+            // this.$toast.error(error)
           })
       }
     },
