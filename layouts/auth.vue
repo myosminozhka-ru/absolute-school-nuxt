@@ -11,6 +11,9 @@
 <script>
 export default {
   name: 'AuthLayout',
+  layout: (ctx) => {
+    // console.log('ctx.$device: ', ctx.$device);
+  },
   data: () => ({
     sizes: {
       tablet: 1024,
@@ -38,16 +41,17 @@ export default {
         addClass += this.isMobile ? 'isMobile ' : '';
         addClass += this.isTablet ? 'isTablet ' : '';
         addClass += this.isIos ? 'isIos ' : '';
-        console.log(addClass);
         return addClass;
     }
   },
-  beforeMount() {
+  mounted() {
+    window.dispatchEvent(new Event('resize'));
     this.sizes.window = window.innerWidth;
-        window.addEventListener('resize', () => {
-            this.sizes.window = window.innerWidth;
-        });
-    }
+
+    window.addEventListener('resize', () => {
+        this.sizes.window = window.innerWidth;
+    });
+  }
 }
 </script>
 
