@@ -1,5 +1,6 @@
 <template>
   <div class="auth-block">
+    <div style="display: none" :class="[{'tratatata' : $device.isMobile}]">{{$device.isMobile ? 'tratatata' : ''}}</div>
     <osm-auth-block-l-side />
     <osm-auth-block-r-side />
   </div>
