@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper auth">
     <div class="wrapper__in">
-      <div  :class="addClass"></div>
+      <div style="display: none" :class="addClass">{{addClass}}</div>
       <main class="content">
         <nuxt />
       </main>
