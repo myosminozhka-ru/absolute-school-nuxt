@@ -14,15 +14,19 @@ export default {
   name: 'AuthLayout',
   computed: {
     isMobile() {
+      console.log('isMobile', this.$device.isMobile);
       return this.$device.isMobile
     },
     isTablet() {
+      console.log('isTablet', this.$device.isTablet);
       return this.$device.isTablet
     },
     isDesktop() {
+      console.log('isDesktop', this.$device.isDesktop);
       return this.$device.isDesktop
     },
     isIos() {
+      console.log('isIos', this.$device.isIos);
       return this.$device.isIos
     },
   },
