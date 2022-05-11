@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper auth">
     <div class="wrapper__in" :class="addClass">
-      <div style="display: none" :class="[{'tratatata' : $device.isMobile}]">{{addClass}}</div>
+      <div style="display: none" :class="[{'tratatata' : $device.isMobile}]">{{$device.isMobile ? 'tratatata' : ''}}</div>
       <main class="content">
         <nuxt />
       </main>
