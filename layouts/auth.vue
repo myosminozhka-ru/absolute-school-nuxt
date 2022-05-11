@@ -1,11 +1,6 @@
 <template>
   <div class="wrapper auth">
-    <div
-      :class="`wrapper__in${isMobile || isIos ? ' isMobile' : ''}${
-        isTablet ? ' isTablet' : ''
-      }${
-        isIos ? ' isIos' : ''
-      }`"
+    <div class="wrapper__in" :class="[{'isMobile': isMobile || isIos }, {'isTablet': isTablet }, {'isIos': isIos}]"
     >
       <main class="content">
         <nuxt />
