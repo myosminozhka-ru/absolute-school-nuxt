@@ -13,14 +13,20 @@
 export default {
   name: 'AuthLayout',
   data: () => ({
-    addClass: null
+    sizes: {
+      tablet: 1024,
+      mobile: 768,
+      window: null
+    },
   }),
   computed: {
     isMobile() {
-      return this.$device.isMobile
+      // return this.$device.isMobile
+      return this.sizes.window < this.sizes.mobile;
     },
     isTablet() {
-      return this.$device.isTablet
+      // return this.$device.isTablet
+      return this.sizes.window < this.sizes.tablet && this.sizes.window > this.sizes.mobile;
     },
     isDesktop() {
       return this.$device.isDesktop
@@ -28,27 +34,19 @@ export default {
     isIos() {
       return this.$device.isIos
     },
-    computedDevises() {
-      const {isMobile,isTablet, isDesktop, isIos} = this
-      return {
-        isMobile,
-        isTablet,
-        isDesktop,
-        isIos,
-      }
+    addClass() {
+      let addClass = '';
+        addClass += this.isMobile || this.isIos ? 'isMobile ' : '';
+        addClass += this.isTablet ? 'isTablet ' : '';
+        addClass += this.isIos ? 'isIos ' : '';
+        return addClass;
     }
   },
-  watch: {
-    computedDevises: {
-      handler(val) {
-        this.addClass = '';
-        this.addClass += val.isMobile || val.isIos ? 'isMobile ' : '';
-        this.addClass += val.isTablet ? 'isTablet ' : '';
-        this.addClass += val.isIos ? 'isIos ' : '';
-      },
-      immediate: true
+  beforeMount() {
+        window.addEventListener('resize', () => {
+            this.sizes.window = window.innerWidth;
+        });
     }
-  }
 }
 </script>
 
