@@ -35,13 +35,15 @@ export default {
     },
     addClass() {
       let addClass = '';
-        addClass += this.isMobile || this.isIos ? 'isMobile ' : '';
+        addClass += this.isMobile ? 'isMobile ' : '';
         addClass += this.isTablet ? 'isTablet ' : '';
         addClass += this.isIos ? 'isIos ' : '';
+        console.log(addClass);
         return addClass;
     }
   },
   beforeMount() {
+    this.sizes.window = window.innerWidth;
         window.addEventListener('resize', () => {
             this.sizes.window = window.innerWidth;
         });
