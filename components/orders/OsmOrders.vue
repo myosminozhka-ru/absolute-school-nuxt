@@ -104,6 +104,11 @@ export default {
     display: flex;
     justify-content: space-between;
     margin-bottom: vw(40);
+
+    &--info {
+      flex-grow: 1;
+    }
+
     &--l-side {
       max-width: vw(210);
       width: 100%;
