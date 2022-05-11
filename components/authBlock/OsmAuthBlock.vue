@@ -30,7 +30,7 @@ export default {
     },
     addClass() {
       let addClass = '';
-        addClass += this.isMobile ? 'isMobile ' : '';
+        addClass += this.isMobile || this.isIos ? 'isMobile ' : '';
         addClass += this.isTablet ? 'isTablet ' : '';
         addClass += this.isIos ? 'isIos ' : '';
         addClass = addClass.trim();
