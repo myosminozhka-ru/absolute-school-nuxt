@@ -16,7 +16,7 @@
             class-name="check_standart"
             text="#000"
             :class="{ 'is-checked': +color.id === +selectedColorId }"
-            name="color"
+            :name="'color-' + product.id"
             :style="`--background: ${color.code}`"
             @input="onSelectColor(color.id)"
           />
@@ -32,7 +32,7 @@
             :checked="+size.id === +selectedSizeId"
             :text="size.name"
             :value="size.id"
-            name="size"
+            :name="'size-' + product.id"
             @input="onSelectSize(size.id)"
           />
         </div>
