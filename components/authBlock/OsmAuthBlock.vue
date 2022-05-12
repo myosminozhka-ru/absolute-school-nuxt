@@ -1,5 +1,7 @@
 <template>
   <div class="wrapper__in" :class="addClass">
+    <div>ntcn {{ addClass }}</div>
+
     <main class="content">
       <div class="auth-block">
         <osm-auth-block-l-side />

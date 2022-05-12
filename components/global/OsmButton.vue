@@ -80,15 +80,19 @@ export default {
       }
     }
     &:hover {
-      svg {
-        filter: drop-shadow(0px 0px 0px #6a8626);
+      @media (hover){
+        svg {
+          filter: drop-shadow(0px 0px 0px #6a8626);
+        }
       }
     }
     &:active {
-      svg {
-        filter: drop-shadow(0px 0px 0px #6a8626);
-        path:nth-child(1) {
-          fill: #9dc739;
+      @media (hover){
+        svg {
+          filter: drop-shadow(0px 0px 0px #6a8626);
+          path:nth-child(1) {
+            fill: #9dc739;
+          }
         }
       }
     }
@@ -928,7 +932,8 @@ export default {
       border-radius: 90px;
       padding: 11px 10px;
       &:hover,
-      &:active {
+      &:active,
+      &.isActive {
         box-shadow: 0px 10px 16px rgba(230, 119, 31, 0.2);
       }
     }

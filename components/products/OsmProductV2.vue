@@ -260,6 +260,13 @@ export default {
       this.selectedSizeId = +sizeId
     },
     addToCart(offerId) {
+      let addToastClasses = 'osm-toast ';
+      addToastClasses += this.$device.isMobile || this.$device.isIos ? 'isMobile ' : '';
+      addToastClasses += this.$device.isTablet ? 'isTablet ' : '';
+      addToastClasses += this.$device.isIos ? 'isIos ' : '';
+      addToastClasses = addToastClasses.trim();
+      this.$toast.options.className = addToastClasses;
+
       const offer = this.getFilteredProducts.offers.filter(offer => offer.id === offerId)[0];
       // console.log(offer.price, this.user.balance, +offer.price > +this.user.balance);
       if (offer && +offer.price > +this.user.balance) {

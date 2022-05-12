@@ -71,7 +71,7 @@ export default {
   }),
   computed: {
     ...mapGetters('products', ['getSearchText'])
-  },  
+  },
   methods: {
     ...mapActions('products', ['addSection', 'addSearchText']),
     removeSearchText() {
@@ -122,6 +122,7 @@ export default {
     width: 100%;
 
     .input {
+      margin-right: 0;
       // margin-right: 7px;
       // min-width: 100%;
 
@@ -140,7 +141,7 @@ export default {
     form {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-end;
     }
   }
 
@@ -198,7 +199,7 @@ export default {
   .tabs_blocks {
     flex-direction: column;
     &__item {
-      
+
     &::-webkit-scrollbar, &::-webkit-scrollbar-thumb {
      height: 7px;
     }

@@ -122,18 +122,18 @@ img {
     background: #af4000;
     color: #fff;
   }
-}
-.isTablet,
-.isMobile {
-  .osm-toast {
-    font-size: 13px;
+
+  &.isTablet,
+  &.isMobile {
+    padding: 10px 15px;
+    font-size: 20px;
   }
 }
 @media all and (max-width: 1023px) {
   body {
     .toasted-container {
       .toasted {
-        font-size: 10px;
+        // font-size: 10px;
         .action {
           font-size: 0;
           width: 15px;

@@ -104,6 +104,14 @@ export default {
       this.isMobileShowMore = !this.isMobileShowMore
     },
     onRepeatOrder(orderId) {
+
+      let addToastClasses = 'osm-toast ';
+      addToastClasses += this.$device.isMobile || this.$device.isIos ? 'isMobile ' : '';
+      addToastClasses += this.$device.isTablet ? 'isTablet ' : '';
+      addToastClasses += this.$device.isIos ? 'isIos ' : '';
+      addToastClasses = addToastClasses.trim();
+      this.$toast.options.className = addToastClasses;
+
       this.repeatOrder(orderId).then((response) => {
         if (response.status) {
           this.$toast.error(response.message)

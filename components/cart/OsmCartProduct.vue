@@ -154,7 +154,7 @@
       </div>
     </div>
     <div class="cart__product--price">
-      <osm-price>{{ price }}</osm-price>
+      <osm-price>{{ +price }}</osm-price>
     </div>
   </div>
 </template>
@@ -248,6 +248,14 @@ export default {
     },
     removeProduct(basketId) {
       this.isLoading = true
+
+      let addToastClasses = 'osm-toast ';
+      addToastClasses += this.$device.isMobile || this.$device.isIos ? 'isMobile ' : '';
+      addToastClasses += this.$device.isTablet ? 'isTablet ' : '';
+      addToastClasses += this.$device.isIos ? 'isIos ' : '';
+      addToastClasses = addToastClasses.trim();
+      this.$toast.options.className = addToastClasses;
+
       this.removeProductFromCart(basketId)
         .then((response) => {
           this.isLoading = false
@@ -271,6 +279,13 @@ export default {
     },
     updateQuantity({ id, quantity }) {
       if (quantity > +this.currentOffer.max_quantity) {
+        let addToastClasses = 'osm-toast ';
+        addToastClasses += this.$device.isMobile || this.$device.isIos ? 'isMobile ' : '';
+        addToastClasses += this.$device.isTablet ? 'isTablet ' : '';
+        addToastClasses += this.$device.isIos ? 'isIos ' : '';
+        addToastClasses = addToastClasses.trim();
+        this.$toast.options.className = addToastClasses;
+
         this.$toast.info('Столько товаров у нас нет')
         return false
       }
@@ -295,6 +310,14 @@ export default {
     updateOffer() {
       this.updateData()
       this.isLoading = true
+
+      let addToastClasses = 'osm-toast ';
+      addToastClasses += this.$device.isMobile || this.$device.isIos ? 'isMobile ' : '';
+      addToastClasses += this.$device.isTablet ? 'isTablet ' : '';
+      addToastClasses += this.$device.isIos ? 'isIos ' : '';
+      addToastClasses = addToastClasses.trim();
+      this.$toast.options.className = addToastClasses;
+
       this.updateActiveOffer({
         id: this.item.basketId,
         quantity: this.quantity,

@@ -92,6 +92,13 @@ export default {
   // },
   methods: {
     loadMoreProducts() {
+      let addToastClasses = 'osm-toast ';
+      addToastClasses += this.$device.isMobile || this.$device.isIos ? 'isMobile ' : '';
+      addToastClasses += this.$device.isTablet ? 'isTablet ' : '';
+      addToastClasses += this.$device.isIos ? 'isIos ' : '';
+      addToastClasses = addToastClasses.trim();
+      this.$toast.options.className = addToastClasses;
+
       this.$toast.info('Это все товары на данный момент !')
     },
   },
