@@ -113,14 +113,14 @@ export default {
       this.$toast.options.className = addToastClasses;
 
       this.repeatOrder(orderId).then((response) => {
-        if (response.status) {
-          this.$toast.error(response.message)
-        } else if (response.items) {
-          this.loadCart()
-          this.$toast.success('Добавили в корзину этот заказ')
-        } else {
-          this.$toast.info(response)
-        }
+        // if (response.status) {
+        //   this.$toast.error(response.message)
+        // } else if (response.items) {
+        //   this.loadCart()
+        //   this.$toast.success('Добавили в корзину этот заказ')
+        // } else {
+        //   this.$toast.info(response)
+        // }
       })
       // TODO: Тут действия при нажатии на кнопку повторить заказ
     },

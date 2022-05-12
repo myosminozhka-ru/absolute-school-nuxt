@@ -228,11 +228,11 @@ export default {
       this.addProductToCart(offerId)
         .then((response) => {
           this.isLoading = false
-          this.$toast.success(`Товар "${offerId}" добавлен в корзину`)
+          // this.$toast.success(`Товар "${offerId}" добавлен в корзину`)
         })
         .catch((error) => {
           this.isLoading = false
-          this.$toast.error(error)
+          // this.$toast.error(error)
         })
     },
   },

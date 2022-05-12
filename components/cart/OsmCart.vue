@@ -383,10 +383,10 @@ export default {
         height: 39px;
       }
       &--plus-warn {
-        transform: rotateY(180deg);
+        transform: rotateY(180deg) scale(0.8);
         left: auto;
         right: -64px;
-        top: 0;
+        top: -20px;
         span {
           transform: rotateY(180deg);
           display: block;

@@ -70,7 +70,7 @@
     <div class="cart__product--info">
       <osm-hn type="h2">{{ item.name }}</osm-hn>
       <div class="cart__product--text">
-        {{ item.description ? item.description : 'lorem ipsum dolor sit amet' }}
+        {{ currentProduct[0] ? currentProduct[0].description : 'lorem ipsum dolor sit amet' }}
       </div>
       <div v-if="selectedColor" class="cart__product--check">
         <div class="cart__product--check-item">
@@ -198,6 +198,12 @@ export default {
     ...mapGetters('localStorage', {
       user: 'getUser',
     }),
+    ...mapGetters('products', {
+      products: 'getProducts',
+    }),
+    currentProduct() {
+      return this.products.products.filter(product => product.id === this.currentOffer.product)
+    },
     colorsAndSize() {
       const { selectedColor, selectedSize } = this
       return {
@@ -260,10 +266,6 @@ export default {
         .then((response) => {
           this.isLoading = false
         })
-        .catch((error) => {
-          this.isLoading = false
-          this.$toast.error(error)
-        })
     },
     onSelectColor(color) {
       this.selectedColor = color
@@ -302,10 +304,6 @@ export default {
         .then((response) => {
           this.isLoading = false
         })
-        .catch((error) => {
-          this.isLoading = false
-          this.$toast.error(error)
-        })
     },
     updateOffer() {
       this.updateData()
@@ -325,10 +323,6 @@ export default {
       })
         .then((response) => {
           this.isLoading = false
-        })
-        .catch((error) => {
-          this.isLoading = false
-          this.$toast.error(error)
         })
     },
   },

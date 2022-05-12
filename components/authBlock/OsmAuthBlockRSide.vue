@@ -87,7 +87,7 @@ export default {
               user: response.user,
             })
             this.$router.push({ name: 'index' })
-            this.$toast.success('Добро пожаловать')
+            // this.$toast.success('Добро пожаловать')
           }
         })
         .catch((error) => {

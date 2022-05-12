@@ -16,7 +16,7 @@ export default {
     description: 'Интернет-магазин школы Абсолют в городе Серпухов',
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { name: 'viewport', content: 'width=device-width, user-scalable=no' },
       { hid: 'description', name: 'description', content: 'Интернет-магазин школы Абсолют в городе Серпухов' },
       { name: 'format-detection', content: 'telephone=no' },
     ],
@@ -77,15 +77,7 @@ export default {
     '@nuxtjs/pwa',
     '@nuxtjs/style-resources',
     '@nuxtjs/toast',
-    'cookie-universal-nuxt',
-    [
-      '@nuxtjs/device',
-      {
-        defaultUserAgent:
-          'Mozilla/5.0 (Linux; Android 5.1.1; Nexus 6 Build/LYZ28E) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.39 Mobile Safari/537.36',
-        refreshOnResize: true,
-      },
-    ]
+    'cookie-universal-nuxt'
   ],
   toast: {
     position: 'bottom-right',
