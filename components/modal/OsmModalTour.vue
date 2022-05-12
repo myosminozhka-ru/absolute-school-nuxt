@@ -111,8 +111,9 @@ export default {
         left: 0,
         behavior: 'smooth'
       });
-      // console.log(this.$route);
-      // this.$router.push({ name: 'index'})
+      if (this.$route.name !== 'index') {
+        this.$router.push({ name: 'index'})
+      }
     },
     makeOrder() {
       this.isLoading = true
