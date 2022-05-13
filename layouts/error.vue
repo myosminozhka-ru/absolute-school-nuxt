@@ -333,11 +333,6 @@ export default {
   }
 }
 
-// @media (max-width: 640px) {}
-// .isMobile {
-//   overflow: auto;
-//   overflow-x: hidden;
-// }
 .header {
   z-index: 3;
 }

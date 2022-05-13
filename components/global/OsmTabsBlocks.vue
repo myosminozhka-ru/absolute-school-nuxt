@@ -3,7 +3,7 @@
     <div class="tabs_blocks__l-side">
       <div class="tabs_blocks__buttons">
         <div class="tabs_blocks__item" data-intro="<div class='tour girl'><div class='tour__l'></div><div class='tour__r'><div class='tour__number'>05</div><div class='tour__title'>Виды товаров</div><div class='tour__text'>Отбирай товары по видам.</div></div></div>" data-step="5">
-          <div class="tabs_blocks__buttons--owf">
+          <div class="tabs_blocks__buttons--owf hide-scrollbar">
             <div
               v-for="button in sectionList"
               :key="button.id"

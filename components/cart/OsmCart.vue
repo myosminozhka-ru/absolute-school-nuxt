@@ -175,7 +175,9 @@ export default {
       position: absolute;
       bottom: 23px;
       left: 23px;
-      width: 350px;
+      display: flex;
+      align-items: flex-start;
+      // width: 350px;
       height: auto;
       padding: 30px;
       padding-bottom: 19px;

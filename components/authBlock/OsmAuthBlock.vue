@@ -15,28 +15,6 @@ export default {
     osmAuthBlockLSide: () => import('./OsmAuthBlockLSide.vue'),
     osmAuthBlockRSide: () => import('./OsmAuthBlockRSide.vue'),
   },
-  computed: {
-    // isMobile() {
-    //   return this.$device.isMobile
-    // },
-    // isTablet() {
-    //   return this.$device.isTablet
-    // },
-    // isDesktop() {
-    //   return this.$device.isDesktop
-    // },
-    // isIos() {
-    //   return this.$device.isIos
-    // },
-    // addClass() {
-    //   let addClass = '';
-    //     addClass += this.isMobile || this.isIos ? 'isMobile ' : '';
-    //     addClass += this.isTablet ? 'isTablet ' : '';
-    //     addClass += this.isIos ? 'isIos ' : '';
-    //     addClass = addClass.trim();
-    //     return addClass;
-    // }
-  }
 }
 </script>
 <style lang="scss">

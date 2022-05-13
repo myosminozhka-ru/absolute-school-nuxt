@@ -177,6 +177,18 @@ export default {
     }
   }
 }
+.cart__product--blocks {
+  .check_size {
+    &:not(:last-child) {
+      margin-right: 25px;
+    }
+  }
+  .check_standart {
+    &:not(:last-child) {
+      margin-right: 15px;
+    }
+  }
+}
 @media all and (max-width: 1023px) {
   .check_standart {
     .custom-checkbox + div:before {
