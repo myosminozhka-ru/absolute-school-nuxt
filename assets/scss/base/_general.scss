@@ -180,3 +180,14 @@ button {
   background: #e49535;
   border-radius: 10px;
 }
+
+.hide-scrollbar
+{
+    overflow: auto;
+    -ms-overflow-style: none; /* IE 11 */
+    scrollbar-width: none; /* Firefox 64 */
+}
+
+.introjs-showElement.button svg {
+  filter: none !important;
+}

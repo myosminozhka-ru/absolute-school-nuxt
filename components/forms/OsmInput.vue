@@ -49,7 +49,7 @@ export default {
     bottom: vw(-9);
     width: 100%;
     height: 100%;
-    z-index: -1;
+    // z-index: -1;
     -webkit-clip-path: polygon(0% 0%, 100% 15%, 100% 86%, 1% 94%);
     clip-path: polygon(0% 0%, 100% 15%, 100% 86%, 1% 94%);
   }
