@@ -272,10 +272,9 @@ export default {
       margin-right: auto;
     }
   }
-}
-.isTablet,
-.isMobile {
-  .orders {
+
+  @media (max-width: 1024px) {
+
     margin-bottom: 80px;
     &__block {
       padding: 20px;

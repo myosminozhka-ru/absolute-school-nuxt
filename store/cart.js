@@ -116,13 +116,13 @@ export const getters = {
             basketId: +item.basket_id,
             productId: +item.product_id,
             name: item.name,
-            description: rootState.products.products.products.find(
+            description: rootState.products.products.products ? rootState.products.products.products.find(
               (product) =>
                 +product.id ===
                 +state.cart.offers.find(
                   (offer) => +offer.id === +item.product_id
                 ).description
-            ),
+            ): '',
             image: item.image,
           }
 

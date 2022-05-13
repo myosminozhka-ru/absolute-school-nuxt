@@ -294,10 +294,7 @@ export default {
       }
     }
   }
-}
-.isTablet,
-.isMobile {
-  .cart {
+  @media (max-width: 1024px) {
     margin-top: 30px;
     flex-direction: column;
     align-items: flex-end;
@@ -457,9 +454,8 @@ export default {
       width: auto;
     }
   }
-}
-.isMobile {
-  .cart {
+
+  @media (max-width: 640px) {
     &__product {
       flex-wrap: wrap;
       &--img {

@@ -886,10 +886,7 @@ export default {
       }
     }
   }
-}
-.isTablet,
-.isMobile {
-  .button {
+  @media (max-width: 1024px) {
     &--search {
       svg {
         width: 53px;

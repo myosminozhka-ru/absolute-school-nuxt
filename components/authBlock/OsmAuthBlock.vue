@@ -1,7 +1,5 @@
 <template>
-  <div class="wrapper__in" :class="addClass">
-    <div>ntcn {{ addClass }}</div>
-
+  <div class="wrapper__in">
     <main class="content">
       <div class="auth-block">
         <osm-auth-block-l-side />
@@ -18,26 +16,26 @@ export default {
     osmAuthBlockRSide: () => import('./OsmAuthBlockRSide.vue'),
   },
   computed: {
-    isMobile() {
-      return this.$device.isMobile
-    },
-    isTablet() {
-      return this.$device.isTablet
-    },
-    isDesktop() {
-      return this.$device.isDesktop
-    },
-    isIos() {
-      return this.$device.isIos
-    },
-    addClass() {
-      let addClass = '';
-        addClass += this.isMobile || this.isIos ? 'isMobile ' : '';
-        addClass += this.isTablet ? 'isTablet ' : '';
-        addClass += this.isIos ? 'isIos ' : '';
-        addClass = addClass.trim();
-        return addClass;
-    }
+    // isMobile() {
+    //   return this.$device.isMobile
+    // },
+    // isTablet() {
+    //   return this.$device.isTablet
+    // },
+    // isDesktop() {
+    //   return this.$device.isDesktop
+    // },
+    // isIos() {
+    //   return this.$device.isIos
+    // },
+    // addClass() {
+    //   let addClass = '';
+    //     addClass += this.isMobile || this.isIos ? 'isMobile ' : '';
+    //     addClass += this.isTablet ? 'isTablet ' : '';
+    //     addClass += this.isIos ? 'isIos ' : '';
+    //     addClass = addClass.trim();
+    //     return addClass;
+    // }
   }
 }
 </script>
@@ -235,10 +233,9 @@ export default {
       animation: tran 5s linear forwards;
     }
   }
-}
-.isTablet,
-.isMobile {
-  .auth-block {
+
+  @media (max-width: 1024px) {
+
     height: auto;
     flex-direction: column;
     &__l-side {
@@ -290,9 +287,6 @@ export default {
       }
     }
   }
-  &.wrapper.auth {
-    padding: 0;
-  }
 }
 </style>
 
@@ -320,10 +314,12 @@ export default {
     padding: 0;
     position: relative;
     padding: 0;
-    &.isTablet {
+
+    @media (max-width: 1024px) {
       padding: 0;
     }
-    &.isMobile {
+
+    @media (max-width: 640px) {
       padding: 0;
     }
   }

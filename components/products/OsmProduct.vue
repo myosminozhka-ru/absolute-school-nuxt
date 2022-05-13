@@ -218,19 +218,12 @@ export default {
     addToCart(offerId) {
       this.isLoading = true
 
-      let addToastClasses = 'osm-toast ';
-      addToastClasses += this.$device.isMobile || this.$device.isIos ? 'isMobile ' : '';
-      addToastClasses += this.$device.isTablet ? 'isTablet ' : '';
-      addToastClasses += this.$device.isIos ? 'isIos ' : '';
-      addToastClasses = addToastClasses.trim();
-      this.$toast.options.className = addToastClasses;
-
       this.addProductToCart(offerId)
         .then((response) => {
           this.isLoading = false
           // this.$toast.success(`Товар "${offerId}" добавлен в корзину`)
         })
-        .catch((error) => {
+        .catch((_) => {
           this.isLoading = false
           // this.$toast.error(error)
         })
@@ -415,9 +408,8 @@ export default {
       }
     }
   }
-}
-.isTablet {
-  .cards {
+
+  @media (max-width: 1024px) {
     &__item {
       &--l-side {
         max-width: 49%;
@@ -427,9 +419,8 @@ export default {
       }
     }
   }
-}
-.isMobile {
-  .cards {
+
+  @media (max-width: 640px) {
     &__more {
       > div {
         margin-top: 40px;

@@ -67,6 +67,9 @@ export default {
 
   &__l-side {
     width: calc(100% - 84px - vw(480));
+
+    display: flex;
+    align-items: center;
   }
 
   &__buttons {
@@ -95,6 +98,7 @@ export default {
     max-width: vw(480);
     margin-left: 84px;
     width: 100%;
+    flex-shrink: 0;
 
     .input {
       margin-right: 7px;
@@ -134,11 +138,8 @@ export default {
       max-width: vw(354);
     }
   }
-}
 
-.isTablet,
-.isMobile {
-  .tabs_blocks {
+  @media (max-width: 1024px) {
     margin-bottom: 40px;
 
     &__l-side {
@@ -161,10 +162,9 @@ export default {
       }
     }
   }
-}
 
-.isMobile {
-  .tabs_blocks {
+  @media (max-width: 640px) {
+
     flex-direction: column;
 
     &__l-side {

@@ -80,10 +80,8 @@ export default {
   img.rot {
     width: 100px;
   }
-}
-.isTablet,
-.isMobile {
-  .subtract {
+
+  @media (max-width: 1024px) {
     &--big {
       width: 274px;
       height: 286px;

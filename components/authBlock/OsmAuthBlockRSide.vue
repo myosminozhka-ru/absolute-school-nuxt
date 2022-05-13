@@ -63,13 +63,6 @@ export default {
     onLogin() {
       this.isLoading = true;
 
-      let addToastClasses = 'osm-toast ';
-      addToastClasses += this.$device.isMobile || this.$device.isIos ? 'isMobile ' : '';
-      addToastClasses += this.$device.isTablet ? 'isTablet ' : '';
-      addToastClasses += this.$device.isIos ? 'isIos ' : '';
-      addToastClasses = addToastClasses.trim();
-      this.$toast.options.className = addToastClasses;
-
       this.signIn({
         login: this.login,
         password: this.password,
@@ -87,7 +80,7 @@ export default {
               user: response.user,
             })
             this.$router.push({ name: 'index' })
-            // this.$toast.success('Добро пожаловать')
+            this.$toast.success('Добро пожаловать')
           }
         })
         .catch((error) => {

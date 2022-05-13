@@ -1,7 +1,9 @@
 <template>
   <footer class="footer">
     <div class="footer__in">
-      <img src="~/assets/img/logo.png" alt="Логотип" />
+      <nuxt-link :to="{name: 'index'}">
+        <img src="~/assets/img/logo.png" alt="Логотип" />
+      </nuxt-link>
     </div>
   </footer>
 </template>
@@ -27,9 +29,8 @@ export default {
       width: 100%;
     }
   }
-}
-.isMobile {
-  .footer {
+
+  @media (max-width: 640px) {
     &__in {
       padding: 47px 10px;
       border-radius: 20px;

@@ -190,6 +190,7 @@ export default {
   },
 }
 </script>
+
 <style lang="scss">
 .wrapper {
   background: rgba(255, 249, 228, 1) url('~/assets/img/bg_site.svg') 0 0 repeat;
@@ -213,10 +214,7 @@ export default {
     height: 100%;
     padding: vw(40) vw(150) vw(100) vw(150);
     position: relative;
-    &.isTablet {
-      padding: 22px 15px 50px 15px;
-    }
-    &.isMobile {
+    @media (max-width: 1024px) {
       padding: 22px 15px 50px 15px;
     }
   }
@@ -291,11 +289,8 @@ export default {
     width: vw(310);
     font-size: vw(31);
   }
-}
-.isMobile {
-  overflow: auto;
-  overflow-x: hidden;
-  .page_error {
+
+  @media (max-width: 640px) {
     flex-direction: column;
     text-align: center;
     justify-content: center;
@@ -336,5 +331,14 @@ export default {
       width: 190px;
     }
   }
+}
+
+// @media (max-width: 640px) {}
+// .isMobile {
+//   overflow: auto;
+//   overflow-x: hidden;
+// }
+.header {
+  z-index: 3;
 }
 </style>

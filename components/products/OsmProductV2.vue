@@ -260,13 +260,6 @@ export default {
       this.selectedSizeId = +sizeId
     },
     addToCart(offerId) {
-      let addToastClasses = 'osm-toast ';
-      addToastClasses += this.$device.isMobile || this.$device.isIos ? 'isMobile ' : '';
-      addToastClasses += this.$device.isTablet ? 'isTablet ' : '';
-      addToastClasses += this.$device.isIos ? 'isIos ' : '';
-      addToastClasses = addToastClasses.trim();
-      this.$toast.options.className = addToastClasses;
-
       const offer = this.getFilteredProducts.offers.filter(offer => offer.id === offerId)[0];
       // console.log(offer.price, this.user.balance, +offer.price > +this.user.balance);
       if (offer && +offer.price > +this.user.balance) {
@@ -283,7 +276,7 @@ export default {
               // this.$toast.info(response)
             }
           })
-          .catch((error) => {
+          .catch((_) => {
             this.isLoading = false
             // this.$toast.error(error)
           })
@@ -502,9 +495,8 @@ export default {
       }
     }
   }
-}
-.isTablet {
-  .cards {
+
+  @media (max-width: 1024px) {
     &__item {
       &--l-side {
         max-width: 49%;
@@ -514,9 +506,8 @@ export default {
       }
     }
   }
-}
-.isMobile {
-  .cards {
+
+  @media (max-width: 640px) {
     &__more {
       > div {
         margin-top: 40px;
@@ -529,6 +520,19 @@ export default {
       padding-bottom: 30px;
       flex-direction: column-reverse;
       align-items: center;
+
+      &:nth-child(even) {
+        flex-direction: column;
+
+        .cards__item--l-side {
+          order: 1;
+        }
+
+        .cards__item--r-side {
+          order: 0;
+        }
+      }
+
       &--l-side {
         max-width: 100%;
       }

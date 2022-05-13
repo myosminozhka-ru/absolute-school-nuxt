@@ -76,10 +76,11 @@ export default {
     height: 100%;
     padding: vw(40) vw(150) vw(100) vw(150);
     position: relative;
-    &.isTablet {
+    @media (max-width: 1024px) {
       padding: 22px 15px 50px 15px;
     }
-    &.isMobile {
+
+    @media (max-width: 640px) {
       padding: 22px 15px 50px 15px;
     }
   }

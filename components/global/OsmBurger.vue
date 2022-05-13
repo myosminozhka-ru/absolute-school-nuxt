@@ -1,5 +1,5 @@
 <template>
-  <div v-if="$device.isMobile || $device.isTablet" class="menu_burger">
+  <div class="menu_burger">
     <div @click.stop="toggleBurger">
       <osm-button class-name="button--burger">
         <svg
@@ -410,3 +410,12 @@ export default {
   },
 }
 </script>
+<style lang="scss" scoped>
+.menu_burger {
+  display: none;
+
+  @media (max-width: 1024px) {
+    display: inline-flex;
+  }
+}
+</style>
