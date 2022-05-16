@@ -80,7 +80,7 @@ export default {
     'cookie-universal-nuxt'
   ],
   toast: {
-    position: 'bottom-right',
+    position: 'top-left',
     duration: 6000,
     keepOnHover: true,
     theme: 'outlined',

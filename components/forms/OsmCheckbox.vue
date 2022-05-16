@@ -152,8 +152,7 @@ export default {
   color: #424242;
   min-height: 31px;
   display: block;
-  .custom-checkbox {
-    + div {
+    .custom-checkbox + div {
       &:before {
         height: 15px;
         width: 50px;
@@ -167,14 +166,13 @@ export default {
         opacity: 0;
       }
     }
-    &:checked {
-      + div {
+  &.isActive {
+      .custom-checkbox + div {
         font-size: 35px;
         &:before {
           opacity: 1;
         }
       }
-    }
   }
 }
 .cart__product--blocks {

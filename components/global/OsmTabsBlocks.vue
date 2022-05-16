@@ -97,11 +97,13 @@ export default {
   &__buttons {
     display: flex;
     align-items: center;
+    width: 100%;
 
     &--owf {
       display: flex;
       align-items: center;
       width: max-content;
+      padding: 20px 0;
     }
 
     .button {
@@ -112,8 +114,9 @@ export default {
   &__item {
     overflow: auto;
     -webkit-overflow-scrolling: touch;
-    padding: 20px 0;
     padding-left: 5px;
+    padding-bottom: 0;
+    padding-top: 0;
   }
 
   &__r-side {
@@ -122,8 +125,7 @@ export default {
     width: 100%;
 
     .input {
-      margin-right: 0;
-      // margin-right: 7px;
+      margin-right: 7px;
       // min-width: 100%;
 
       // @media all and (min-width: 1940px) {
@@ -168,21 +170,24 @@ export default {
       width: calc(100% - 30px - 344px);
     }
 
+    &__buttons {
+      width: 100%;
+    }
     &__item {
       // margin-left: -10px;
-      width: calc(100% - 54px);
+      // width: calc(100% - 54px);
       padding-left: 0;
       margin-left: 10px;
     }
 
     &__r-side {
-      // margin-left: 30px;
-      // max-width: 344px;
+      margin-left: 30px;
+      max-width: 344px;
       width: 100%;
 
-      // .input {
-      //   width: 284px;
-      // }
+      .input {
+        width: 284px;
+      }
     }
   }
 
@@ -200,12 +205,15 @@ export default {
     }
 
     &__buttons {
+      margin-right: auto;
+      display: flex;
+      justify-content: flex-end;
       .button {
         margin-right: 10px;
       }
 
       flex-direction: row-reverse;
-      // width: calc(100% + 15px);
+      width: calc(100% + 15px);
       position: relative;
 
       &:before {
@@ -232,7 +240,7 @@ export default {
       margin-top: 20px;
 
       .input {
-        // max-width: calc(100% - 60px);
+        max-width: calc(100% - 60px);
         width: 100%;
 
         &:before {
@@ -252,8 +260,7 @@ export default {
       }
 
       .tabs_blocks__l-side {
-        // width: 100%;
-        width: calc(100% - 330px);
+        width: 100%;
       }
 
       .tabs_blocks__r-side {
