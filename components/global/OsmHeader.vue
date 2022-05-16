@@ -20,13 +20,7 @@
       </svg>
       <span>Помощь</span>
     </osm-button>
-    <!-- <osm-button
-      class="header__orders"
-      class-name="button--order"
-      :link="{ name: 'orders' }"
-      data-intro="<div class='tour boy'><div class='tour__l'></div><div class='tour__r'><div class='tour__number'>01</div><div class='tour__title'>Мои заказы</div><div class='tour__text'>Здесь хранятся все заказы и информация о готовности.</div></div></div>"
-      data-step="1"
-    >
+    <osm-button v-if="$device.isDesktop" class-name="button--order" :link="{ name: 'orders' }" data-intro="<div class='tour boy'><div class='tour__l'></div><div class='tour__r'><div class='tour__number'>01</div><div class='tour__title'>Мои заказы</div><div class='tour__text'>Здесь хранятся все заказы и информация о готовности.</div></div></div>" data-step="1">
       <svg
         width="78"
         height="68"
@@ -65,14 +59,8 @@
         />
       </svg>
       <span>Мои заказы</span>
-    </osm-button> -->
-    <osm-button
-      class="header__basket"
-      class-name="button--cart_min"
-      :link="{ name: 'cart' }"
-      data-intro="<div class='tour boy'><div class='tour__l'></div><div class='tour__r'><div class='tour__number'>02</div><div class='tour__title'>Корзина</div><div class='tour__text'>Добавляй сюда товары и оформляй новые заказы.</div></div></div>"
-      data-step="2"
-    >
+    </osm-button>
+    <osm-button v-if="$device.isDesktop" class-name="button--cart_min" :link="{ name: 'cart' }" data-intro="<div class='tour boy'><div class='tour__l'></div><div class='tour__r'><div class='tour__number'>02</div><div class='tour__title'>Корзина</div><div class='tour__text'>Добавляй сюда товары и оформляй новые заказы.</div></div></div>" data-step="2">
       <div class="icon">
         <svg
           width="72"
@@ -169,12 +157,7 @@
       <span>Корзина</span>
     </osm-button>
     <osm-header-info />
-    <osm-button
-      class="header__exit"
-      data-intro="<div class='tour boy'><div class='tour__l'></div><div class='tour__r'><div class='tour__number'>04</div><div class='tour__title'>Выход</div><div class='tour__text'>Нажми для выхода из магазина</div></div></div>"
-      data-step="4"
-      @click="logout"
-    >
+    <osm-button v-if="$device.isDesktop" data-intro="<div class='tour boy'><div class='tour__l'></div><div class='tour__r'><div class='tour__number'>04</div><div class='tour__title'>Выход</div><div class='tour__text'>Нажми для выхода из магазина</div></div></div>" data-step="4" @click="logout">
       <span>Выход</span>
     </osm-button>
     <osm-burger :is-burger-opened.sync="isBurgerOpened" />
@@ -209,54 +192,54 @@ export default {
     tourStep(newTourStep, oldTourStep) {
       switch (newTourStep) {
         case '1':
-          this.isBurgerOpened = true
+          this.isBurgerOpened = true;
           setTimeout(() => {
-            this.$intro.refresh()
+            this.$intro.refresh();
           }, 300)
-          break
+          break;
         case '2':
-          this.isBurgerOpened = true
+          this.isBurgerOpened = true;
           setTimeout(() => {
-            this.$intro.refresh()
+            this.$intro.refresh();
           }, 300)
-          break
+          break;
         case '4':
-          this.isBurgerOpened = true
+          this.isBurgerOpened = true;
           setTimeout(() => {
-            this.$intro.refresh()
+            this.$intro.refresh();
           }, 300)
-          break
+          break;
         default:
-          this.isBurgerOpened = false
-          break
+          this.isBurgerOpened = false;
+          break;
       }
-    },
+    }
   },
   mounted() {
-    const self = this
+    const self = this;
     document.addEventListener('click', (event) => {
       if (!event.target.closest('.introjs-tooltipReferenceLayer')) {
         this.isBurgerOpened = false
       }
     })
-    this.$intro.onbeforechange(function (targetElement) {
+    this.$intro.onbeforechange(function(targetElement) {
       if (targetElement.dataset.step) {
         self.setTourStep(targetElement.dataset.step)
       }
-    })
-    this.$intro.oncomplete(function (targetElement) {
-      self.isModalShow = true
-    })
+    });
+    this.$intro.oncomplete(function(targetElement) {
+      self.isModalShow = true;
+    });
   },
   methods: {
     ...mapActions('localStorage', {
       signOut: 'signOut',
-      setTourStep: 'setTourStep',
+      setTourStep: 'setTourStep'
     }),
     logout() {
-      this.signOut()
-      console.log(this.$cookies.getAll())
-      this.$router.push({ name: 'auth' })
+      this.signOut();
+      console.log(this.$cookies.getAll());
+      this.$router.push({ name: 'auth' });
     },
     startIntro() {
       this.$intro.start()
@@ -356,8 +339,10 @@ export default {
   .menu_burger {
     display: none;
   }
-
-  @media (max-width: 1024px) {
+}
+.isTablet,
+.isMobile {
+  .header {
     margin-bottom: 10px;
     .button--burger {
       display: block;
@@ -486,8 +471,9 @@ export default {
       }
     }
   }
-
-  @media (max-width: 640px) {
+}
+.isMobile {
+  .header {
     // &__info {
     //   max-width: 165px;
     // }
