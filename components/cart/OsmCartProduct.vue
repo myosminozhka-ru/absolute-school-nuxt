@@ -154,7 +154,7 @@
       </div>
     </div>
     <div class="cart__product--price">
-      <osm-price>{{ +price }}</osm-price>
+      <osm-price>{{ Number(+price).toLocaleString() }}</osm-price>
     </div>
   </div>
 </template>
