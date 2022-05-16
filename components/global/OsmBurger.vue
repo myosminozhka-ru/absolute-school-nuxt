@@ -1,5 +1,5 @@
 <template>
-  <div class="menu_burger">
+  <div v-if="$device.isMobile || $device.isTablet" class="menu_burger">
     <div @click.stop="toggleBurger">
       <osm-button class-name="button--burger">
         <svg
