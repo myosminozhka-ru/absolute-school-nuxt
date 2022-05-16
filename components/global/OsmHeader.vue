@@ -20,7 +20,7 @@
       </svg>
       <span>Помощь</span>
     </osm-button>
-    <osm-button
+    <!-- <osm-button
       class="header__orders"
       class-name="button--order"
       :link="{ name: 'orders' }"
@@ -65,7 +65,7 @@
         />
       </svg>
       <span>Мои заказы</span>
-    </osm-button>
+    </osm-button> -->
     <osm-button
       class="header__basket"
       class-name="button--cart_min"
