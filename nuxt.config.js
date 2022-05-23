@@ -1,10 +1,10 @@
 export default {
-  // server: {
-  //   host: '0', // default: localhost
-  //   port: process.env.NODE_ENV === 'dev' ? 3000 : 8080 // default: 3000
-  // },
+  server: {
+    host: '0', // default: localhost
+    port: process.env.NODE_ENV === 'dev' ? 3000 : 80 // default: 3000
+  },
   router: {
-    base: '/absolute-school-nuxt/',
+    // base: '/absolute-school-nuxt/',
     middleware: ['auth'],
   },
   generate: {
