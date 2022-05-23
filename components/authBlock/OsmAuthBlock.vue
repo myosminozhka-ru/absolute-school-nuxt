@@ -214,11 +214,12 @@ export default {
 
   @media (max-width: 1024px) {
 
-    height: auto;
+    // height: auto;
     flex-direction: column;
     &__l-side {
       width: 100%;
       height: 195px;
+      margin: auto;
       svg {
         max-width: 120px;
         height: 110px;

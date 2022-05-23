@@ -605,7 +605,8 @@ export default {
               width: 30px;
               height: 5px;
               border-radius: 0;
-              background: none;
+              background: #000;
+              opacity: .2;
               padding: 0;
               &.glide__bullet--active {
                 background: #85a833;

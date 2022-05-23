@@ -114,7 +114,7 @@
               :key="size.id"
               class-name="check_size"
               :text="size.name"
-              :checked="+size.id === +selectedSize.id"
+              :class="{ 'isActive' : +size.id === +selectedSize.id}"
               name="sizes"
               @input="onSelectSize(size)"
             />
