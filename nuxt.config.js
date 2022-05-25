@@ -9,7 +9,7 @@ export default {
   },
   generate: {
     fallback: true,
-    dir: 'public_html'
+    dir: 'dist'
   },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
