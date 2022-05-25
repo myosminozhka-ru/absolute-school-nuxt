@@ -98,7 +98,7 @@ export default {
   },
 
   axios: {
-    baseURL: 'https://one.kutuzovv.ru/local/api/site/',
+    baseURL: process.env.NODE_ENV === 'dev' ? 'https://one.kutuzovv.ru/local/api/site/' : 'https://api.absolute-shop.ru/api/site/',
     withCredentials: true,
   },
 
