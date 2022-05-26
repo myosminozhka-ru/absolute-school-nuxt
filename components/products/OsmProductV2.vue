@@ -380,6 +380,7 @@ export default {
     }
     &--r-side {
       width: vw(580);
+      overflow: hidden;
       .glide {
         position: relative;
         cursor: auto;
