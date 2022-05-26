@@ -70,7 +70,6 @@ export default {
         &:before {
           border: 0;
           box-shadow: 0px 5px 20px rgba(21, 69, 102, 0.6);
-          opacity: 1;
         }
         &:after {
           top: -3px;
@@ -118,7 +117,7 @@ export default {
         z-index: 0;
       }
     }
-    &:checked, &.is-checked {
+    &:checked {
       + div {
         &:before {
           border: 0;

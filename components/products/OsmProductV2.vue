@@ -31,7 +31,7 @@
             v-for="size in sizes"
             :key="size.id"
             class-name="check_size"
-            :class="{ 'is-checked': +size.id === +selectedSizeId }"
+            :class="{ 'isActive': +size.id === +selectedSizeId }"
             :checked="+size.id === +selectedSizeId"
             :text="size.name"
             :value="size.id"
