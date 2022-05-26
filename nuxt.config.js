@@ -25,7 +25,7 @@ export default {
       {
         rel: 'icon',
         type: 'image/x-icon',
-        href: 'main_icon.ico',
+        href: '/absolute-school-nuxt/main_icon.ico',
       },
     ],
   },
@@ -98,7 +98,7 @@ export default {
   },
 
   axios: {
-    baseURL: process.env.NODE_ENV === 'dev' ? 'https://api.absolute-shop.ru/local/api/site/' : 'https://api.absolute-shop.ru/local/api/site/',
+    baseURL: process.env.NODE_ENV === 'dev' ? 'https://api.absolute-shop.ru/local/api/site/' : 'https://api.absolute-shop.ru/api/site/',
     withCredentials: true,
   },
 

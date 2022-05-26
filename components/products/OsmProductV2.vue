@@ -22,7 +22,9 @@
           />
         </div>
       </div>
-
+      <div v-for="size in sizes" :key="size.id">
+        {{ size.id }} {{ +selectedSizeId }}
+      </div>
       <div class="cards__item--size-item">
         <div class="cards__item--size">
           <osm-checkbox
