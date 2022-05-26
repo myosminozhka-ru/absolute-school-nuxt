@@ -4,7 +4,7 @@ export default {
     port: process.env.NODE_ENV === 'dev' ? 3000 : 80 // default: 3000
   },
   router: {
-    // base: '/absolute-school-nuxt/',
+    base: '/absolute-school-nuxt/',
     middleware: ['auth'],
   },
   generate: {
