@@ -3,7 +3,7 @@
     <div class="header__info--img">
       <img
         v-if="user.photo"
-        :src="`https://api.absolute-shop.ru/${user.photo}`"
+        :src="`https://one.kutuzovv.ru/${user.photo}`"
         :alt="`${user.lastname} ${user.name}`"
       />
       <img

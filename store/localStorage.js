@@ -60,16 +60,34 @@ export const actions = {
     })
   },
   signOut(context) {
-    context.commit('setAuthorization', false)
-    context.commit('updateAuthData', {
-      login: '',
-      password: '',
-      user: {
-        name: '',
-        lastname: '',
-        balance: null,
-      },
+    return new Promise((resolve, reject) => {
+      this.$axios
+        .$post(
+          'user.php',
+          {
+            action: 'logout',
+          },
+          { withCredentials: true }
+        )
+        .then((data) => {
+          // console.log(data)
+          context.commit('setAuthorization', false)
+          context.commit('updateAuthData', {
+            login: '',
+            password: '',
+            user: {
+              name: '',
+              lastname: '',
+              balance: null,
+            },
+          })
+          resolve(data)
+        })
+        .catch((error) => {
+          reject(error)
+        })
     })
+    
   },
   updateBalance(context, balance) {
     context.commit('setBalance', balance)
