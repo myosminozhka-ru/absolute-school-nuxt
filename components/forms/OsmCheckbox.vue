@@ -117,7 +117,7 @@ export default {
         z-index: 0;
       }
     }
-    &:checked {
+    &:checked, &.is-checked {
       + div {
         &:before {
           border: 0;

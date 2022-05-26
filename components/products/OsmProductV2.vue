@@ -31,6 +31,7 @@
             v-for="size in sizes"
             :key="size.id"
             class-name="check_size"
+            :class="{ 'is-checked': +size.id === +selectedSizeId }"
             :checked="+size.id === +selectedSizeId"
             :text="size.name"
             :value="size.id"
@@ -380,7 +381,6 @@ export default {
     }
     &--r-side {
       width: vw(580);
-      overflow: hidden;
       .glide {
         position: relative;
         cursor: auto;
