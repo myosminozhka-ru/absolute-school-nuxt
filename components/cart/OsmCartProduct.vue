@@ -65,7 +65,7 @@
           </svg>
         </div>
       </osm-button>
-      <img :src="`https://absolute-shop.ru${item.image}`" alt="" />
+      <img :src="`https://api.absolute-shop.ru${item.image}`" alt="" />
     </div>
     <div class="cart__product--info">
       <osm-hn type="h2">{{ item.name }}</osm-hn>
