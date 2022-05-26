@@ -202,7 +202,11 @@ export default {
       products: 'getProducts',
     }),
     currentProduct() {
-      return this.products.products.products.filter(product => product.id === this.currentOffer.product)
+      if (this.products.products) {
+        return this.products.products.filter(product => product.id === this.currentOffer.product)
+      } else {
+        return false;
+      }
     },
     colorsAndSize() {
       const { selectedColor, selectedSize } = this
