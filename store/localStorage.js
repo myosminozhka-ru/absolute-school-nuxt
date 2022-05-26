@@ -62,10 +62,7 @@ export const actions = {
   signOut(context) {
     return new Promise((resolve, reject) => {
       this.$axios
-        .$post(
-          'logout.php', null,
-          { withCredentials: true }
-        )
+        .$post('logout.php?action=logout')
         .then((data) => {
           // console.log(data)
           context.commit('setAuthorization', false)
