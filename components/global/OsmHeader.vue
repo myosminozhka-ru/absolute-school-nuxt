@@ -240,7 +240,7 @@ export default {
       this.signOut().then(response => {
 
         console.log(response);
-        this.$router.push({ name: 'auth' });
+        window.location.reload(true)
       }).catch( error => {
         console.log(error);
       });
