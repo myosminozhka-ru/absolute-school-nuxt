@@ -1,10 +1,10 @@
 export default {
   server: {
-    // host: '0', // default: localhost
+    host: '0', // default: localhost
     port: process.env.NODE_ENV === 'dev' ? 3000 : 80 // default: 3000
   },
   router: {
-    base: '/absolute-school-nuxt/',
+    // base: '/absolute-school-nuxt/',
     middleware: ['auth'],
   },
   generate: {
@@ -25,7 +25,7 @@ export default {
       {
         rel: 'icon',
         type: 'image/x-icon',
-        href: '/main_icon.ico',
+        href: '/absolute-school-nuxt/main_icon.ico',
       },
     ],
   },
@@ -98,7 +98,7 @@ export default {
   },
 
   axios: {
-    baseURL: process.env.NODE_ENV === 'dev' ? 'https://one.kutuzovv.ru/local/api/site/' : 'https://one.kutuzovv.ru/local/api/site/',
+    baseURL: process.env.NODE_ENV === 'dev' ? 'https://api.absolute-shop.ru/local/api/site/' : 'https://api.absolute-shop.ru/local/api/site/',
     withCredentials: true,
   },
 
