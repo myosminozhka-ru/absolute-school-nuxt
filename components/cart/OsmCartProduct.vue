@@ -277,10 +277,10 @@ export default {
       this.updateOffer()
     },
     updateQuantity({ id, quantity }) {
-      if (quantity > +this.currentOffer.max_quantity) {
-        // this.$toast.info('Столько товаров у нас нет')
-        return false
-      }
+      // if (quantity > +this.currentOffer.max_quantity) {
+      //   // this.$toast.info('Столько товаров у нас нет')
+      //   return false
+      // }
       if (quantity < 1) {
         // this.$toast.info('Меньше не получится')
         return false
