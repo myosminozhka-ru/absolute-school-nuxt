@@ -25,7 +25,7 @@ export default {
       {
         rel: 'icon',
         type: 'image/x-icon',
-        href: '/absolute-school-nuxt/main_icon.ico',
+        href: '/main_icon.ico',
       },
     ],
   },
