@@ -384,7 +384,7 @@ export default {
         &__track {
           overflow: hidden;
           background: #ffffff;
-          padding: vw(10) 0;
+          padding: 0;
           width: 100%;
           border-radius: vw(50);
           filter: drop-shadow(0px 10px 30px rgba(0, 0, 0, 0.1));
