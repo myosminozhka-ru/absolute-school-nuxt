@@ -92,7 +92,7 @@ export default {
   // },
   methods: {
     loadMoreProducts() {
-      this.$toast.info('Это все товары на данный момент !')
+      // this.$toast.info('Это все товары на данный момент !')
     },
   },
 }

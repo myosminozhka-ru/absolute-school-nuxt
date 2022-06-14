@@ -70,7 +70,7 @@ export default {
         .then((response) => {
           this.isLoading = false
           if (response.status === 'error') {
-            this.$toast.error(response.message)
+            // this.$toast.error(response.message)
           } else {
             // console.log('response', response)
             this.setAuthorization(true)
@@ -80,7 +80,7 @@ export default {
               user: response.user,
             })
             this.$router.push({ name: 'index' })
-            this.$toast.success('Добро пожаловать')
+            // this.$toast.success('Добро пожаловать')
           }
         })
         .catch((error) => {
